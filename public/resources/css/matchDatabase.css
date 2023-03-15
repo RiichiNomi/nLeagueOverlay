@@ -1,0 +1,30 @@
+.team {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.context {
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    width: 330px;
+    padding: 10px 0;
+    border: 1px solid black;
+    margin: 1px;
+}
+
+.logo, .info, .teamName, .member, .score {
+    padding: 5px;
+}
+
+.info li {
+    list-style-type: none;
+    margin-inline-start: 20px;
+}
+
+.card img {
+    height: 100px;
+}

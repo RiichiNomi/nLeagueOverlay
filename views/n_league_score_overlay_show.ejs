@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-League</title>
+    <link rel="stylesheet" href="../public/resources/css/n_league_score_overlay.css">
+</head>
+
+<body>
+    <div class="maincontainer">
+        <div><img class="reference" src="../public/resources/img/reference.png" alt=""></div>
+        <div><img class="reference2" src="../public/resources/img/reference2.png" alt=""></div>
+        <div class="uppercontainer">
+            <div class="matchinfo">
+                <div class="winds">
+                    <div><%=detail.wind%> <%=detail.round%></div>
+                </div>
+                <div class="bonus">
+                    <div class="kyotaku">
+                        <img src="../public/resources/img/577959-1k.png" alt="Kyotaku">
+                        <div><%=detail.kyotaku%></div>
+                    </div>
+                    <div class="honba">
+                        <img src="../public/resources/img/577959-100.png" alt="Honba">
+                        <div><%=detail.honba%></div>
+                    </div>
+                </div>
+                <div class="dora">
+                    <% if (detail.dora.length > 1) { %>
+                    <img src="../public/resources/img/pai_image/<%=detail.dora%>.png" alt="Dora">
+                    <% } %>
+                    <% if (detail.shinDora.length > 1) { %>
+                    <img src="../public/resources/img/pai_image/<%=detail.shinDora%>.png" alt="Dora">
+                    <% } %>
+                    <% if (detail.shinDora2.length > 1) { %>
+                    <img src="../public/resources/img/pai_image/<%=detail.shinDora2%>.png" alt="Dora">
+                    <% } %>
+                    <% if (detail.shinDora3.length > 1) { %>
+                    <img src="../public/resources/img/pai_image/<%=detail.shinDora3%>.png" alt="Dora">
+                    <% } %>
+                    <div class="doratext">Dora</div>
+                </div>
+            </div>
+            <div class="dateinfo">
+                <div class="session">
+                    <% if(detail.week !== null){ %>
+                    Week <%= detail.week %> - Game <%= detail.game %> |
+                    <% } %>
+                    <%= detail.date %></div>
+            </div>
+        </div>
+        <div class="lowercontainer">
+            <div class="playerinfo">
+                <div class="card" id="player1">
+                    <div class="context">
+                        <div class="pic">
+                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
+                        </div>
+                        <div class="info">
+                            <div class="waits"><% if(detail.waitsE.length > 0 && detail.waitsE[0] !== "") { %>Waits
+                                <% for(let e of detail.waitsE){ %>
+                                <img src='../public/resources/img/pai_image/<%= e %>.png' alt="waits">
+                                <% } %>
+                                <% } %>
+                            </div>
+                            <div class="playername"><%= detail.nameE %></div>
+                            <div class="points" id="point1"><%= detail.pointsE %></div>
+                        </div>
+                    </div>
+                    <div id="east" class="oyamarker <% if(detail.oya == 'east') { %> oya <% } %>"></div>
+                </div>
+                <div class="card" id="player2">
+                    <div class="context">
+                        <div class="pic">
+                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
+                        </div>
+                        <div class="info">
+                            <div class="waits"><% if(detail.waitsS.length > 0 && detail.waitsS[0] !== "") { %>Waits
+                                <% for(let s of detail.waitsS){ %>
+                                <img src='../public/resources/img/pai_image/<%= s %>.png' alt="waits">
+                                <% } %>
+                                <% } %>
+                            </div>
+                            <div class="playername"><%= detail.nameS %></div>
+                            <div class="points" id="point2"><%= detail.pointsS %></div>
+                        </div>
+                    </div>
+                    <div id="south" class="oyamarker <% if(detail.oya == 'south') { %> oya <% } %>"></div>
+                </div>
+                <div class="card" id="player3">
+                    <div class="context">
+                        <div class="pic">
+                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
+                        </div>
+                        <div class="info">
+                            <div class="waits"><% if(detail.waitsW.length > 0 && detail.waitsW[0] !== "") { %>Waits
+                                <% for(let w of detail.waitsW){ %>
+                                <img src='../public/resources/img/pai_image/<%= w %>.png' alt="waits">
+                                <% } %>
+                                <% } %>
+                            </div>
+                            <div class="playername"><%= detail.nameW %></div>
+                            <div class="points" id="point3"><%= detail.pointsW %></div>
+                        </div>
+                    </div>
+                    <div id="west" class="oyamarker <% if(detail.oya == 'west') { %> oya <% } %>"></div>
+                </div>
+
+                <div class="card" id="player4">
+                    <div class="context">
+                        <div class="pic">
+                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
+                        </div>
+                        <div class="info">
+                            <div class="waits"><% if(detail.waitsN.length > 0 && detail.waitsN[0] !== "") { %>Waits
+                                <% for(let n of detail.waitsN){ %>
+                                <img src='../public/resources/img/pai_image/<%= n %>.png' alt="waits">
+                                <% } %>
+                                <% } %>
+                            </div>
+                            <div class="playername"><%= detail.nameN %></div>
+                            <div class="points" id="point4"><%= detail.pointsN %></div>
+                        </div>
+                    </div>
+                    <div id="north" class="oyamarker <% if(detail.oya == 'north') { %> oya <% } %>"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../public/resources/js/n_league_score_overlay_show.js"></script>
+
+</html>

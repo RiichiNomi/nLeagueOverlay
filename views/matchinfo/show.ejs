@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchinfo</title>
+    <link rel="stylesheet" href="../../public/resources/css/show.css">
+</head>
+
+<body>
+    <h1>Match Info: (Currently displaying on overlay)</h1>
+    <div class="upperContainer">
+        <ul class="matchinfo">
+            <li>Timestamp: <%= detail.timestamp %></li>
+            <li>Week: <%= detail.week %></li>
+            <li>Game: <%= detail.game %></li>
+            <li>Date or Info: <%= detail.date %></li>
+            <li>Wind: <%= detail.wind %></li>
+            <li>Round: <%= detail.round %></li>
+            <li>Kyotaku: <%= detail.kyotaku %></li>
+            <li>Honba: <%= detail.honba %></li>
+            <li>Dora: <%= detail.dora %></li>
+            <% if(detail.shinDora.length > 1) { %>
+            <li>Shin Dora: <%= detail.shinDora %></li>
+            <% } %>
+            <% if(detail.shinDora2.length > 1) { %>
+            <li>Shin Dora 2: <%= detail.shinDora2 %></li>
+            <% } %>
+            <% if(detail.shinDora3.length > 1) { %>
+            <li>Shin Dora 3: <%= detail.shinDora3 %></li>
+            <% } %>
+        </ul>
+        <div>
+            <ul class="doraNotation">
+                <h3>Dora Notation</h3>
+                <div class="content">
+                    <ul>
+                        <li>1-9m = manzu</li>
+                        <li>1-9s = souzu</li>
+                        <li>1-9p = pinzu</li>
+                        <li>0 = red five</li>
+                    </ul>
+                    <ul>
+                        <li>1z = east</li>
+                        <li>2z = south</li>
+                        <li>3z = west</li>
+                        <li>4z = north</li>
+                    </ul>
+                    <ul>
+                        <li>5z = haku</li>
+                        <li>6z = hatsu</li>
+                        <li>7z = chun</li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <a href="/matchinfo/<%=detail._id%>/edit" class="button">Edit</a>
+    <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
+    <form method="POST" action="/matchinfo/<%=detail._id%>?_method=DELETE">
+        <button id="delete" onclick="return confirm('Are you sure you want to delete this match?')">Delete</button>
+    </form>
+    <div class="lowerTitle">
+        <h1>Player Info: </h1>
+        <h3 id="totalPoints">Total Points: <%= (parseInt(detail.pointsE.replace(',','')) + parseInt(detail.pointsS.replace(',','')) + parseInt(detail.pointsW.replace(',','')) + parseInt(detail.pointsN.replace(',',''))).toLocaleString() %></h3>
+    </div>
+    <div class="lowerContainer">
+        <ul class="playerinfo">
+            <li>East:
+                <ul>
+                    <li>Team: <%= detail.teamE %></li>
+                    <li>Name: <%= detail.nameE %></li>
+                    <li>Points: <%= detail.pointsE %></li>
+                    <li>Oya:
+                        <input class="oya" type="radio" id="oyaE" name="oya"<% if(detail.oya == 'east') { %> checked
+                            <% } %>>
+                    </li>
+                </ul>
+            </li>
+            <li>South:
+                <ul>
+                    <li>Team: <%= detail.teamS %></li>
+                    <li>Name: <%= detail.nameS %></li>
+                    <li>Points: <%= detail.pointsS %></li>
+                    <li>Oya:
+                        <input class="oya" type="radio" id="oyaS" name="oya"<% if(detail.oya == 'south') { %> checked
+                            <% } %>>
+                    </li>
+                </ul>
+            </li>
+            <li>West:
+                <ul>
+                    <li>Team: <%= detail.teamW %></li>
+                    <li>Name: <%= detail.nameW %></li>
+                    <li>Points: <%= detail.pointsW %></li>
+                    <li>Oya:
+                        <input class="oya" type="radio" id="oyaW" name="oya" <% if(detail.oya == 'west') { %> checked
+                            <% } %>>
+                    </li>
+                </ul>
+            </li>
+            <li>North:
+                <ul>
+                    <li>Team: <%= detail.teamN %></li>
+                    <li>Name: <%= detail.nameN %></li>
+                    <li>Points: <%= detail.pointsN %></li>
+                    <li>Oya:
+                        <input class="oya" type="radio" id="oyaN" name="oya" <% if(detail.oya == 'north') { %> checked
+                            <% } %>>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <a href="/matchinfo" class="button">Go to Database</a>
+    <div class="id">ID: <%= detail._id %></div>
+</body>
+
+</html>

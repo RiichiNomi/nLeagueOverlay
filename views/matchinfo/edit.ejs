@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchinfo</title>
+    <link rel="stylesheet" href="../../public/resources/css/edit.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Update Match Info:</h1>
+    <form method="POST" action="/matchinfo/<%=detail._id%>?_method=PUT" id="matchinfo">
+        <div class="upperContainer">
+            <ul class="matchinfo">
+                <li>
+                    <label for="timestamp">Timestamp:</label>
+                    <input type="text" id="timestamp" name="timestamp" value=" <%= detail.timestamp.trim() %> " size="60"
+                        readonly>
+                </li>
+                <li>
+                    <label for="week">Week: </label>
+                    <input type="number" id="week" name="week" min="1" value="<%= detail.week %>">
+                </li>
+                <li>
+                    <label for="game">Game: </label>
+                    <input type="number" id="game" name="game" min="1" value="<%= detail.game %>">
+                </li>
+                <li>
+                    <label for="game">Date: </label>
+                    <input type="text" id="date" name="date" value="<%= detail.date %>">
+                </li>
+                <li>
+                    <label for="wind"> Wind:</label>
+                    <select id="wind" name="wind">
+                        <option id="east" value="EAST">EAST</option>
+                        <option id="south" value="SOUTH" <% if(detail.wind == "SOUTH"){ %> selected <% } %>>SOUTH
+                        </option>
+                    </select>
+                </li>
+                <li>
+                    <label for="round">Round: </label>
+                    <% for(let i = 1; i <= 4; i++){
+                    let checked = (detail.round == i) ? "checked" : "" %>
+                    <input type="radio" id="round" name="round" value="<%=i%>" <%=checked%>>
+                    <label for="<%=i%>"><%=i%></label>
+                    <% } %>
+                </li>
+                <li>
+                    <label for="">Kyotaku: </label>
+                    <input type="number" id="kyotaku" name="kyotaku" min="0" max="10" value="<%=detail.kyotaku%>">
+                </li>
+                <li>
+                    <label for="">Honba: </label>
+                    <input type="number" id="honba" name="honba" min="0" max="10" value="<%=detail.honba%>">
+                </li>
+                <li>
+                    <label for="dora">Dora: </label>
+                    <input type="text" id="dora" name="dora" value="<%=detail.dora%>">
+                </li>
+                <li>
+                    <label for="shinDora">Shin Dora: </label>
+                    <input type="text" id="shinDora" name="shinDora" value="<%=detail.shinDora%>">
+                </li>
+                <li>
+                    <label for="shinDora2">Shin Dora 2: </label>
+                    <input type="text" id="shinDora2" name="shinDora2" value="<%=detail.shinDora2%>">
+                </li>
+                <li>
+                    <label for="shinDora3">Shin Dora 3: </label>
+                    <input type="text" id="shinDora3" name="shinDora3" value="<%=detail.shinDora3%>">
+                </li>
+            </ul>
+            <div>
+                <ul class="doraNotation">
+                    <h3>Pai Notation</h3>
+                    <div class="content">
+                        <ul>
+                            <li>1-9m = manzu</li>
+                            <li>1-9s = souzu</li>
+                            <li>1-9p = pinzu</li>
+                            <li>0 = red five</li>
+                        </ul>
+                        <ul>
+                            <li>1z = east</li>
+                            <li>2z = south</li>
+                            <li>3z = west</li>
+                            <li>4z = north</li>
+                        </ul>
+                        <ul>
+                            <li>5z = haku</li>
+                            <li>6z = hatsu</li>
+                            <li>7z = chun</li>
+                        </ul>
+                    </div>
+                </ul>
+                <h2>Currently Displaying on Overlay:</h2>
+                <div>
+                    <ul class="matchinfo">
+                        <li>Timestamp: <%= detail.timestamp %></li>
+                        <li>Week: <%= detail.week %></li>
+                        <li>Game: <%= detail.game %></li>
+                        <li>Date: <%= detail.date %></li>
+                        <li>Wind: <%= detail.wind %></li>
+                        <li>Round: <%= detail.round %></li>
+                        <li>Kyotaku: <%= detail.kyotaku %></li>
+                        <li>Honba: <%= detail.honba %></li>
+                        <li>Dora: <%= detail.dora %></li>
+                        <% if(detail.shinDora.length > 1) { %>
+                        <li>Shin Dora: <%= detail.shinDora %></li>
+                        <% } %>
+                        <% if(detail.shinDora2.length > 1) { %>
+                        <li>Shin Dora 2: <%= detail.shinDora2 %></li>
+                        <% } %>
+                        <% if(detail.shinDora3.length > 1) { %>
+                        <li>Shin Dora 3: <%= detail.shinDora3 %></li>
+                        <% } %>
+                        <li>Oya: <%= detail.oya %></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button type="submit" form="matchinfo">Update</button>
+        <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
+        <div class="lowerTitle">
+            <h1>Player Info:</h1>
+            <h3>(Separate waits with comma)</h3>
+            <h3 id="totalPoints">Total Points: </h3>
+        </div>
+        <div class="lowerContainer">
+            <ul class="playerinfo">
+                <li>East:
+                    <ul>
+                        <label for="teamE">
+                            <li>Team:
+                                <select id="teamE" name="teamE">
+                                    <% for (let t of teaminfo) { %>
+                                    <option value="<%= t.team %>" <% if(t.team == detail.teamE){ %> selected <% } %>>
+                                        <%= t.team %> </option>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="nameE">
+                            <li>Name:
+                                <select id="nameE" name="nameE">
+                                    <% for (let t of teaminfo) { %>
+                                    <% for(let i = 0; i < t.members.length; i++){ %>
+                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameE){ %> selected
+                                        <% } %>> <%= t.members[i] %> </option>
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="pointsE">
+                            <li>Points:
+                                <input type="text" inputmode="numeric" id="pointsE" name="pointsE"
+                                    value="<%= detail.pointsE %>">
+                            </li>
+                        </label>
+                        <label for="oyaE">
+                            <li>Oya:
+                                <input type="radio" id="oyaE" name="oya" value="east" <% if(detail.oya == 'east') { %>
+                                    checked <% } %>>
+                            </li>
+                        </label>
+                        <label for="waitsE">
+                            <li>Waits:
+                                <input type="text" id="waitsE" name="waitsE" value="<%= detail.waitsE.join(',') %>">
+                            </li>
+                        </label>
+                    </ul>
+                </li>
+                <li>South:
+                    <ul>
+                        <label for="teamS">
+                            <li>Team:
+                                <select id="teamS" name="teamS">
+                                    <% for (let t of teaminfo) { %>
+                                    <option value="<%= t.team %>" <% if(t.team == detail.teamS){ %> selected <% } %>>
+                                        <%= t.team %> </option>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="nameS">
+                            <li>Name:
+                                <select id="nameS" name="nameS">
+                                    <% for (let t of teaminfo) { %>
+                                    <% for(let i = 0; i < t.members.length; i++){ %>
+                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameS){ %> selected
+                                        <% } %>> <%= t.members[i] %> </option>
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="pointsS">
+                            <li>Points:
+                                <input type="text" inputmode="numeric" id="pointsS" name="pointsS"
+                                    value="<%= detail.pointsS %>">
+                            </li>
+                        </label>
+                        <label for="oyaS">
+                            <li>Oya:
+                                <input type="radio" id="oyaS" name="oya" value="south" <% if(detail.oya == 'south') { %>
+                                    checked <% } %>>
+                            </li>
+                        </label>
+                        <label for="waitsS">
+                            <li>Waits:
+                                <input type="text" id="waitsS" name="waitsS" value="<%= detail.waitsS.join(',') %>">
+                            </li>
+                        </label>
+                    </ul>
+                </li>
+                <li>West:
+                    <ul>
+                        <label for="teamW">
+                            <li>Team:
+                                <select id="teamW" name="teamW">
+                                    <% for (let t of teaminfo) { %>
+                                    <option value="<%= t.team %>" <% if(t.team == detail.teamW){ %> selected <% } %>>
+                                        <%= t.team %> </option>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="nameW">
+                            <li>Name:
+                                <select id="nameW" name="nameW">
+                                    <% for (let t of teaminfo) { %>
+                                    <% for(let i = 0; i < t.members.length; i++){ %>
+                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameW){ %> selected
+                                        <% } %>> <%= t.members[i] %> </option>
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="pointsW">
+                            <li>Points:
+                                <input type="text" inputmode="numeric" id="pointsW" name="pointsW"
+                                    value="<%= detail.pointsW %>">
+                            </li>
+                        </label>
+                        <label for="oyaW">
+                            <li>Oya:
+                                <input type="radio" id="oyaW" name="oya" value="west" <% if(detail.oya == 'west') { %>
+                                    checked <% } %>>
+                            </li>
+                        </label>
+                        <label for="waitsW">
+                            <li>Waits:
+                                <input type="text" id="waitsW" name="waitsW" value="<%= detail.waitsW.join(',') %>">
+                            </li>
+                        </label>
+                    </ul>
+                </li>
+                <li>North:
+                    <ul>
+                        <label for="teamN">
+                            <li>Team:
+                                <select id="teamN" name="teamN">
+                                    <% for (let t of teaminfo) { %>
+                                    <option value="<%= t.team %>" <% if(t.team == detail.teamN){ %> selected <% } %>>
+                                        <%= t.team %> </option>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="nameN">
+                            <li>Name:
+                                <select id="nameN" name="nameN">
+                                    <% for (let t of teaminfo) { %>
+                                    <% for(let i = 0; i < t.members.length; i++){ %>
+                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameN){ %> selected
+                                        <% } %>> <%= t.members[i] %> </option>
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                            </li>
+                        </label>
+                        <label for="pointsN">
+                            <li>Points:
+                                <input type="text" inputmode="numeric" id="pointsN" name="pointsN"
+                                    value="<%= detail.pointsN %>">
+                            </li>
+                        </label>
+                        <label for="oyaN">
+                            <li>Oya:
+                                <input type="radio" id="oyaN" name="oya" value="north" <% if(detail.oya == 'north') { %>
+                                    checked <% } %>>
+                            </li>
+                        </label>
+                        <label for="waitsN">
+                            <li>Waits:
+                                <input type="text" id="waitsN" name="waitsN" value="<%= detail.waitsN.join(',') %>">
+                            </li>
+                        </label>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <button type="submit" form="matchinfo">Update</button>
+        <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
+    </form>
+    <div id="goBack">
+        <a href="/matchinfo/<%=detail._id%>" class="button">Go Back</a>
+    </div>
+    <div class="id">ID: <%= detail._id %></div>
+</body>
+<script src="../../public/resources/js/edit.js"></script>
+
+</html>

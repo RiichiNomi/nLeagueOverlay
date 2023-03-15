@@ -1,0 +1,81 @@
+.playerinfo {
+    display: flex;
+    list-style-type: none;
+    padding-inline-start: 0;
+    justify-content: space-evenly;
+}
+
+.playerinfo li{
+    list-style-type: none;
+    white-space: nowrap;
+}
+
+.id {
+    display: flex;
+    margin: 10px 0;
+}
+
+.button {
+    font-family: arial;
+    color: black;
+    text-decoration: none;
+    background-color: #F0F0F0F0;
+    border: 1px solid #747474;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.upperContainer{
+    display: flex;
+    align-items: center;
+}
+
+.lowerContainer{
+    align-items: center;
+    min-width: 1100px;
+}
+
+.lowerTitle{
+    display: flex;
+    align-items: baseline;
+}
+
+.lowerTitle h3{
+    margin: 0 0 0 40px;
+}
+
+.doraNotation{
+    display: flex;
+    border: 1px solid black;
+    padding-inline-start: 0;
+    padding: 10px;
+    margin: 0 0 0 20px;
+    white-space: nowrap;
+    align-items: center;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content ul{
+    padding: 0 0 10px 20px;
+}
+
+.doraNotation ul, il{
+    list-style-type: none;
+}
+
+.oya {
+    pointer-events: none;
+}
+
+#delete{
+    margin: 30px 0;
+}
+
+#timestamp {
+    border: 0;
+}

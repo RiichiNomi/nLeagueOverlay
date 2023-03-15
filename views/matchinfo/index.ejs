@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchinfo</title>
+    <link rel="stylesheet" href="../../public/resources/css/matchDatabase.css">
+</head>
+
+<body>
+    <h1>Match Database:</h1>
+    <ul class="matchdatabase">
+        <% for(let m of matchinfo.reverse()) { %>
+        <li><a href="/matchinfo/<%=m._id%>"><%=m.timestamp%></a></li>
+        <% } %>
+    </ul>
+    <form action="/matchinfo/new">
+        <input type="submit" value="New Match">
+    </form>
+    <h1>Team Info:</h1>
+    <div class="team">
+        <% for(let t of teaminfo) { %>
+        <div class="card">
+            <div class="context">
+                <div class="logo">
+                    <img src="../../public/resources/img/team_logo/<%= t.logo %>.webp" alt="">
+                </div>
+                <div class="info">
+                    <div class="teamName">Team Name:
+                        <li>
+                            <b><%= t.team %></b>
+                        </li>
+                    </div>
+                    <div class="member">Members:
+                        <li><b> <%= t.members[0] %> - Captain</b></li>
+                        <% for(let i = 1; i < t.members.length; i++){ %>
+                        <li><%= t.members[i] %></li>
+                        <% } %></div>
+                    <!-- <div class="score">Score: <%= t.score %></div> -->
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</body>
+
+</html>

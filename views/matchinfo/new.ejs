@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchinfo</title>
+    <link rel="stylesheet" href="../../public/resources/css/new.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Match Info:</h1>
+    <div class="upperContainer">
+        <form class="upperForm" action="/matchinfo" method="POST">
+            <ul class="matchinfo">
+                <li>
+                    <label for="timestamp">Timestamp:</label>
+                    <input type="text" id="timestamp" name="timestamp" size="60" readonly>
+                </li>
+                <li>
+                    <label for="week">Week: </label>
+                    <input type="number" id="week" name="week" min="1" value="1">
+                </li>
+                <li>
+                    <label for="game">Game: </label>
+                    <input type="number" id="game" name="game" min="1" value="1">
+                </li>
+                <li>
+                    <label for="date">Date: </label>
+                    <input type="text" id="date" name="date">
+                </li>
+                <li>
+                    <label for="wind"> Wind:</label>
+                    <select id="wind" name="wind">
+                        <option value="EAST">EAST</option>
+                        <option value="SOUTH">SOUTH</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="round">Round: </label>
+                    <input type="radio" id="round" name="round" value="1" checked>
+                    <label for="1">1</label>
+                    <input type="radio" id="round" name="round" value="2">
+                    <label for="1">2</label>
+                    <input type="radio" id="round" name="round" value="3">
+                    <label for="1">3</label>
+                    <input type="radio" id="round" name="round" value="4">
+                    <label for="1">4</label>
+                </li>
+                <li>
+                    <label for="kyotaku">Kyotaku: </label>
+                    <input type="number" id="kyotaku" name="kyotaku" min="0" max="10" value="0">
+                </li>
+                <li>
+                    <label for="honba">Honba: </label>
+                    <input type="number" id="honba" name="honba" min="0" max="10" value="0">
+                </li>
+                <li>
+                    <label for="dora">Dora: </label>
+                    <input type="text" id="dora" name="dora" placeholder="example: 1m">
+                </li>
+            </ul>
+
+            <div>
+                <ul class="doraNotation">
+                    <h3>Pai Notation</h3>
+                    <div class="content">
+                        <ul>
+                            <li>1-9m = manzu</li>
+                            <li>1-9s = souzu</li>
+                            <li>1-9p = pinzu</li>
+                            <li>0 = red five</li>
+                        </ul>
+                        <ul>
+                            <li>1z = east</li>
+                            <li>2z = south</li>
+                            <li>3z = west</li>
+                            <li>4z = north</li>
+                        </ul>
+                        <ul>
+                            <li>5z = haku</li>
+                            <li>6z = hatsu</li>
+                            <li>7z = chun</li>
+                        </ul>
+                    </div>
+                </ul>
+            </div>
+    </div>
+    <div class="lowerTitle">
+        <h1>Player Info:</h1>
+        <h3 id="totalPoints">Total Points: </h3>
+    </div>
+    <ul class="playerinfo">
+    <li>East:
+        <ul>
+            <label for="teamE">
+                <li>Team:
+                    <select id="teamE" name="teamE">
+                        <option value="" selected disabled hidden>Select Team</option>
+                        <% for (let t of teaminfo) { %>
+                        <option value="<%= t.team %>"> <%= t.team %> </option>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="nameE">
+                <li>Name:
+                    <select id="nameE" name="nameE">
+                        <option value="" selected disabled hidden>Select Member</option>
+                        <% for (let t of teaminfo) { %>
+                        <% for(let i = 0; i < t.members.length; i++){ %>
+                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                        <% } %>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="pointsE">
+                <li>Points:
+                    <input type="text" inputmode="numeric" id="pointsE" name="pointsE" value="30,000">
+                </li>
+            </label>
+            <label for="oyaE">
+                <li>Oya:
+                    <input type="radio" id="oyaE" name="oya" value="east" checked>
+                </li>
+            </label>
+        </ul>
+    </li>
+    <li>South:
+        <ul>
+            <label for="teamS">
+                <li>Team:
+                    <select id="teamS" name="teamS">
+                        <option value="" selected disabled hidden>Select Team</option>
+                        <% for (let t of teaminfo) { %>
+                        <option value="<%= t.team %>"> <%= t.team %> </option>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="nameS">
+                <li>Name:
+                    <select id="nameS" name="nameS">
+                        <option value="" selected disabled hidden>Select Member</option>
+                        <% for (let t of teaminfo) { %>
+                        <% for(let i = 0; i < t.members.length; i++){ %>
+                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                        <% } %>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="pointsS">
+                <li>Points:
+                    <input type="text" inputmode="numeric" id="pointsS" name="pointsS" value="30,000">
+                </li>
+            </label>
+            <label for="oyaS">
+                <li>Oya:
+                    <input type="radio" id="oyaS" name="oya" value="south">
+                </li>
+            </label>
+        </ul>
+    </li>
+    <li>West:
+        <ul>
+            <label for="teamW">
+                <li>Team:
+                    <select id="teamW" name="teamW">
+                        <option value="" selected disabled hidden>Select Team</option>
+                        <% for (let t of teaminfo) { %>
+                        <option value="<%= t.team %>"> <%= t.team %> </option>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="nameW">
+                <li>Name:
+                    <select id="nameW" name="nameW">
+                        <% for (let t of teaminfo) { %>
+                        <option value="" selected disabled hidden>Select Member</option>
+                        <% for(let i = 0; i < t.members.length; i++){ %>
+                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                        <% } %>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="pointsW">
+                <li>Points:
+                    <input type="text" inputmode="numeric" id="pointsW" name="pointsW" value="30,000">
+                </li>
+            </label>
+            <label for="oyaW">
+                <li>Oya:
+                    <input type="radio" id="oyaW" name="oya" value="west">
+                </li>
+            </label>
+        </ul>
+    </li>
+    <li>North:
+        <ul>
+            <label for="teamN">
+                <li>Team:
+                    <select id="teamN" name="teamN">
+                        <option value="" selected disabled hidden>Select Team</option>
+                        <% for (let t of teaminfo) { %>
+                        <option value="<%= t.team %>"> <%= t.team %> </option>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="nameN">
+                <li>Name:
+                    <select id="nameN" name="nameN">
+                        <option value="" selected disabled hidden>Select Member</option>
+                        <% for (let t of teaminfo) { %>
+                        <% for(let i = 0; i < t.members.length; i++){ %>
+                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                        <% } %>
+                        <% } %>
+                    </select>
+                </li>
+            </label>
+            <label for="pointsN">
+                <li>Points:
+                    <input type="text" inputmode="numeric" id="pointsN" name="pointsN" value="30,000">
+                </li>
+            </label>
+            <label for="oyaN">
+                <li>Oya:
+                    <input type="radio" id="oyaN" name="oya" value="north">
+                </li>
+            </label>
+        </ul>
+    </li>
+    </ul>
+    <button>Submit</button>
+    </form>
+    <div class="goBack">
+        <a class="button" href="/matchinfo/">Go Back</a>
+    </div>
+</body>
+<script src="../../public/resources/js/new.js"></script>
+
+</html>

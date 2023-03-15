@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+
+.maincontainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 99vh;
+    color: white;
+}
+
+.uppercontainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lowercontainer{
+    margin-top: auto;
+}
+
+.oyamarker{
+    height: 2px;
+    width: 224px;
+    background: radial-gradient(circle, rgba(255,41,41,1) 0%, rgba(255,135,135,1) 100%);    margin-top: 10px;
+    margin-bottom: 2px;
+    opacity: 0;
+}
+
+.oya{
+    opacity: 1;
+}
+
+.reference{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: none;  
+}
+
+.reference2{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: none;  
+}
+
+.matchinfo {
+    display: flex;
+    padding: 10px;
+    width: fit-content;
+    background: rgba(56,0,59,0.6);
+    border-radius: 15px;
+    white-space: nowrap;
+    margin: 10px;
+}
+
+.winds {
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.bonus img{
+    width: 100px;
+}
+
+.kyotaku, .honba {
+    display: flex;
+    font-size: 1.25em;
+}
+
+.dora {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 47px;
+    padding: 0 0 0 10px;
+}
+
+.dora img {
+    height: 37px;
+    padding: 0 0 0 5px;
+}
+
+.doratext{
+    padding: 0 0 0 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+}
+
+.session{
+    font-size: 1.5em;
+    background-color:rgba(56,0,59,0.6);
+    margin: 10px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 0 0 10px;
+}
+
+.playerinfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.context{
+    display: flex;
+    justify-content: center;
+}
+
+.pic {
+    width : 100px;
+    height: 100px;
+}
+
+.playerpic {
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+    padding: 1px;
+    background: white;
+}
+
+.waits {
+    display: flex;
+    justify-content: end;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.waits img {
+    max-height: 30px;
+}
+
+.playername {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.points {
+    font-size: 2em;
+    white-space: nowrap;
+    background-color: rgba(56,0,59,0.6);
+    text-align: center;
+    width: 115px;
+}
