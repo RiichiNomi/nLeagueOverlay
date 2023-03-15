@@ -58,7 +58,7 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-    res.render('n_league_score_overlay');
+    res.redirect('/matchinfo');
 })
 
 app.get('/overlay/:id', async (req, res) => {
