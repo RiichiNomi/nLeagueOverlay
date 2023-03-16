@@ -23,4 +23,4 @@ let start = () => {
     marqueeWaits(waitsContainer);
 }
 
-document.addEventListener('load',start());
+window.onload = start;
