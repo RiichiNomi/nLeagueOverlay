@@ -200,6 +200,8 @@ body {
     white-space: nowrap;
     align-items: center;
     height: 32.5px;
+    margin-top: 4px;
+    margin-bottom: -6px;
     /* background-color: rgba(56,0,59,0.6); */
 }
 
