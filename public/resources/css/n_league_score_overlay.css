@@ -1,4 +1,22 @@
+@font-face {
+    font-family: 'Graphik';
+    src: url('../font/Graphik-Regular-Trial.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Graphik-medium';
+    src: url('../font/Graphik-Medium-Trial.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Graphik-bold';
+    src: url('../font/Graphik-Bold-Trial.otf') format('opentype');
+}
+
+
+
 body {
+    font-family: 'Graphik-medium', sans-serif;
     margin: 0;
     background-color: black;
 }
@@ -51,10 +69,11 @@ body {
     display: flex;
     padding: 10px;
     width: fit-content;
-    background: rgba(56,0,59,0.6);
+    background: rgba(56,0,59,0.7);
     border-radius: 15px;
     white-space: nowrap;
     margin: 10px;
+    align-items: center;
 }
 
 .winds {
@@ -63,9 +82,16 @@ body {
     align-items: center;
 }
 
+.bonus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .bonus img{
     width: 100px;
 }
+
 
 .kyotaku, .honba {
     display: flex;
@@ -124,20 +150,23 @@ body {
     justify-content: center;
     background: rgba(56,0,59,0.6);
     border-radius: 15px;
-    padding: 5px;
+    padding: 8px;
 }
 
 .pic {
+    display: flex;
+    align-items: center;
     width : 100px;
     height: 100px;
+    justify-content: center;
+    background-color: white;
+    border-radius: 15px;
 }
 
 .playerpic {
-    max-width: 100%;
+    max-width: 90%;
     object-fit: contain;
-    border-radius: 5px;
     padding: 1px;
-    background: white;
 }
 
 .waits {
@@ -145,6 +174,7 @@ body {
     justify-content: left;
     align-items: baseline;
     gap: 5px;
+    width: 130px;
 }
 
 .waits img {
@@ -157,13 +187,18 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     white-space: nowrap;
-    /* background: rgba(56,0,59,0.6); */
+    align-items: center;
+    height: 32.5px;
+    /* background-color: rgba(56,0,59,0.6); */
 }
 
 .points {
-    font-size: 2em;
+    font-size: 1.5em;
     white-space: nowrap;
     /* background-color: rgba(56,0,59,0.6); */
     text-align: center;
     width: 115px;
 }
+
+
+
