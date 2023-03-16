@@ -3,7 +3,7 @@ let waitsContainer = document.querySelectorAll('.waitsContainer');
 
 changeFontSize = (arr) => {
     for (let x of arr) {
-        if (x.offsetWidth > 130) {
+        if (x.offsetWidth > 135) {
             x.style.fontSize = '1.18em';
         }
     }
