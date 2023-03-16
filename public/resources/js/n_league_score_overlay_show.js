@@ -18,4 +18,6 @@ marqueeWaits =(arr) => {
         }
     }
 }
-window.load(marqueeWaits(waitsContainer));
+window.load(setTimeout(()=>{
+    marqueeWaits(waitsContainer);
+    ,'1000');
