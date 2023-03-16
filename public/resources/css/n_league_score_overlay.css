@@ -121,6 +121,9 @@ body {
 .context{
     display: flex;
     justify-content: center;
+    background: rgba(56,0,59,0.6);
+    border-radius: 15px;
+    padding: 5px;
 }
 
 .pic {
@@ -153,13 +156,13 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     white-space: nowrap;
-    background: rgba(56,0,59,0.6);
+    /* background: rgba(56,0,59,0.6); */
 }
 
 .points {
     font-size: 2em;
     white-space: nowrap;
-    background-color: rgba(56,0,59,0.6);
+    /* background-color: rgba(56,0,59,0.6); */
     text-align: center;
     width: 115px;
 }
