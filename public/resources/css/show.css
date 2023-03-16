@@ -68,6 +68,10 @@
     list-style-type: none;
 }
 
+.matchinfo {
+    min-width: 388px;
+}
+
 .oya {
     pointer-events: none;
 }
