@@ -9,8 +9,6 @@ changeFontSize = (arr) => {
     }
 };
 
-changeFontSize(namebox);
-
 marqueeWaits =(arr) => {
     for (let x of arr) {
         if(x.offsetWidth > 73 ){
@@ -18,4 +16,11 @@ marqueeWaits =(arr) => {
         }
     }
 }
-window.addEventListener('load',(marqueeWaits(waitsContainer)));
+
+
+let start = () => {
+    changeFontSize(namebox);
+    marqueeWaits(waitsContainer);
+}
+
+document.addEventListener('load',start());
