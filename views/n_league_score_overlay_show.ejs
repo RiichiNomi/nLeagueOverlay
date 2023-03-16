@@ -61,10 +61,16 @@
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
                         </div>
                         <div class="info">
-                            <div class="waits"><% if(detail.waitsE.length > 0 && detail.waitsE[0] !== "") { %>Waits
-                                <% for(let e of detail.waitsE){ %>
-                                <img src='../public/resources/img/pai_image/<%= e %>.png' alt="waits">
-                                <% } %>
+                            <div class="waits">
+                                <% if(detail.waitsE.length > 0 && detail.waitsE[0] !== "") { %>
+                                <div>Waits </div>
+                                <div class="marqueeContainer">
+                                    <div class="waitsContainer">
+                                        <% for(let e of detail.waitsE){ %>
+                                        <img src='../public/resources/img/pai_image/<%= e %>.png' alt="waits">
+                                        <% } %>
+                                    </div>
+                                </div>
                                 <% } %>
                             </div>
                             <div class="playername"><%= detail.nameE %></div>
@@ -79,10 +85,16 @@
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
                         </div>
                         <div class="info">
-                            <div class="waits"><% if(detail.waitsS.length > 0 && detail.waitsS[0] !== "") { %>Waits
-                                <% for(let s of detail.waitsS){ %>
-                                <img src='../public/resources/img/pai_image/<%= s %>.png' alt="waits">
-                                <% } %>
+                            <div class="waits">
+                                <% if(detail.waitsS.length > 0 && detail.waitsS[0] !== "") { %>
+                                <div>Waits </div>
+                                <div class="marqueeContainer">
+                                    <div class="waitsContainer">
+                                        <% for(let s of detail.waitsS){ %>
+                                        <img src='../public/resources/img/pai_image/<%= s %>.png' alt="waits">
+                                        <% } %>
+                                    </div>
+                                </div>
                                 <% } %>
                             </div>
                             <div class="playername"><%= detail.nameS %></div>
@@ -97,10 +109,16 @@
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
                         </div>
                         <div class="info">
-                            <div class="waits"><% if(detail.waitsW.length > 0 && detail.waitsW[0] !== "") { %>Waits
-                                <% for(let w of detail.waitsW){ %>
-                                <img src='../public/resources/img/pai_image/<%= w %>.png' alt="waits">
-                                <% } %>
+                            <div class="waits">
+                                <% if(detail.waitsW.length > 0 && detail.waitsW[0] !== "") { %>
+                                <div>Waits </div>
+                                <div class="marqueeContainer">
+                                    <div class="waitsContainer">
+                                        <% for(let w of detail.waitsW){ %>
+                                        <img src='../public/resources/img/pai_image/<%= w %>.png' alt="waits">
+                                        <% } %>
+                                    </div>
+                                </div>
                                 <% } %>
                             </div>
                             <div class="playername"><%= detail.nameW %></div>
@@ -116,10 +134,16 @@
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
                         </div>
                         <div class="info">
-                            <div class="waits"><% if(detail.waitsN.length > 0 && detail.waitsN[0] !== "") { %>Waits
-                                <% for(let n of detail.waitsN){ %>
-                                <img src='../public/resources/img/pai_image/<%= n %>.png' alt="waits">
-                                <% } %>
+                            <div class="waits">
+                                <% if(detail.waitsN.length > 0 && detail.waitsN[0] !== "") { %>
+                                <div>Waits </div>
+                                <div class="marqueeContainer">
+                                    <div class="waitsContainer">
+                                        <% for(let n of detail.waitsN){ %>
+                                        <img src='../public/resources/img/pai_image/<%= n %>.png' alt="waits">
+                                        <% } %>
+                                    </div>
+                                </div>
                                 <% } %>
                             </div>
                             <div class="playername"><%= detail.nameN %></div>
@@ -133,4 +157,5 @@
     </div>
 </body>
 <script src="../public/resources/js/n_league_score_overlay_show.js"></script>
+
 </html>
