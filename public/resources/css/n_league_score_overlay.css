@@ -37,6 +37,11 @@ body {
     margin-top: auto;
 }
 
+.oyaborder{
+    background: radial-gradient(circle, rgba(255,41,41,1) 0%, rgba(255,135,135,1) 100%);
+    opacity: 0;
+}
+
 .oyamarker{
     height: 2px;
     width: 224px;
@@ -48,6 +53,10 @@ body {
 
 .oya{
     opacity: 1;
+}
+
+.oyaBorder{
+    border: solid 0.1rem red;
 }
 
 .reference{
@@ -125,7 +134,7 @@ body {
     display: flex;
     align-items: center;
     font-size: 1.25em;
-    margin-top: -4px;
+    margin-top:-4px;
 }
 
 .session{
@@ -159,6 +168,7 @@ body {
 .context{
     display: flex;
     justify-content: center;
+    align-items: center;
     background: rgba(56,0,59,0.6);
     border-radius: 15px;
     padding: 8px;
@@ -169,7 +179,7 @@ body {
     display: flex;
     align-items: center;
     width : 100px;
-/*     height: 100px; */
+    height: 100px;
     justify-content: center;
     background-color: white;
     border-radius: 15px;
@@ -187,6 +197,8 @@ body {
     align-items: center;
     gap: 5px;
     width: 125px;
+    width: 7.813rem;
+    height: 1.563rem;
     overflow: hidden;
 }
 
@@ -200,6 +212,14 @@ body {
     /* width: 73px; */
 }
 
+.nameContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8.125rem;
+    height: 32.5px;
+}
+
 .playername {
     display: flex;
     justify-content: center;
@@ -208,11 +228,12 @@ body {
     font-weight: bold;
     white-space: nowrap;
     align-items: center;
-    height: 32.5px;
     margin-top: 4px;
     margin-bottom: -6px;
     /* background-color: rgba(56,0,59,0.6); */
 }
+
+
 
 .points {
     font-size: 2em;
@@ -229,6 +250,7 @@ body {
 .marqueeContainer {
     display: flex;
     overflow: hidden;
+    width: 100%;
 }
 
 @keyframes marquee {
@@ -239,4 +261,108 @@ body {
     to {
       transform: translateX(-75%);
     }
+  }
+
+  @media (-webkit-device-pixel-ratio: 1) {
+    .matchinfo {
+        padding: 1.25rem;
+        border-radius: 1.876rem;
+    }
+    
+    .winds {
+        font-size: 4rem;
+        margin-top: -1rem;
+    }
+    
+    .bonus img{
+        width: 12.5rem;
+    }
+    
+    .kyotaku, .honba {
+        font-size: 2.5rem;
+    }
+    
+    .bonusText{
+        width: 2.876rem;
+    }
+    
+    .dora {
+        height: 5.876rem;
+        padding: 0 0 0 1.25rem;
+    }
+    
+    .dora img {
+        height: 4.626rem;
+        padding: 0 0 0 0.626rem;
+    }
+    
+    .doratext{
+        padding: 0 0 0 1.25rem;
+        font-size: 2.5rem;
+        margin-top:-0.5rem;
+    }
+    .session{
+        font-size: 3rem;
+        padding: 0.626rem;
+        border-radius: 1.876rem;
+    }
+
+    .oyamarker{
+        height: 0.25rem;
+        width: 28rem;
+        margin-top: 0.625rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .info {
+        padding: 0 0 0 1.25rem;
+    }
+    
+    .context{
+        border-radius: 1.875rem;
+        padding: 0.5rem;
+        height: 12rem;
+    }
+    
+    .pic {
+        width : 10rem;
+        height: 10rem;
+        border-radius: 1.875rem;
+    }
+    
+    .playerpic {
+        padding: 0.125rem;
+    }
+    
+    .waits {
+        font-size: 1.5rem;
+        gap: 0.625rem;
+        width: 15.625rem;
+        height: 3.125rem;
+    }
+    
+    .waits img {
+        height: 3rem;
+    }
+    
+    .waitsContainer{
+        gap: 0.625rem;
+    }
+
+    .nameContainer {
+        width: 16.25rem;
+        height: 4.063rem
+    }
+    
+    .playername {
+        font-size: 2.8rem;
+        margin-top: 0.5rem;
+        margin-bottom: -0.75rem;
+    }
+    
+    .points {
+        font-size: 3.5rem;
+        width: 16.25rem;
+    }
+
   }
