@@ -1,21 +1,24 @@
 let namebox = document.querySelectorAll('.playername');
 let waitsContainer = document.querySelectorAll('.waitsContainer');
+document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale='+(1/window.devicePixelRatio));
 
 changeFontSize = (arr) => {
     for (let x of arr) {
-        if (x.offsetWidth > 135) {
-            x.style.fontSize = '1.18em';
+        if (x.offsetWidth > x.parentElement.offsetWidth) {
+            x.style.fontSize = '2vw';
         }
     }
 };
 
-marqueeWaits =(arr) => {
+
+marqueeWaits = (arr) => {
     for (let x of arr) {
-        if(x.offsetWidth > 73 ){
+        if(x.offsetWidth > x.parentElement.offsetWidth ){
             x.classList.add('marquee')
         }
     }
 }
+
 
 
 let start = () => {
@@ -24,3 +27,4 @@ let start = () => {
 }
 
 window.onload = start;
+// window.onload = setTimeout(start, 1000);
