@@ -5,7 +5,8 @@ document.querySelector("meta[name=viewport]").setAttribute('content', 'width=dev
 changeFontSize = (arr) => {
     for (let x of arr) {
         if (x.offsetWidth > x.parentElement.offsetWidth) {
-            x.style.fontSize = '2vw';
+            let compSize = getComputedStyle(x).fontSize;
+            x.style.fontSize = parseFloat(compSize)*0.85 + 'px';
         }
     }
 };
