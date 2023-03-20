@@ -1,3 +1,4 @@
+
 .playerinfo {
     display: flex;
     list-style-type: none;
@@ -31,9 +32,8 @@
     align-items: center;
 }
 
-.lowerContainer{
-    align-items: center;
-    min-width: 1100px;
+.lowerContainer {
+    width: 100%;
 }
 
 .lowerTitle{
@@ -69,7 +69,7 @@
 }
 
 .matchinfo {
-    min-width: 388px;
+    min-width: 24.25rem;
 }
 
 .oya {

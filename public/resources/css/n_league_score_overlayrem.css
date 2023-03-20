@@ -77,24 +77,20 @@ body {
 
 .matchinfo {
     display: flex;
-    padding: 10px;
+    padding: 1.25rem;
     width: fit-content;
     background: rgba(56,0,59,0.7);
-    border-radius: 15px;
+    border-radius: 1.876rem;
     white-space: nowrap;
     /* margin: 10px; */
     align-items: center;
 }
 
 .winds {
-    font-size: 2em;
+    font-size: 4rem;
     display: flex;
     align-items: center;
-    margin-top: -8px;
-}
-
-.winds div {
-    padding: 0.3rem;
+    margin-top: -1rem;
 }
 
 .bonus {
@@ -104,17 +100,17 @@ body {
 }
 
 .bonus img{
-    width: 100px;
+    width: 12.5rem;
 }
 
 
 .kyotaku, .honba {
     display: flex;
-    font-size: 1.25em;
+    font-size: 2.5rem;
 }
 
 .bonusText{
-    width: 23px;
+    width: 2.876rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,36 +120,29 @@ body {
     display: flex;
     justify-content:center;
     align-items: center;
-    height: 47px;
-    padding: 0 0 0 10px;
+    height: 5.876rem;
+    padding: 0 0 0 1.25rem;
 }
 
 .dora img {
-    height: 37px;
-    padding: 0 0 0 5px;
+    height: 4.626rem;
+    padding: 0 0 0 0.626rem;
 }
 
 .doratext{
-    padding: 0 0 0 10px;
+    padding: 0 0 0 1.25rem;
     display: flex;
     align-items: center;
-    font-size: 1.25em;
-    margin-top:-4px;
+    font-size: 2.5rem;
+    margin-top:-0.5rem;
 }
 
 .session{
-    display: flex;
-    align-items: end;
-    font-size: 1.5em;
+    font-size: 3rem;
     background-color:rgba(56,0,59,0.6);
     /* margin: 10px; */
-    padding: 5px;
-    border-radius: 15px;
-}
-
-.session div {
-    display: flex;
-    padding: 0 0.3rem 0;
+    padding: 0.626rem;
+    border-radius: 1.876rem;
 }
 
 .card {
@@ -167,7 +156,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 1.25rem;
 }
 
 .playerinfo {
@@ -181,49 +170,44 @@ body {
     justify-content: center;
     align-items: center;
     background: rgba(56,0,59,0.6);
-    border-radius: 15px;
-    padding: 8px;
-    height: 104px;
+    border-radius: 1.875rem;
+    padding: 0.5rem;
+    height: 12rem;
 }
 
 .pic {
     display: flex;
     align-items: center;
-    width : 100px;
-    height: 100px;
+    width : 10rem;
+    height: 10rem;
     justify-content: center;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 1.875rem;
 }
 
 .playerpic {
     max-width: 90%;
     object-fit: contain;
-    padding: 1px;
+    padding: 0.125rem;
 }
 
 .waits {
     display: flex;
     justify-content: left;
     align-items: center;
-    gap: 5px;
-    width: 125px;
-    width: 7.813rem;
-    height: 1.563rem;
+    gap: 0.625rem;
+    width: 15.625rem;
+    height: 3.125rem;
     overflow: hidden;
 }
 
-.waitsTextE, .waitsTextS, .waitsTextW, .waitsTextN {
-    opacity: 0;
-}
-
 .waits img {
-    height: 25px;
+    height: 3rem;
 }
 
 .waitsContainer{
     display: flex;
-    gap: 5px;
+    gap: 0.625rem;
     /* width: 73px; */
 }
 
@@ -231,31 +215,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 8.125rem;
-    height: 32.5px;
+    width: 16.25rem;
+    height: 4.063rem;
 }
 
 .playername {
     display: flex;
     justify-content: center;
     /* width:130px; */
-    font-size: 1.5em;
+    font-size: 2.8rem;
     font-weight: bold;
     white-space: nowrap;
     align-items: center;
-    margin-top: 4px;
-    margin-bottom: -6px;
+    margin-top: 0.5rem;
+    margin-bottom: -0.75rem;
     /* background-color: rgba(56,0,59,0.6); */
 }
 
 
 
 .points {
-    font-size: 2em;
+    font-size: 3.5rem;
     white-space: nowrap;
     /* background-color: rgba(56,0,59,0.6); */
     text-align: center;
-    width: 130px;
+    width: 16.25rem;
 }
 
 .marquee {
@@ -277,7 +261,7 @@ body {
       transform: translateX(-75%);
     }
   }
-
+/* 
   @media (-webkit-device-pixel-ratio: 1) {
     .matchinfo {
         padding: 1.25rem;
@@ -380,4 +364,4 @@ body {
         width: 16.25rem;
     }
 
-  }
+  } */
