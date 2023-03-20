@@ -79,7 +79,6 @@ app.get('/overlay/:id', async (req, res) => {
     const teamS = await Team.findOne({team: detail.teamS});
     const teamW = await Team.findOne({team: detail.teamW});
     const teamN = await Team.findOne({team: detail.teamN});
-    console.log(detail);
     res.render('n_league_score_overlay_show', { detail, teamE, teamS, teamW, teamN });
 })
 
