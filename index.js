@@ -11,7 +11,7 @@ const Match = require('./models/match');
 const Team = require('./models/team');
 const Member = require('./models/member');
 
-const io = require("socket.io")(3001, {
+const io = require("socket.io")(https://nleagueoverlay.onrender.com/:1, {
     cors: {
       origin: "https://nleagueoverlay.onrender.com",
 //         origin: "http://localhost:3000",
