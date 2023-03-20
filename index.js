@@ -11,6 +11,15 @@ const Match = require('./models/match');
 const Team = require('./models/team');
 const Member = require('./models/member');
 
+const io = require("socket.io")(3001, {
+    cors: {
+    //   origin: "https://nleagueoverlay.onrender.com",
+        origin: "http://localhost:3000",
+      methods: ["GET", "POST"]
+    }
+  });
+
+
 mongoose.connect(dbUrl, { 
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -56,9 +65,11 @@ app.use(express.static('public'));
 //     }
 // ];
 
+Match.watch().on('change', data => io.emit('change', data));
+
 
 app.get('/', (req, res) => {
-    res.redirect('/matchinfo');
+    res.render('n_league_score_overlay');
 })
 
 app.get('/overlay/:id', async (req, res) => {
@@ -68,6 +79,7 @@ app.get('/overlay/:id', async (req, res) => {
     const teamS = await Team.findOne({team: detail.teamS});
     const teamW = await Team.findOne({team: detail.teamW});
     const teamN = await Team.findOne({team: detail.teamN});
+    console.log(detail);
     res.render('n_league_score_overlay_show', { detail, teamE, teamS, teamW, teamN });
 })
 
@@ -106,6 +118,7 @@ app.get('/matchinfo/:id/edit', async (req, res) => {
 
 app.put('/matchinfo/:id', async (req, res) => {
     const { id } = req.params;
+    req.body.dora = req.body.dora.split(',').map(s=>s.trim());
     req.body.waitsE = req.body.waitsE.split(',').map(s=>s.trim());
     req.body.waitsS = req.body.waitsS.split(',').map(s=>s.trim());
     req.body.waitsW = req.body.waitsW.split(',').map(s=>s.trim());
@@ -134,4 +147,8 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Serving on port ${port}!`);
+});
+
+io.on('connection', socket => {
+    console.log(socket.id);
 });
