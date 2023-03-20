@@ -13,22 +13,7 @@ const matchSchema = new mongoose.Schema({
     round: Number,
     kyotaku: Number,
     honba: Number,
-    dora: { 
-        type: String,
-        lowercase: true
-    },
-    shinDora: {
-        type:String,
-        default: ""
-    },
-    shinDora2: {
-        type:String,
-        default: ""
-    },
-    shinDora3: {
-        type:String,
-        default: ""
-    },
+    dora: [String],
     teamE: String,
     nameE: String,
     pointsE: String,
