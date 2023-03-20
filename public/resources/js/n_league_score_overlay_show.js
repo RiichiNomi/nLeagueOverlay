@@ -2,6 +2,7 @@ let namebox = document.querySelectorAll('.playername');
 let waitsText = document.querySelectorAll('.waitsTextE, .waitsTextS, .waitsTextW, .waitsTextN');
 let waitsContainer = document.querySelectorAll('.waitsContainer');
 let doraContainer = document.querySelector('.dora');
+let oyaBorder = document.querySelectorAll('.context');
 const socket = io();
 // document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale=' + (1 / window.devicePixelRatio));
 
