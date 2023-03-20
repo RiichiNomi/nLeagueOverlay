@@ -11,13 +11,6 @@ const Match = require('./models/match');
 const Team = require('./models/team');
 const Member = require('./models/member');
 
-const io = require("socket.io")(https://nleagueoverlay.onrender.com/:1, {
-    cors: {
-      origin: "https://nleagueoverlay.onrender.com",
-//         origin: "http://localhost:3000",
-      methods: ["GET", "POST"]
-    }
-  });
 
 
 mongoose.connect(dbUrl, { 
@@ -43,6 +36,20 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+
+const http = require('http');
+const server = http.createServer(app);
+const {Server} =require('socket.io');
+const io = new Server(server);
+
+
+// const io = require("socket.io")(https://nleagueoverlay.onrender.com/:1, {
+//     cors: {
+//       origin: "https://nleagueoverlay.onrender.com",
+// //         origin: "http://localhost:3000",
+//       methods: ["GET", "POST"]
+//     }
+//   });
 
 // let matchinfo = [
 //     {
@@ -144,10 +151,12 @@ app.delete('/matchinfo/:id', async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-    console.log(`Serving on port ${port}!`);
-});
-
 io.on('connection', socket => {
     console.log(socket.id);
 });
+
+server.listen(port, () => {
+    console.log(`Serving on port ${port}!`);
+});
+
+
