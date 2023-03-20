@@ -149,6 +149,7 @@ body {
     /* margin: 10px; */
     padding: 5px;
     border-radius: 15px;
+    white-space: nowrap;
 }
 
 .session div {
