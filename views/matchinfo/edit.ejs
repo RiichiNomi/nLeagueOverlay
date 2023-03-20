@@ -17,20 +17,8 @@
             <ul class="matchinfo">
                 <li>
                     <label for="timestamp">Timestamp:</label>
-                    <input type="text" id="timestamp" name="timestamp" value=" <%= detail.timestamp.trim() %> " size="60"
-                        readonly>
-                </li>
-                <li>
-                    <label for="week">Week: </label>
-                    <input type="number" id="week" name="week" min="1" value="<%= detail.week %>">
-                </li>
-                <li>
-                    <label for="game">Game: </label>
-                    <input type="number" id="game" name="game" min="1" value="<%= detail.game %>">
-                </li>
-                <li>
-                    <label for="game">Date: </label>
-                    <input type="text" id="date" name="date" value="<%= detail.date %>">
+                    <input type="text" id="timestamp" name="timestamp" value=" <%= detail.timestamp.trim() %> "
+                        size="60" readonly>
                 </li>
                 <li>
                     <label for="wind"> Wind:</label>
@@ -58,19 +46,19 @@
                 </li>
                 <li>
                     <label for="dora">Dora: </label>
-                    <input type="text" id="dora" name="dora" value="<%=detail.dora%>">
+                    <input type="text" maxlength="11" id="dora" name="dora" value="<%= detail.dora.join(',') %>">
                 </li>
                 <li>
-                    <label for="shinDora">Shin Dora: </label>
-                    <input type="text" id="shinDora" name="shinDora" value="<%=detail.shinDora%>">
+                    <label for="week">Week: </label>
+                    <input type="number" id="week" name="week" min="1" value="<%= detail.week %>">
                 </li>
                 <li>
-                    <label for="shinDora2">Shin Dora 2: </label>
-                    <input type="text" id="shinDora2" name="shinDora2" value="<%=detail.shinDora2%>">
+                    <label for="game">Game: </label>
+                    <input type="number" id="game" name="game" min="1" value="<%= detail.game %>">
                 </li>
                 <li>
-                    <label for="shinDora3">Shin Dora 3: </label>
-                    <input type="text" id="shinDora3" name="shinDora3" value="<%=detail.shinDora3%>">
+                    <label for="date">Date: </label>
+                    <input type="text" id="date" name="date" value="<%= detail.date %>">
                 </li>
             </ul>
             <div>
@@ -100,24 +88,15 @@
                 <div>
                     <ul class="matchinfo">
                         <li>Timestamp: <%= detail.timestamp %></li>
-                        <li>Week: <%= detail.week %></li>
-                        <li>Game: <%= detail.game %></li>
-                        <li>Date: <%= detail.date %></li>
                         <li>Wind: <%= detail.wind %></li>
                         <li>Round: <%= detail.round %></li>
                         <li>Kyotaku: <%= detail.kyotaku %></li>
                         <li>Honba: <%= detail.honba %></li>
-                        <li>Dora: <%= detail.dora %></li>
-                        <% if(detail.shinDora.length > 1) { %>
-                        <li>Shin Dora: <%= detail.shinDora %></li>
-                        <% } %>
-                        <% if(detail.shinDora2.length > 1) { %>
-                        <li>Shin Dora 2: <%= detail.shinDora2 %></li>
-                        <% } %>
-                        <% if(detail.shinDora3.length > 1) { %>
-                        <li>Shin Dora 3: <%= detail.shinDora3 %></li>
-                        <% } %>
-                        <li>Oya: <%= detail.oya %></li>
+                        <li>Dora: <%= detail.dora.join(',') %></li>
+                        <li>Oya: <%= detail.oya.charAt(0).toUpperCase() + detail.oya.slice(1) %></li>
+                        <li>Week: <%= detail.week %></li>
+                        <li>Game: <%= detail.game %></li>
+                        <li>Date: <%= detail.date %></li>
                     </ul>
                 </div>
             </div>

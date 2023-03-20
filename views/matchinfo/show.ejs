@@ -14,23 +14,14 @@
     <div class="upperContainer">
         <ul class="matchinfo">
             <li>Timestamp: <%= detail.timestamp %></li>
-            <li>Week: <%= detail.week %></li>
-            <li>Game: <%= detail.game %></li>
-            <li>Date or Info: <%= detail.date %></li>
             <li>Wind: <%= detail.wind %></li>
             <li>Round: <%= detail.round %></li>
             <li>Kyotaku: <%= detail.kyotaku %></li>
             <li>Honba: <%= detail.honba %></li>
             <li>Dora: <%= detail.dora %></li>
-            <% if(detail.shinDora.length > 1) { %>
-            <li>Shin Dora: <%= detail.shinDora %></li>
-            <% } %>
-            <% if(detail.shinDora2.length > 1) { %>
-            <li>Shin Dora 2: <%= detail.shinDora2 %></li>
-            <% } %>
-            <% if(detail.shinDora3.length > 1) { %>
-            <li>Shin Dora 3: <%= detail.shinDora3 %></li>
-            <% } %>
+            <li>Week: <%= detail.week %></li>
+            <li>Game: <%= detail.game %></li>
+            <li>Date: <%= detail.date %></li>
         </ul>
         <div>
             <ul class="doraNotation">
@@ -117,5 +108,5 @@
     <a href="/matchinfo" class="button">Go to Database</a>
     <div class="id">ID: <%= detail._id %></div>
 </body>
-
+<!-- <script src="../../public/resources/js/show.js"></script> -->
 </html>
