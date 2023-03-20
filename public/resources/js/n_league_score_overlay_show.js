@@ -40,6 +40,13 @@ socket.on('change', (data) => {
                     doraContainer.appendChild(img);
                 };
             }
+        } else if(keys[i].includes('oya')){
+            for ( let l = 0; l < oyaBorder.length; l++){
+                oyaBorder[l].classList.remove('oyaBorder');
+            }
+            let newOya = Object.values(fields)[i];
+            let newOyaBorder = document.getElementById(newOya);
+            newOyaBorder.classList.add('oyaBorder');
         } else {
             let container = document.getElementById(keys[i]);
             let updatedValue = Object.values(fields)[i];
