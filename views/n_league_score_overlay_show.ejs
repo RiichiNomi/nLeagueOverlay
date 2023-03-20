@@ -59,7 +59,7 @@
         <div class="lowercontainer">
             <div class="playerinfo">
                 <div class="card" id="player1">
-                    <div class="context <% if(detail.oya == 'east') { %> oyaBorder <% } %>">
+                    <div id="east" class="context <% if(detail.oya == 'east') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
                         </div>
@@ -85,7 +85,7 @@
                     <!-- <div id="east" class="oyamarker <% if(detail.oya == 'east') { %> oya <% } %>"></div> -->
                 </div>
                 <div class="card" id="player2">
-                    <div class="context <% if(detail.oya == 'south') { %> oyaBorder <% } %>">
+                    <div id="south" class="context <% if(detail.oya == 'south') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
                         </div>
@@ -111,7 +111,7 @@
                     <!-- <div id="south" class="oyamarker <% if(detail.oya == 'south') { %> oya <% } %>"></div> -->
                 </div>
                 <div class="card" id="player3">
-                    <div class="context <% if(detail.oya == 'west') { %> oyaBorder <% } %>">
+                    <div id="west" class="context <% if(detail.oya == 'west') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
                         </div>
@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="card" id="player4">
-                    <div class="context <% if(detail.oya == 'north') { %> oyaBorder <% } %>">
+                    <div id="north" class="context <% if(detail.oya == 'north') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
                         </div>
