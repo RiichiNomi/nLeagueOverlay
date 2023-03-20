@@ -2,7 +2,7 @@ let namebox = document.querySelectorAll('.playername');
 let waitsText = document.querySelectorAll('.waitsTextE, .waitsTextS, .waitsTextW, .waitsTextN');
 let waitsContainer = document.querySelectorAll('.waitsContainer');
 let doraContainer = document.querySelector('.dora');
-const socket = io('http://localhost:3001');
+const socket = io('https://nleagueoverlay.onrender.com');
 document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale=' + (1 / window.devicePixelRatio));
 
 
