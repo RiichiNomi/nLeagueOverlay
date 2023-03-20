@@ -13,8 +13,8 @@ const Member = require('./models/member');
 
 const io = require("socket.io")(3001, {
     cors: {
-    //   origin: "https://nleagueoverlay.onrender.com",
-        origin: "http://localhost:3000",
+      origin: "https://nleagueoverlay.onrender.com",
+//         origin: "http://localhost:3000",
       methods: ["GET", "POST"]
     }
   });
@@ -69,7 +69,7 @@ Match.watch().on('change', data => io.emit('change', data));
 
 
 app.get('/', (req, res) => {
-    res.render('n_league_score_overlay');
+    res.redirect('/matchinfo');
 })
 
 app.get('/overlay/:id', async (req, res) => {
