@@ -40,6 +40,31 @@
     align-items: baseline;
 }
 
+.tenKi {
+    background-color: #00c900
+}
+
+.oneKi {
+    background-color: #00d400;
+}
+
+.onei {
+    background-color: #00ff00;
+}
+
+.tenKd {
+    background-color: #df0000
+}
+
+.oneKd {
+    background-color: #f30000;
+}
+
+.oned {
+    background-color: #ff0000;
+}
+
+
 .bottomButtonContainer{
     display: flex;
     padding: 1rem 0 0 3rem;

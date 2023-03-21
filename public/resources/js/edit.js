@@ -1,10 +1,10 @@
 let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
 let tPointsText = document.querySelector('#totalPoints');
 
-let updatePoints = (arr) =>{
+let updatePoints = (arr) => {
     let totalPoints = 0;
-    for (p of arr){
-        totalPoints += parseInt(p.value.replace(',',''));
+    for (p of arr) {
+        totalPoints += parseInt(p.value.replace(',', ''));
     }
     tPointsText.innerHTML = 'Total Points: ' + totalPoints.toLocaleString();
 }
@@ -23,9 +23,58 @@ function getNumber(_str) {
     let arr = _str.split('');
     let out = new Array();
     for (let i = 0; i < arr.length; i++) {
-            out.push(arr[i]);
+        out.push(arr[i]);
     }
     return Number(out.join(''));
+}
+
+let incrementOne = (e) => {
+    console.log(e);
+    let target = e.parentElement.parentElement.firstElementChild;
+    let value = parseInt(target.value.replace(',', ''));
+    value += 100;
+    target.value = value.toLocaleString();
+    updatePoints(points);
+}
+
+let decrementOne = (e) => {
+    let target = e.parentElement.parentElement.firstElementChild;
+    let value = parseInt(target.value.replace(',', ''));
+    value -= 100;
+    target.value = value.toLocaleString();
+    updatePoints(points);
+}
+let incrementOneK = (e) => {
+    console.log(e);
+    let target = e.parentElement.parentElement.firstElementChild;
+    let value = parseInt(target.value.replace(',', ''));
+    value += 1000;
+    target.value = value.toLocaleString();
+    updatePoints(points);
+}
+
+let decrementOneK = (e) => {
+    let target = e.parentElement.parentElement.firstElementChild;
+    let value = parseInt(target.value.replace(',', ''));
+    value -= 1000;
+    target.value = value.toLocaleString();
+    updatePoints(points);
+}
+let incrementTenK = (e) => {
+    console.log(e);
+    let target = e.parentElement.parentElement.firstElementChild;
+    let value = parseInt(target.value.replace(',', ''));
+    value += 10000;
+    target.value = value.toLocaleString();
+    updatePoints(points);
+}
+
+let decrementTenK = (e) => {
+    let target = e.parentElement.parentElement.firstElementChild;
+    let value = parseInt(target.value.replace(',', ''));
+    value -= 10000;
+    target.value = value.toLocaleString();
+    updatePoints(points);
 }
 
 
