@@ -151,17 +151,25 @@
                                 </div>
                             </li>
                         </label>
-                        <label for="oyaE">
-                            <li>Oya:
-                                <input type="radio" id="oyaE" name="oya" value="east" <% if(detail.oya == 'east') { %>
-                                    checked <% } %>>
-                            </li>
-                        </label>
                         <label for="waitsE">
                             <li>Waits:
                                 <input type="text" id="waitsE" name="waitsE" value="<%= detail.waitsE.join(',') %>">
                             </li>
                         </label>
+                        <div class="checkbox">
+                            <label for="oyaE">
+                                <li>Oya:
+                                    <input type="radio" id="oyaE" name="oya" value="east"
+                                        <% if(detail.oya == 'east') { %> checked <% } %>>
+                                </li>
+                            </label>
+                            <label for="riichiE">
+                                <li>Riichi:
+                                    <input type="checkbox" id="riichiE" name="riichiE" value='pointsE'
+                                        <% if(detail.riichiE == 'pointsE') { %> checked <% } %>>
+                                </li>
+                            </label>
+                        </div>
                     </ul>
                 </li>
                 <li>South:
@@ -202,17 +210,25 @@
                                 </div>
                             </li>
                         </label>
-                        <label for="oyaS">
-                            <li>Oya:
-                                <input type="radio" id="oyaS" name="oya" value="south" <% if(detail.oya == 'south') { %>
-                                    checked <% } %>>
-                            </li>
-                        </label>
                         <label for="waitsS">
                             <li>Waits:
                                 <input type="text" id="waitsS" name="waitsS" value="<%= detail.waitsS.join(',') %>">
                             </li>
                         </label>
+                        <div class="checkbox">
+                            <label for="oyaS">
+                                <li>Oya:
+                                    <input type="radio" id="oyaS" name="oya" value="south"
+                                        <% if(detail.oya == 'south') { %> checked <% } %>>
+                                </li>
+                            </label>
+                            <label for="riichiS">
+                                <li>Riichi:
+                                    <input type="checkbox" id="riichiS" name="riichiS" value='pointsS'
+                                        <% if(detail.riichiS == 'pointsS') { %> checked <% } %>>
+                                </li>
+                            </label>
+                        </div>
                     </ul>
                 </li>
                 <li>West:
@@ -253,17 +269,26 @@
                                 </div>
                             </li>
                         </label>
-                        <label for="oyaW">
-                            <li>Oya:
-                                <input type="radio" id="oyaW" name="oya" value="west" <% if(detail.oya == 'west') { %>
-                                    checked <% } %>>
-                            </li>
-                        </label>
+
                         <label for="waitsW">
                             <li>Waits:
                                 <input type="text" id="waitsW" name="waitsW" value="<%= detail.waitsW.join(',') %>">
                             </li>
                         </label>
+                        <div class="checkbox">
+                            <label for="oyaW">
+                                <li>Oya:
+                                    <input type="radio" id="oyaW" name="oya" value="west"
+                                        <% if(detail.oya == 'west') { %> checked <% } %>>
+                                </li>
+                            </label>
+                            <label for="riichiW">
+                                <li>Riichi:
+                                    <input type="checkbox" id="riichiW" name="riichiW" value='pointsW'
+                                        <% if(detail.riichiW == 'pointsW') { %> checked <% } %>>
+                                </li>
+                            </label>
+                        </div>
                     </ul>
                 </li>
                 <li>North:
@@ -304,17 +329,26 @@
                                 </div>
                             </li>
                         </label>
-                        <label for="oyaN">
-                            <li>Oya:
-                                <input type="radio" id="oyaN" name="oya" value="north" <% if(detail.oya == 'north') { %>
-                                    checked <% } %>>
-                            </li>
-                        </label>
+
                         <label for="waitsN">
                             <li>Waits:
                                 <input type="text" id="waitsN" name="waitsN" value="<%= detail.waitsN.join(',') %>">
                             </li>
                         </label>
+                        <div class="checkbox">
+                            <label for="oyaN">
+                                <li>Oya:
+                                    <input type="radio" id="oyaN" name="oya" value="north"
+                                        <% if(detail.oya == 'north') { %> checked <% } %>>
+                                </li>
+                            </label>
+                            <label for="riichiN">
+                                <li>Riichi:
+                                    <input type="checkbox" id="riichiN" name="riichiN" value='pointsN'
+                                        <% if(detail.riichiN == 'pointsN') { %> checked <% } %>>
+                                </li>
+                            </label>
+                        </div>
                     </ul>
                 </li>
             </ul>

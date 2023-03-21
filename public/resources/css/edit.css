@@ -3,11 +3,13 @@
     list-style-type: none;
     padding-inline-start: 0;
     justify-content: space-evenly;
+    margin: 0.1rem 0 0 0.1rem;
 }
 
 .playerinfo li{
     list-style-type: none;
     white-space: nowrap;
+    margin: 0.1rem 0 0 0;
 }
 
 .matchinfoDisplay{
@@ -15,6 +17,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 7rem;
+    margin: 0;
 }
 
 .id {
@@ -38,6 +41,11 @@
     padding: 1rem 0;
     gap: 1rem;
     align-items: baseline;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: space-between;
 }
 
 .tenKi {
