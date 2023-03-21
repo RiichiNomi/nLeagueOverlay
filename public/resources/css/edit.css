@@ -12,7 +12,7 @@
 
 .id {
     display: flex;
-    margin: 10px 0;
+    padding: 0 0 0 2rem;
 }
 
 .button {
@@ -26,6 +26,20 @@
     font-size: 14px;
 }
 
+.buttonContainer{
+    display: flex;
+    padding: 1rem 0;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.bottomButtonContainer{
+    display: flex;
+    padding: 1rem 0 0 3rem;
+    gap: 1rem;
+    align-items: baseline;
+}
+
 .upperContainer{
     display: flex;
     align-items: center;
@@ -33,12 +47,17 @@
 
 .lowerContainer{
     align-items: center;
-    min-width: 1100px;
+    /* min-width: 1100px; */
 }
 
 .lowerTitle{
     display: flex;
     align-items: baseline;
+}
+
+.lowerTitle h1{
+    margin: 0 0 0 1.67em;
+    font-size: 1.5rem;
 }
 
 .lowerTitle h3{
@@ -69,8 +88,8 @@
     list-style-type: none;
 }
 
-#goBack{
-    margin:30px 0 0 0;
+#databaseButton{
+    margin: 0 0 0 10rem;
 }
 
 #delete{

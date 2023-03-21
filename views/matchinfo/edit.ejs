@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <h1>Update Match Info:</h1>
+
     <form method="POST" action="/matchinfo/<%=detail._id%>?_method=PUT" id="matchinfo">
         <div class="upperContainer">
             <ul class="matchinfo">
+                <h1>Update Match Info:</h1>
                 <li>
                     <label for="timestamp">Timestamp:</label>
                     <input type="text" id="timestamp" name="timestamp" value=" <%= detail.timestamp.trim() %> "
@@ -60,6 +61,10 @@
                     <label for="date">Date: </label>
                     <input type="text" id="date" name="date" value="<%= detail.date %>">
                 </li>
+                <div class="buttonContainer">
+                    <button type="submit" form="matchinfo">Update</button>
+                    <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
+                </div>
             </ul>
             <div>
                 <ul class="doraNotation">
@@ -87,7 +92,6 @@
                 <h2>Currently Displaying on Overlay:</h2>
                 <div>
                     <ul class="matchinfo">
-                        <li>Timestamp: <%= detail.timestamp %></li>
                         <li>Wind: <%= detail.wind %></li>
                         <li>Round: <%= detail.round %></li>
                         <li>Kyotaku: <%= detail.kyotaku %></li>
@@ -98,11 +102,10 @@
                         <li>Game: <%= detail.game %></li>
                         <li>Date: <%= detail.date %></li>
                     </ul>
+
                 </div>
             </div>
         </div>
-        <button type="submit" form="matchinfo">Update</button>
-        <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
         <div class="lowerTitle">
             <h1>Player Info:</h1>
             <h3>(Separate waits with comma)</h3>
@@ -284,13 +287,13 @@
                 </li>
             </ul>
         </div>
-        <button type="submit" form="matchinfo">Update</button>
-        <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
+        <div class="bottomButtonContainer">
+            <button type="submit" form="matchinfo">Update</button>
+            <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
+            <a href="/matchinfo" class="button" id="databaseButton">Go to Database</a>
+            <div class="id">ID: <%= detail._id %></div>
+        </div>
     </form>
-    <div id="goBack">
-        <a href="/matchinfo/<%=detail._id%>" class="button">Go Back</a>
-    </div>
-    <div class="id">ID: <%= detail._id %></div>
 </body>
 <script src="../../public/resources/js/edit.js"></script>
 
