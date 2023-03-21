@@ -29,7 +29,7 @@ socket.on('change', (data) => {
                 };
             }
             toggleWaitsText(waitsText);
-            marqueeWaits(waitsContainer);
+            // marqueeWaits(waitsContainer);
         } else if (keys[i].includes('dora')) {
             doraContainer.innerHTML = '';
             let updatedValue = Object.values(fields)[i];
@@ -41,8 +41,8 @@ socket.on('change', (data) => {
                     doraContainer.appendChild(img);
                 };
             }
-        } else if(keys[i].includes('oya')){
-            for ( let l = 0; l < oyaBorder.length; l++){
+        } else if (keys[i].includes('oya')) {
+            for (let l = 0; l < oyaBorder.length; l++) {
                 oyaBorder[l].classList.remove('oyaBorder');
             }
             let newOya = Object.values(fields)[i];
@@ -55,6 +55,17 @@ socket.on('change', (data) => {
         }
     }
 });
+
+const mutationObserver = new MutationObserver(entries => {
+    setTimeout(() => {
+        marqueeWaits(waitsContainer)
+    }, 100);
+})
+
+mutationObserver.observe(waitsContainer[0], { childList: true });
+mutationObserver.observe(waitsContainer[1], { childList: true });
+mutationObserver.observe(waitsContainer[2], { childList: true });
+mutationObserver.observe(waitsContainer[3], { childList: true });
 
 
 changeFontSize = (arr) => {
