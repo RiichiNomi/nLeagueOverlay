@@ -22,15 +22,16 @@ function updateTextView(_obj) {
 function getNumber(_str) {
     let arr = _str.split('');
     let out = new Array();
-    for (let cnt = 0; cnt < arr.length; cnt++) {
-        if (isNaN(arr[cnt]) == false) {
-            out.push(arr[cnt]);
-        }
+    for (let i = 0; i < arr.length; i++) {
+            out.push(arr[i]);
     }
     return Number(out.join(''));
 }
+
+
+
 $(document).ready(function () {
-    $('input[inputmode=numeric]').on('keyup', function () {
+    $('input[inputmode=numeric]').on('change', function () {
         updateTextView($(this));
         updatePoints(points);
     });
