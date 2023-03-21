@@ -21,65 +21,67 @@ body {
     background-color: black;
 }
 
-.maincontainer{
+.maincontainer {
     display: flex;
     flex-direction: column;
     min-height: 99vh;
     color: white;
 }
 
-.uppercontainer{
+.uppercontainer {
     display: flex;
     justify-content: space-between;
 }
 
-.lowercontainer{
+.lowercontainer {
     margin-top: auto;
 }
 
-.oyaborder{
+/* .oyaborder{
     background: radial-gradient(circle, rgba(255,41,41,1) 0%, rgba(255,135,135,1) 100%);
+    opacity: 0;
+} */
+
+.riichiMarker {
+    display: flex;
+    width: 10rem;
+    margin-bottom: -0.5rem;
     opacity: 0;
 }
 
-.oyamarker{
-    height: 2px;
-    width: 224px;
-    background: radial-gradient(circle, rgba(255,41,41,1) 0%, rgba(255,135,135,1) 100%);
-    margin-top: 5px;
-    margin-bottom: 2px;
-    opacity: 0;
+.riichiMarker img {
+    width: 100%;
 }
 
-.oya{
+.riichi {
     opacity: 1;
 }
 
-.oyaBorder{
+.oyaBorder {
     border: solid 0.2rem red;
 }
 
-.reference{
+.reference {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
-    display: none;  
+    display: none;
 }
 
-.reference2{
+.reference2 {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
-    display: none;  
+    display: none;
 }
 
 .matchinfo {
     display: flex;
     padding: 10px;
     width: fit-content;
-    background: rgba(56,0,59,0.7);
+    background: rgba(56, 0, 59, 0.7);
     border-radius: 15px;
     white-space: nowrap;
     /* margin: 10px; */
@@ -103,17 +105,18 @@ body {
     align-items: center;
 }
 
-.bonus img{
+.bonus img {
     width: 100px;
 }
 
 
-.kyotaku, .honba {
+.kyotaku,
+.honba {
     display: flex;
     font-size: 1.25em;
 }
 
-.bonusText{
+.bonusText {
     width: 23px;
     display: flex;
     align-items: center;
@@ -122,7 +125,7 @@ body {
 
 .dora {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     height: 47px;
     padding: 0 0 0 10px;
@@ -133,19 +136,19 @@ body {
     padding: 0 0 0 5px;
 }
 
-.doratext{
+.doratext {
     padding: 0 0 0 10px;
     display: flex;
     align-items: center;
     font-size: 1.25em;
-    margin-top:-4px;
+    margin-top: -4px;
 }
 
-.session{
+.session {
     display: flex;
     align-items: end;
     font-size: 1.5em;
-    background-color:rgba(56,0,59,0.6);
+    background-color: rgba(56, 0, 59, 0.6);
     /* margin: 10px; */
     padding: 5px;
     border-radius: 15px;
@@ -173,15 +176,15 @@ body {
 
 .playerinfo {
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-evenly;
 }
 
-.context{
+.context {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(56,0,59,0.6);
+    background: rgba(56, 0, 59, 0.6);
     border-radius: 15px;
     padding: 8px;
     height: 104px;
@@ -190,7 +193,7 @@ body {
 .pic {
     display: flex;
     align-items: center;
-    width : 100px;
+    width: 100px;
     height: 100px;
     justify-content: center;
     background-color: white;
@@ -214,7 +217,10 @@ body {
     overflow: hidden;
 }
 
-.waitsTextE, .waitsTextS, .waitsTextW, .waitsTextN {
+.waitsTextE,
+.waitsTextS,
+.waitsTextW,
+.waitsTextN {
     opacity: 0;
 }
 
@@ -222,13 +228,13 @@ body {
     height: 25px;
 }
 
-.waitsContainer{
+.waitsContainer {
     display: flex;
     gap: 5px;
     /* width: 73px; */
 }
 
-.nameContainer{
+.nameContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -271,97 +277,104 @@ body {
 
 @keyframes marquee {
     from {
-      transform: translateX(0%);
+        transform: translateX(0%);
     }
-  
-    to {
-      transform: translateX(-75%);
-    }
-  }
 
-  @media (-webkit-device-pixel-ratio: 1) {
+    to {
+        transform: translateX(-75%);
+    }
+}
+
+@media (-webkit-device-pixel-ratio: 1) {
     .matchinfo {
         padding: 1.25rem;
         border-radius: 1.876rem;
     }
-    
+
     .winds {
         font-size: 4rem;
         margin-top: -1rem;
     }
-    
-    .bonus img{
+
+    .bonus img {
         width: 12.5rem;
     }
-    
-    .kyotaku, .honba {
+
+    .kyotaku,
+    .honba {
         font-size: 2.5rem;
     }
-    
-    .bonusText{
+
+    .bonusText {
         width: 2.876rem;
     }
-    
+
     .dora {
         height: 5.876rem;
         padding: 0 0 0 1.25rem;
     }
-    
+
     .dora img {
         height: 4.626rem;
         padding: 0 0 0 0.626rem;
     }
-    
-    .doratext{
+
+    .doratext {
         padding: 0 0 0 1.25rem;
         font-size: 2.5rem;
-        margin-top:-0.5rem;
+        margin-top: -0.5rem;
     }
-    .session{
+
+    .session {
         font-size: 3rem;
         padding: 0.626rem;
         border-radius: 1.876rem;
     }
 
-    .oyamarker{
+    .oyamarker {
         height: 0.25rem;
         width: 28rem;
         margin-top: 0.625rem;
         margin-bottom: 0.25rem;
     }
-    
+
+    .riichiMarker{
+        width: 23rem;
+        margin-bottom: -1rem;
+    }
+
     .info {
         padding: 0 0 0 1.25rem;
     }
-    
-    .context{
+
+    .context {
         border-radius: 1.875rem;
         padding: 0.5rem;
         height: 12rem;
     }
-    
+
     .pic {
-        width : 10rem;
+        width: 10rem;
         height: 10rem;
         border-radius: 1.875rem;
     }
-    
+
     .playerpic {
         padding: 0.125rem;
     }
-    
+
     .waits {
         font-size: 1.5rem;
         gap: 0.625rem;
         width: 15.625rem;
         height: 3.125rem;
     }
-    
+
     .waits img {
         height: 3rem;
     }
-    
-    .waitsContainer{
+
+    .waitsContainer {
         gap: 0.625rem;
     }
 
@@ -369,16 +382,16 @@ body {
         width: 16.25rem;
         height: 4.063rem
     }
-    
+
     .playername {
         font-size: 2.8rem;
         margin-top: 0.5rem;
         margin-bottom: -0.75rem;
     }
-    
+
     .points {
         font-size: 3.5rem;
         width: 16.25rem;
     }
 
-  }
+}

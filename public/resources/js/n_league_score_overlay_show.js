@@ -3,6 +3,7 @@ let waitsText = document.querySelectorAll('.waitsTextE, .waitsTextS, .waitsTextW
 let waitsContainer = document.querySelectorAll('.waitsContainer');
 let doraContainer = document.querySelector('.dora');
 let oyaBorder = document.querySelectorAll('.context');
+let riichiMarker = document.querySelectorAll('.riichiMarker');
 const socket = io();
 // document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale=' + (1 / window.devicePixelRatio));
 
@@ -48,6 +49,13 @@ socket.on('change', (data) => {
             let newOya = Object.values(fields)[i];
             let newOyaBorder = document.getElementById(newOya);
             newOyaBorder.classList.add('oyaBorder');
+        } else if (keys[i].includes('riichi')) {
+            let container = document.getElementById(keys[i]);
+            if (Object.values(fields)[i] == "") {
+                container.classList.remove('riichi');
+            } else {
+                container.classList.add('riichi');
+            }
         } else {
             let container = document.getElementById(keys[i]);
             let updatedValue = Object.values(fields)[i];

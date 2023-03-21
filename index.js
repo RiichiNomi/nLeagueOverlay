@@ -124,6 +124,18 @@ app.get('/matchinfo/:id/edit', async (req, res) => {
 
 app.put('/matchinfo/:id', async (req, res) => {
     const { id } = req.params;
+    if(!req.body.riichiE){
+        req.body.riichiE = ""
+    }
+    if(!req.body.riichiS){
+        req.body.riichiS = ""
+    }
+    if(!req.body.riichiW){
+        req.body.riichiW = ""
+    }
+    if(!req.body.riichiN){
+        req.body.riichiN = ""
+    }
     req.body.dora = req.body.dora.split(',').map(s=>s.trim());
     req.body.waitsE = req.body.waitsE.split(',').map(s=>s.trim());
     req.body.waitsS = req.body.waitsS.split(',').map(s=>s.trim());

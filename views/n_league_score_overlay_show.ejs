@@ -59,6 +59,9 @@
         <div class="lowercontainer">
             <div class="playerinfo">
                 <div class="card" id="player1">
+                    <div id="riichiE" class="riichiMarker <% if(detail.riichiE == 'pointsE') { %> riichi <% } %>">
+                            <img src="../public/resources/img/577959-1k.png" alt="">
+                    </div>
                     <div id="east" class="context <% if(detail.oya == 'east') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
@@ -82,9 +85,11 @@
                             <div class="points" id="pointsE"><%= detail.pointsE %></div>
                         </div>
                     </div>
-                    <!-- <div id="east" class="oyamarker <% if(detail.oya == 'east') { %> oya <% } %>"></div> -->
                 </div>
                 <div class="card" id="player2">
+                    <div id="riichiS" class="riichiMarker <% if(detail.riichiS == 'pointsS') { %> riichi <% } %>">
+                        <img src="../public/resources/img/577959-1k.png" alt="">
+                </div>
                     <div id="south" class="context <% if(detail.oya == 'south') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
@@ -111,6 +116,9 @@
                     <!-- <div id="south" class="oyamarker <% if(detail.oya == 'south') { %> oya <% } %>"></div> -->
                 </div>
                 <div class="card" id="player3">
+                    <div id="riichiW" class="riichiMarker <% if(detail.riichiW == 'pointsW') { %> riichi <% } %>">
+                        <img src="../public/resources/img/577959-1k.png" alt="">
+                </div>
                     <div id="west" class="context <% if(detail.oya == 'west') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
@@ -138,6 +146,9 @@
                 </div>
 
                 <div class="card" id="player4">
+                    <div id="riichiN" class="riichiMarker <% if(detail.riichiN == 'pointsN') { %> riichi <% } %>">
+                        <img src="../public/resources/img/577959-1k.png" alt="">
+                </div>
                     <div id="north" class="context <% if(detail.oya == 'north') { %> oyaBorder <% } %>">
                         <div class="pic">
                             <img class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
