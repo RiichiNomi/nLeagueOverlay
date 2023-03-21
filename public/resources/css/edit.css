@@ -10,6 +10,13 @@
     white-space: nowrap;
 }
 
+.matchinfoDisplay{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 7rem;
+}
+
 .id {
     display: flex;
     padding: 0 0 0 2rem;
