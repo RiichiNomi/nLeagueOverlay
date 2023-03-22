@@ -44,11 +44,11 @@ socket.on('change', (data) => {
             }
         } else if (keys[i].includes('oya')) {
             for (let l = 0; l < oyaBorder.length; l++) {
-                oyaBorder[l].classList.remove('oyaBorder');
+                oyaBorder[l].classList.remove('oya');
             }
             let newOya = Object.values(fields)[i];
             let newOyaBorder = document.getElementById(newOya);
-            newOyaBorder.classList.add('oyaBorder');
+            newOyaBorder.classList.add('oya');
         } else if (keys[i].includes('riichi')) {
             let container = document.getElementById(keys[i]);
             if (Object.values(fields)[i] == "") {

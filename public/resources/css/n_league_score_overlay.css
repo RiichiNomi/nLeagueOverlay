@@ -58,6 +58,10 @@ body {
 }
 
 .oyaBorder {
+    border: solid 0.2rem rgba(255, 0, 0, 0);
+}
+
+.oya {
     border: solid 0.2rem red;
 }
 
@@ -176,7 +180,7 @@ body {
 
 .playerinfo {
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: space-evenly;
 }
 
