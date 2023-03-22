@@ -12,15 +12,11 @@ updatePoints(points);
 
 function updateTextView(_obj) {
     let num = getNumber(_obj.val());
-    if (num == 0) {
-        _obj.val('');
-    } else {
-        _obj.val(num.toLocaleString());
-    }
+    $(_obj.val(num.toLocaleString()));
 }
 
 function getNumber(_str) {
-    let arr = _str.split('');
+    let arr = _str.replace(',','').split('');
     let out = new Array();
     for (let i = 0; i < arr.length; i++) {
         out.push(arr[i]);
@@ -85,13 +81,13 @@ $(document).ready(function () {
         updatePoints(points);
     });
     $('input[type=checkbox]').on('change', function () {
-        if(this.checked == true){
+        if (this.checked == true) {
             let target = document.getElementById($(this)[0].value);
             let value = parseInt(target.value.replace(',', ''));
             value -= 1000;
             target.value = value.toLocaleString();
             updatePoints(points);
-        }else {
+        } else {
             let target = document.getElementById($(this)[0].value);
             let value = parseInt(target.value.replace(',', ''));
             value += 1000;
