@@ -72,6 +72,12 @@
     background-color: #ff0000;
 }
 
+.scoreButton{
+    display: flex;
+    gap: 0.1rem;
+    padding: 0.3rem 0 0.3rem 0;
+}
+
 
 .bottomButtonContainer{
     display: flex;
@@ -139,3 +145,20 @@
 #timestamp {
     border: 0;
 }
+
+@media (max-width: 768px){
+    body{
+        font-size: 1rem;
+    }
+    .playerinfo li{
+        white-space: normal;
+    }
+
+    .scoreButton{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.3rem 0 0 0;
+    }
+}
+
