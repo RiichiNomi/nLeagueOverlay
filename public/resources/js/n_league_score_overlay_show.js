@@ -8,6 +8,49 @@ const socket = io();
 // document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale=' + (1 / window.devicePixelRatio));
 
 
+let addLetter = (suitNumbers, letter) => {
+    let formatted = []
+    for (n of suitNumbers) {
+        formatted.push(n + letter);
+    }
+    return formatted;
+}
+
+let formatWaits = (arr) => {
+    let letterPositions = [];
+    if (arr.indexOf('m') !== -1) {
+        letterPositions.push(arr.indexOf('m'));
+    }
+
+    if (arr.indexOf('p') !== -1) {
+        letterPositions.push(arr.indexOf('p'));
+    }
+
+    if (arr.indexOf('s') !== -1) {
+        letterPositions.push(arr.indexOf('s'));
+    }
+
+    if (arr.indexOf('z') !== -1) {
+        letterPositions.push(arr.indexOf('z'));
+    }
+    function compareNumbers(a, b) {
+        return a - b;
+    }
+    letterPositions = letterPositions.sort(compareNumbers);
+    let formattedWaits = [];
+    let firstSuitNumbers = arr.slice(0, letterPositions[0]);
+    let firstLetter = arr[letterPositions[0]];
+    let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
+    formattedWaits.push(...firstSuitWaits);
+    for (let i = 1; i < letterPositions.length; i++) {
+        let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
+        let followingLetter = arr[letterPositions[i]];
+        let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
+        formattedWaits.push(...followingSuitWaits);
+    }
+    return formattedWaits
+}
+
 let fields = {};
 
 socket.on('change', (data) => {
@@ -17,15 +60,18 @@ socket.on('change', (data) => {
     let keys = Object.keys(updatedFields);
     fields = updatedFields;
     for (let i = 0; i < keys.length; i++) {
-        if (keys[i].includes('waits')) {
+        if (keys[i].includes('formatted')) {
+            console.log(keys[i]);
+        } else if (keys[i].includes('waits')) {
             let container = document.getElementById(keys[i]);
             container.innerHTML = '';
             let updatedValue = Object.values(fields)[i];
-            let newWaits = updatedValue.map(s => s.trim());
-            if (newWaits[0] !== "") {
-                for (let j = 0; j < newWaits.length; j++) {
+            let splitValue = updatedValue[0].split('').map(s => s.trim());
+            let formattedNewWaits = formatWaits(splitValue);
+            if (formattedNewWaits[0] !== "") {
+                for (let j = 0; j < formattedNewWaits.length; j++) {
                     let img = document.createElement('img');
-                    img.src = `../public/resources/img/pai_image/${newWaits[j]}.png`
+                    img.src = `../public/resources/img/pai_image/${formattedNewWaits[j]}.png`
                     container.appendChild(img);
                 };
             }
@@ -34,11 +80,12 @@ socket.on('change', (data) => {
         } else if (keys[i].includes('dora')) {
             doraContainer.innerHTML = '';
             let updatedValue = Object.values(fields)[i];
-            let newDora = updatedValue.map(s => s.trim());
-            if (newDora[0] !== "") {
-                for (let k = 0; k < newDora.length; k++) {
+            let splitValue = updatedValue[0].split('').map(s => s.trim());
+            let formattedNewDora = formatWaits(splitValue);
+            if (formattedNewDora[0] !== "") {
+                for (let k = 0; k < formattedNewDora.length; k++) {
                     let img = document.createElement('img');
-                    img.src = `../public/resources/img/pai_image/${newDora[k]}.png`
+                    img.src = `../public/resources/img/pai_image/${formattedNewDora[k]}.png`
                     doraContainer.appendChild(img);
                 };
             }
@@ -56,7 +103,7 @@ socket.on('change', (data) => {
             } else {
                 container.classList.add('riichi');
             }
-        } else if(keys[i].includes('team')){
+        } else if (keys[i].includes('team')) {
             let container = document.getElementById(keys[i]);
             let newTeam = Object.values(fields)[i];
             container.src = `../public/resources/img/team_logo/${newTeam}.webp`;

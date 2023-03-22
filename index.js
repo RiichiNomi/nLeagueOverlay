@@ -1,10 +1,10 @@
-require('dotenv').config(); 
+require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
-const dbUrl = process.env.DB_URL ;
+const dbUrl = process.env.DB_URL;
 // const { v4: uuid } = require('uuid');
 
 const Match = require('./models/match');
@@ -13,7 +13,7 @@ const Member = require('./models/member');
 
 
 
-mongoose.connect(dbUrl, { 
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -39,7 +39,7 @@ app.use(express.static('public'));
 
 const http = require('http');
 const server = http.createServer(app);
-const {Server} =require('socket.io');
+const { Server } = require('socket.io');
 const io = new Server(server);
 
 
@@ -82,10 +82,10 @@ app.get('/', (req, res) => {
 app.get('/overlay/:id', async (req, res) => {
     const { id } = req.params;
     const detail = await Match.findById(id);
-    const teamE = await Team.findOne({team: detail.teamE});
-    const teamS = await Team.findOne({team: detail.teamS});
-    const teamW = await Team.findOne({team: detail.teamW});
-    const teamN = await Team.findOne({team: detail.teamN});
+    const teamE = await Team.findOne({ team: detail.teamE });
+    const teamS = await Team.findOne({ team: detail.teamS });
+    const teamW = await Team.findOne({ team: detail.teamW });
+    const teamN = await Team.findOne({ team: detail.teamN });
     res.render('n_league_score_overlay_show', { detail, teamE, teamS, teamW, teamN });
 })
 
@@ -124,23 +124,72 @@ app.get('/matchinfo/:id/edit', async (req, res) => {
 
 app.put('/matchinfo/:id', async (req, res) => {
     const { id } = req.params;
-    if(!req.body.riichiE){
+    if (!req.body.riichiE) {
         req.body.riichiE = ""
     }
-    if(!req.body.riichiS){
+    if (!req.body.riichiS) {
         req.body.riichiS = ""
     }
-    if(!req.body.riichiW){
+    if (!req.body.riichiW) {
         req.body.riichiW = ""
     }
-    if(!req.body.riichiN){
+    if (!req.body.riichiN) {
         req.body.riichiN = ""
     }
-    req.body.dora = req.body.dora.split(',').map(s=>s.trim());
-    req.body.waitsE = req.body.waitsE.split(',').map(s=>s.trim());
-    req.body.waitsS = req.body.waitsS.split(',').map(s=>s.trim());
-    req.body.waitsW = req.body.waitsW.split(',').map(s=>s.trim());
-    req.body.waitsN = req.body.waitsN.split(',').map(s=>s.trim());
+
+    let addLetter = (suitNumbers, letter) => {
+        let formatted = []
+        for (n of suitNumbers) {
+            formatted.push(n + letter);
+        }
+        return formatted;
+    }
+
+    let formatWaits = (arr) => {
+        let letterPositions = [];
+        if (arr.indexOf('m') !== -1) {
+            letterPositions.push(arr.indexOf('m'));
+        }
+
+        if (arr.indexOf('p') !== -1) {
+            letterPositions.push(arr.indexOf('p'));
+        }
+
+        if (arr.indexOf('s') !== -1) {
+            letterPositions.push(arr.indexOf('s'));
+        }
+
+        if (arr.indexOf('z') !== -1) {
+            letterPositions.push(arr.indexOf('z'));
+        }
+        function compareNumbers(a, b) {
+            return a - b;
+        }
+        letterPositions = letterPositions.sort(compareNumbers);
+        let formattedWaits = [];
+        let firstSuitNumbers = arr.slice(0, letterPositions[0]);
+        let firstLetter = arr[letterPositions[0]];
+        let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
+        formattedWaits.push(...firstSuitWaits);
+        for (let i = 1; i < letterPositions.length; i++) {
+            let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
+            let followingLetter = arr[letterPositions[i]];
+            let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
+            formattedWaits.push(...followingSuitWaits);
+        }
+        return formattedWaits
+
+    }
+    let splitDora = req.body.dora.split('').map(s => s.trim());
+    req.body.formattedDora = formatWaits(splitDora);
+    let splitWaitsE = req.body.waitsE.split('').map(s => s.trim());
+    req.body.formattedWaitsE = formatWaits(splitWaitsE);
+    let splitWaitsS = req.body.waitsS.split('').map(s => s.trim());
+    req.body.formattedWaitsS = formatWaits(splitWaitsS);
+    let splitWaitsW = req.body.waitsW.split('').map(s => s.trim());
+    req.body.formattedWaitsW = formatWaits(splitWaitsW);
+    let splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
+    req.body.formattedWaitsN = formatWaits(splitWaitsN);
     const detail = await Match.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
     res.redirect(`/matchinfo/${detail._id}/edit`);
 })

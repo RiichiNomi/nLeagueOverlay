@@ -96,7 +96,7 @@
                         <li>Round: <%= detail.round %></li>
                         <li>Kyotaku: <%= detail.kyotaku %></li>
                         <li>Honba: <%= detail.honba %></li>
-                        <li>Dora: <%= detail.dora.join(',') %></li>
+                        <li>Dora: <%= detail.dora %></li>
                         <li>Oya: <%= detail.oya.charAt(0).toUpperCase() + detail.oya.slice(1) %></li>
                         <li>Week: <%= detail.week %></li>
                         <li>Game: <%= detail.game %></li>
@@ -108,7 +108,7 @@
         </div>
         <div class="lowerTitle">
             <h1>Player Info:</h1>
-            <h3>(Separate waits with comma)</h3>
+            <h3>Indicate Waits/Dora with consecutive numbers followed by suit letter (ex. 369m)</h3>
             <h3 id="totalPoints">Total Points: </h3>
         </div>
         <div class="lowerContainer">
@@ -153,7 +153,7 @@
                         </label>
                         <label for="waitsE">
                             <li>Waits:
-                                <input type="text" id="waitsE" name="waitsE" value="<%= detail.waitsE.join(',') %>">
+                                <input type="text" id="waitsE" name="waitsE" value="<%= detail.waitsE %>">
                             </li>
                         </label>
                         <div class="checkbox">
@@ -212,7 +212,7 @@
                         </label>
                         <label for="waitsS">
                             <li>Waits:
-                                <input type="text" id="waitsS" name="waitsS" value="<%= detail.waitsS.join(',') %>">
+                                <input type="text" id="waitsS" name="waitsS" value="<%= detail.waitsS %>">
                             </li>
                         </label>
                         <div class="checkbox">
@@ -272,7 +272,7 @@
 
                         <label for="waitsW">
                             <li>Waits:
-                                <input type="text" id="waitsW" name="waitsW" value="<%= detail.waitsW.join(',') %>">
+                                <input type="text" id="waitsW" name="waitsW" value="<%= detail.waitsW %>">
                             </li>
                         </label>
                         <div class="checkbox">
@@ -332,7 +332,7 @@
 
                         <label for="waitsN">
                             <li>Waits:
-                                <input type="text" id="waitsN" name="waitsN" value="<%= detail.waitsN.join(',') %>">
+                                <input type="text" id="waitsN" name="waitsN" value="<%= detail.waitsN %>">
                             </li>
                         </label>
                         <div class="checkbox">
