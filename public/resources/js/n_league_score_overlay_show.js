@@ -56,6 +56,10 @@ socket.on('change', (data) => {
             } else {
                 container.classList.add('riichi');
             }
+        } else if(keys[i].includes('team')){
+            let container = document.getElementById(keys[i]);
+            let newTeam = Object.values(fields)[i];
+            container.src = `../public/resources/img/team_logo/${newTeam}.webp`;
         } else {
             let container = document.getElementById(keys[i]);
             let updatedValue = Object.values(fields)[i];

@@ -64,7 +64,7 @@
                     </div>
                     <div id="east" class="context <% if(detail.oya == 'east') { %> oyaBorder <% } %>">
                         <div class="pic">
-                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
+                            <img id="teamE" class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="nameContainer">
-                                <div class="playername"><%= detail.nameE %></div>
+                                <div class="playername" id="nameE"><%= detail.nameE %></div>
                             </div>
                             <div class="points" id="pointsE"><%= detail.pointsE %></div>
                         </div>
@@ -92,7 +92,7 @@
                 </div>
                     <div id="south" class="context <% if(detail.oya == 'south') { %> oyaBorder <% } %>">
                         <div class="pic">
-                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
+                            <img id="teamS" class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                             <div class="nameContainer">
-                                <div class="playername"><%= detail.nameS %></div>
+                                <div class="playername" id="nameS"><%= detail.nameS %></div>
                             </div>
                             <div class="points" id="pointsS"><%= detail.pointsS %></div>
                         </div>
@@ -121,7 +121,7 @@
                 </div>
                     <div id="west" class="context <% if(detail.oya == 'west') { %> oyaBorder <% } %>">
                         <div class="pic">
-                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
+                            <img id="teamW" class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                             <div class="nameContainer">
-                                <div class="playername"><%= detail.nameW %></div>
+                                <div class="playername" id="nameW"><%= detail.nameW %></div>
                             </div>
                             <div class="points" id="pointsW"><%= detail.pointsW %></div>
                         </div>
@@ -151,7 +151,7 @@
                 </div>
                     <div id="north" class="context <% if(detail.oya == 'north') { %> oyaBorder <% } %>">
                         <div class="pic">
-                            <img class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
+                            <img id="teamN" class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="nameContainer">
-                                <div class="playername"><%= detail.nameN %></div>
+                                <div class="playername" id="nameN"><%= detail.nameN %></div>
                             </div>
                             <div class="points" id="pointsN"><%= detail.pointsN %></div>
                         </div>
