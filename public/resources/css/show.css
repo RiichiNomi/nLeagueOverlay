@@ -87,3 +87,10 @@
 #timestamp {
     border: 0;
 }
+
+@media (min-width: 768px){
+    .playerinfo {
+        flex-wrap: wrap;
+        justify-content: normal;
+    }
+}
