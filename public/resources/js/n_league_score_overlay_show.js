@@ -55,62 +55,65 @@ let fields = {};
 
 socket.on('change', (data) => {
     console.log(data);
+    console.log(data.documentKey._id);
     let { updateDescription } = data;
     let { updatedFields } = updateDescription;
     let keys = Object.keys(updatedFields);
     fields = updatedFields;
-    for (let i = 0; i < keys.length; i++) {
-        if (keys[i].includes('formatted')) {
-            console.log(keys[i]);
-        } else if (keys[i].includes('waits')) {
-            let container = document.getElementById(keys[i]);
-            container.innerHTML = '';
-            let updatedValue = Object.values(fields)[i];
-            let splitValue = updatedValue[0].split('').map(s => s.trim());
-            let formattedNewWaits = formatWaits(splitValue);
-            if (formattedNewWaits[0] !== "") {
-                for (let j = 0; j < formattedNewWaits.length; j++) {
-                    let img = document.createElement('img');
-                    img.src = `../public/resources/img/pai_image/${formattedNewWaits[j]}.png`
-                    container.appendChild(img);
-                };
-            }
-            toggleWaitsText(waitsText);
-            // marqueeWaits(waitsContainer);
-        } else if (keys[i].includes('dora')) {
-            doraContainer.innerHTML = '';
-            let updatedValue = Object.values(fields)[i];
-            let splitValue = updatedValue[0].split('').map(s => s.trim());
-            let formattedNewDora = formatWaits(splitValue);
-            if (formattedNewDora[0] !== "") {
-                for (let k = 0; k < formattedNewDora.length; k++) {
-                    let img = document.createElement('img');
-                    img.src = `../public/resources/img/pai_image/${formattedNewDora[k]}.png`
-                    doraContainer.appendChild(img);
-                };
-            }
-        } else if (keys[i].includes('oya')) {
-            for (let l = 0; l < oyaBorder.length; l++) {
-                oyaBorder[l].classList.remove('oya');
-            }
-            let newOya = Object.values(fields)[i];
-            let newOyaBorder = document.getElementById(newOya);
-            newOyaBorder.classList.add('oya');
-        } else if (keys[i].includes('riichi')) {
-            let container = document.getElementById(keys[i]);
-            if (Object.values(fields)[i] == "") {
-                container.classList.remove('riichi');
+    if (window.location.pathname.slice(9) == data.documentKey._id) {
+        for (let i = 0; i < keys.length; i++) {
+            if (keys[i].includes('formatted')) {
+                console.log(keys[i]);
+            } else if (keys[i].includes('waits')) {
+                let container = document.getElementById(keys[i]);
+                container.innerHTML = '';
+                let updatedValue = Object.values(fields)[i];
+                let splitValue = updatedValue[0].split('').map(s => s.trim());
+                let formattedNewWaits = formatWaits(splitValue);
+                if (formattedNewWaits[0] !== "") {
+                    for (let j = 0; j < formattedNewWaits.length; j++) {
+                        let img = document.createElement('img');
+                        img.src = `../public/resources/img/pai_image/${formattedNewWaits[j]}.png`
+                        container.appendChild(img);
+                    };
+                }
+                toggleWaitsText(waitsText);
+                // marqueeWaits(waitsContainer);
+            } else if (keys[i].includes('dora')) {
+                doraContainer.innerHTML = '';
+                let updatedValue = Object.values(fields)[i];
+                let splitValue = updatedValue[0].split('').map(s => s.trim());
+                let formattedNewDora = formatWaits(splitValue);
+                if (formattedNewDora[0] !== "") {
+                    for (let k = 0; k < formattedNewDora.length; k++) {
+                        let img = document.createElement('img');
+                        img.src = `../public/resources/img/pai_image/${formattedNewDora[k]}.png`
+                        doraContainer.appendChild(img);
+                    };
+                }
+            } else if (keys[i].includes('oya')) {
+                for (let l = 0; l < oyaBorder.length; l++) {
+                    oyaBorder[l].classList.remove('oya');
+                }
+                let newOya = Object.values(fields)[i];
+                let newOyaBorder = document.getElementById(newOya);
+                newOyaBorder.classList.add('oya');
+            } else if (keys[i].includes('riichi')) {
+                let container = document.getElementById(keys[i]);
+                if (Object.values(fields)[i] == "") {
+                    container.classList.remove('riichi');
+                } else {
+                    container.classList.add('riichi');
+                }
+            } else if (keys[i].includes('team')) {
+                let container = document.getElementById(keys[i]);
+                let newTeam = Object.values(fields)[i];
+                container.src = `../public/resources/img/team_logo/${newTeam}.webp`;
             } else {
-                container.classList.add('riichi');
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
             }
-        } else if (keys[i].includes('team')) {
-            let container = document.getElementById(keys[i]);
-            let newTeam = Object.values(fields)[i];
-            container.src = `../public/resources/img/team_logo/${newTeam}.webp`;
-        } else {
-            let container = document.getElementById(keys[i]);
-            let updatedValue = Object.values(fields)[i];
-            container.innerHTML = updatedValue;
         }
     }
 });

@@ -87,12 +87,13 @@ $(document).ready(function () {
             value -= 1000;
             target.value = value.toLocaleString();
             updatePoints(points);
-        } else {
-            let target = document.getElementById($(this)[0].value);
-            let value = parseInt(target.value.replace(',', ''));
-            value += 1000;
-            target.value = value.toLocaleString();
-            updatePoints(points);
-        }
+        } 
+        // else {
+        //     let target = document.getElementById($(this)[0].value);
+        //     let value = parseInt(target.value.replace(',', ''));
+        //     value += 1000;
+        //     target.value = value.toLocaleString();
+        //     updatePoints(points);
+        // }
     });
 });
