@@ -1,5 +1,6 @@
 let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
 let riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN');
+let waits = document.querySelectorAll('#waitsE, #waitsS, #waitsW, #waitsN');
 let kyotaku = document.querySelector('#kyotaku');
 let honba = document.querySelector('#honba');
 let tPointsText = document.querySelector('#totalPoints');
@@ -91,6 +92,9 @@ let ryukyoku = () => {
     kyotaku.valueAsNumber = kyotaku.valueAsNumber + count;
     honba.valueAsNumber++;
     updatePoints(points);
+    for (w of waits) {
+        w.value = "";
+    }
 }
 
 
