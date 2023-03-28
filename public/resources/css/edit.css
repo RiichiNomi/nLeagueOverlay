@@ -20,6 +20,10 @@
     margin: 0;
 }
 
+.matchinfoDisplay  li{
+    list-style-type: none;
+}
+
 .id {
     display: flex;
     padding: 0 0 0 2rem;
@@ -130,8 +134,7 @@
     padding: 0 0 10px 20px;
 }
 
-.doraNotation ul,
-il {
+.doraNotation ul li {
     list-style-type: none;
 }
 

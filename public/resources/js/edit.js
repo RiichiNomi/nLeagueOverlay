@@ -1,4 +1,7 @@
 let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
+let riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN');
+let kyotaku = document.querySelector('#kyotaku');
+let honba = document.querySelector('#honba');
 let tPointsText = document.querySelector('#totalPoints');
 
 let updatePoints = (arr) => {
@@ -6,6 +9,7 @@ let updatePoints = (arr) => {
     for (p of arr) {
         totalPoints += parseInt(p.value.replace(',', ''));
     }
+    totalPoints = totalPoints + kyotaku.valueAsNumber * 1000
     tPointsText.innerHTML = 'Total Points: ' + totalPoints.toLocaleString();
 }
 updatePoints(points);
@@ -16,7 +20,7 @@ function updateTextView(_obj) {
 }
 
 function getNumber(_str) {
-    let arr = _str.replace(',','').split('');
+    let arr = _str.replace(',', '').split('');
     let out = new Array();
     for (let i = 0; i < arr.length; i++) {
         out.push(arr[i]);
@@ -73,6 +77,22 @@ let decrementTenK = (e) => {
     updatePoints(points);
 }
 
+let ryukyoku = () => {
+    let count = 0
+    let arr = Array.from(riichi);
+    console.log(arr);
+    for (let r of arr) {
+        if (r.checked) {
+            count++
+            r.checked = false;
+        }
+    }
+    console.log(count);
+    kyotaku.valueAsNumber = kyotaku.valueAsNumber + count;
+    honba.valueAsNumber++;
+    updatePoints(points);
+}
+
 
 
 $(document).ready(function () {
@@ -87,7 +107,7 @@ $(document).ready(function () {
             value -= 1000;
             target.value = value.toLocaleString();
             updatePoints(points);
-        } 
+        }
         // else {
         //     let target = document.getElementById($(this)[0].value);
         //     let value = parseInt(target.value.replace(',', ''));
@@ -95,5 +115,8 @@ $(document).ready(function () {
         //     target.value = value.toLocaleString();
         //     updatePoints(points);
         // }
+    });
+    $('#kyotaku').on('change', function () {
+        updatePoints(points);
     });
 });
