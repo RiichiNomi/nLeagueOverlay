@@ -129,12 +129,25 @@ mutationObserver.observe(waitsContainer[1], { childList: true });
 mutationObserver.observe(waitsContainer[2], { childList: true });
 mutationObserver.observe(waitsContainer[3], { childList: true });
 
+const mutationObserverText = new MutationObserver(entries => {
+    setTimeout(() => {
+        changeFontSize(namebox)
+    }, 100);
+})
+
+mutationObserverText.observe(namebox[0], { characterData: false, attributes: false, childList: true, subtree: false });
+mutationObserverText.observe(namebox[1], { characterData: false, attributes: false, childList: true, subtree: false });
+mutationObserverText.observe(namebox[2], { characterData: false, attributes: false, childList: true, subtree: false });
+mutationObserverText.observe(namebox[3], { characterData: false, attributes: false, childList: true, subtree: false });
+
 
 changeFontSize = (arr) => {
     for (let x of arr) {
         if (x.offsetWidth > x.parentElement.offsetWidth) {
             let compSize = getComputedStyle(x).fontSize;
             x.style.fontSize = parseFloat(compSize) * 0.85 + 'px';
+        } else {
+            x.style.fontSize = "";
         }
     }
 };
