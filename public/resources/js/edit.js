@@ -3,6 +3,9 @@ let riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN')
 let waits = document.querySelectorAll('#waitsE, #waitsS, #waitsW, #waitsN');
 let kyotaku = document.querySelector('#kyotaku');
 let honba = document.querySelector('#honba');
+let dora = document.querySelector('#dora');
+let ryukyokuButton = document.querySelector('#ryukyoku')
+let clearButton = document.querySelector('#clear');
 let tPointsText = document.querySelector('#totalPoints');
 
 let updatePoints = (arr) => {
@@ -95,9 +98,30 @@ let ryukyoku = () => {
     for (w of waits) {
         w.value = "";
     }
+    dora.value = "";
 }
 
+ryukyokuButton.addEventListener('click', ryukyoku);
 
+let clear = () => {
+    let count = 0
+    let arr = Array.from(riichi);
+    for (let r of arr) {
+        if (r.checked) {
+            count++
+            r.checked = false;
+        }
+    }
+    kyotaku.valueAsNumber = 0;
+    honba.valueAsNumber = 0;
+    updatePoints(points);
+    for (w of waits) {
+        w.value = "";
+    }
+    dora.value = "";
+}
+
+clearButton.addEventListener('click', clear);
 
 $(document).ready(function () {
     $('input[inputmode=numeric]').on('change', function () {
