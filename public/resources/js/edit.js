@@ -8,6 +8,28 @@ let ryukyokuButton = document.querySelector('#ryukyoku')
 let clearButton = document.querySelector('#clear');
 let tPointsText = document.querySelector('#totalPoints');
 
+let houju = document.querySelector('#houju');
+let han = document.querySelector('#han');
+let fu = document.querySelector('#fu');
+let calc = document.querySelector('#calc');
+
+let calcPoint = () => {
+if (houju.value == "Tsumo")
+    if(han.value == 1){
+        switch (fu.valueAsNumber){
+            case 30:
+                return '500 all';
+            case 40:
+                return '700 all';
+        }
+    }
+}
+
+let updateCalc = () =>{
+    calc.innerHTML = calcPoint();
+}
+
+
 let updatePoints = (arr) => {
     let totalPoints = 0;
     for (p of arr) {

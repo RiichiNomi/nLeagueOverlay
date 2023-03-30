@@ -4,6 +4,29 @@ let dateText = document.querySelector('#date');
 let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
 let tPointsText = document.querySelector('#totalPoints');
 
+let twentyFiveButton = document.querySelector('#twentyFive');
+let thirtyButton = document.querySelector('#thirty');
+
+let setTwentyFive = () => {
+  let arr = Array.from(points);
+  for (let p of arr){
+    p.value = '25,000';
+  }
+  updatePoints(points);
+}
+
+let setThirty = () => {
+  let arr = Array.from(points);
+  for (let p of arr){
+    p.value = '30,000';
+  }
+  updatePoints(points);
+}
+
+twentyFiveButton.addEventListener('click', setTwentyFive);
+thirtyButton.addEventListener('click', setThirty);
+
+
 let updatePoints = (arr) =>{
     let totalPoints = 0;
     for (p of arr){
@@ -29,7 +52,25 @@ let getFormattedDate = (date) => {
 
 let formattedDate = getFormattedDate(today);
 
-timeStamp.setAttribute("value", today);
+const options = {
+  weekday: "short",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric"
+};
+
+const mediumTime = new Intl.DateTimeFormat("en", {
+  weekday: "short",
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric"
+});
+
+timeStamp.setAttribute("value", mediumTime.format(today));
 dateText.setAttribute("value", formattedDate);
 
 function updateTextView(_obj){
