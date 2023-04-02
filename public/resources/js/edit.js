@@ -1,53 +1,529 @@
 let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
 let riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN');
 let waits = document.querySelectorAll('#waitsE, #waitsS, #waitsW, #waitsN');
+let playerName = document.querySelectorAll('#nameE, #nameS, #nameW, #nameN');
 let kyotaku = document.querySelector('#kyotaku');
 let honba = document.querySelector('#honba');
+let honbaPoints = document.querySelector('#honbaPoints');
 let dora = document.querySelector('#dora');
 let ryukyokuButton = document.querySelector('#ryukyoku')
 let clearButton = document.querySelector('#clear');
 let tPointsText = document.querySelector('#totalPoints');
+let oyaMarker = document.querySelectorAll('#oyaE, #oyaS, #oyaW, #oyaN');
+let wind = document.querySelector('#wind');
+let round = document.querySelectorAll('#round');
+let updateApply = document.querySelector('#updateApply');
+let form = document.querySelector('#matchinfo');
 
+let agari = document.querySelector('#agari');
 let houju = document.querySelector('#houju');
 let han = document.querySelector('#han');
 let fu = document.querySelector('#fu');
 let calc = document.querySelector('#calc');
+let applyButton = document.querySelector('#apply');
 
-let calcPoint = () => {
+let calcOyaPoint = () => {
     if (houju.value == "Tsumo") {
         if (han.value == 1) {
-            switch (fu.valueAsNumber) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = 'n/a';
+                    return 0;
                 case 30:
-                    return '500 all';
+                    calc.innerHTML = '500 all';
+                    return 1500;
                 case 40:
-                    return '700 all';
+                    calc.innerHTML = '700 all';
+                    return 2000;
                 case 50:
-                    return '800 all';
+                    calc.innerHTML = '800 all';
+                    return 2400;
                 case 60:
-                    return '1000 all';
+                    calc.innerHTML = '1000 all';
+                    return 2900;
                 case 70:
-                    return '1200 all';
+                    calc.innerHTML = '1200 all';
+                    return 3400;
                 case 80:
-                    return '1300 all';
+                    calc.innerHTML = '1300 all';
+                    return 3900;
                 case 90:
-                    return '1500 all';
+                    calc.innerHTML = '1500 all';
+                    return 4400;
                 case 100:
-                    return '1600 all';
+                    calc.innerHTML = '1600 all';
+                    return 4800;
                 case 110:
-                    return '1800 all';
-
+                    calc.innerHTML = '1800 all';
+                    return 5300;
             }
+        } else if (han.value == 2) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = '700 all';
+                    return 2100;
+                case 25:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 30:
+                    calc.innerHTML = '1000 all';
+                    return 2900;
+                case 40:
+                    calc.innerHTML = '1300 all';
+                    return 3900;
+                case 50:
+                    calc.innerHTML = '1600 all';
+                    return 4800;
+                case 60:
+                    calc.innerHTML = '2000 all';
+                    return 5800;
+                case 70:
+                    calc.innerHTML = '2300 all';
+                    return 6800;
+                case 80:
+                    calc.innerHTML = '2600 all';
+                    return 7700;
+                case 90:
+                    calc.innerHTML = '2900 all';
+                    return 8700;
+                case 100:
+                    calc.innerHTML = '3200 all';
+                    return 9600;
+                case 110:
+                    calc.innerHTML = '3600 all';
+                    return 10600;
+            }
+        } else if (han.value == 3) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = '1300 all';
+                    return 3900;
+                case 25:
+                    calc.innerHTML = '1600 all';
+                    return 4800;
+                case 30:
+                    calc.innerHTML = '2000 all';
+                    return 5800;
+                case 40:
+                    calc.innerHTML = '2600 all';
+                    return 7700;
+                case 50:
+                    calc.innerHTML = '3200 all';
+                    return 9600;
+                case 60:
+                    calc.innerHTML = '3900 all';
+                    return 11600;
+                case 70:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 80:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 90:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 100:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 110:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+            }
+        } else if (han.value == 4) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = '2600 all';
+                    return 7800;
+                case 25:
+                    calc.innerHTML = '3200 all';
+                    return 9600;
+                case 30:
+                    calc.innerHTML = '3900 all';
+                    return 11600;
+                case 40:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 50:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 60:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 70:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 80:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 90:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 100:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+                case 110:
+                    calc.innerHTML = 'Mangan 4000 all';
+                    return 12000;
+            }
+        } else if (han.value == 5) {
+            calc.innerHTML = 'Mangan 4000 all';
+            return 12000;
+        } else if (han.value == 6) {
+            calc.innerHTML = 'Haneman 6000 all';
+            return 18000;
+        } else if (han.value == 7) {
+            calc.innerHTML = 'Haneman 6000 all';
+            return 18000;
+        } else if (han.value == 8) {
+            calc.innerHTML = 'Baiman 8000 all';
+            return 24000;
+        } else if (han.value == 9) {
+            calc.innerHTML = 'Baiman 8000 all';
+            return 24000;
+        } else if (han.value == 10) {
+            calc.innerHTML = 'Baiman 8000 all';
+            return 24000;
+        } else if (han.value == 11) {
+            calc.innerHTML = 'Sanbaiman 12000 all';
+            return 36000;
+        } else if (han.value == 12) {
+            calc.innerHTML = 'Sanbaiman 12000 all';
+            return 36000;
+        } else if (han.value == 13) {
+            calc.innerHTML = 'Yakuman 16000 all';
+            return 48000;
         }
     }
 }
 
-let updateCalc = () => {
-    calc.innerHTML = calcPoint();
+
+let calcKoPoint = () => {
+    if (houju.value == "Tsumo") {
+        if (han.value == 1) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 30:
+                    calc.innerHTML = '300/500';
+                    return 1000;
+                case 40:
+                    calc.innerHTML = '400/700';
+                    return 1300;
+                case 50:
+                    calc.innerHTML = '400/800';
+                    return 1600;
+                case 60:
+                    calc.innerHTML = '500/1000';
+                    return 2000;
+                case 70:
+                    calc.innerHTML = '600/1200';
+                    return 2300;
+                case 80:
+                    calc.innerHTML = '700/1300';
+                    return 2600;
+                case 90:
+                    calc.innerHTML = '800/1500';
+                    return 2900;
+                case 100:
+                    calc.innerHTML = '800/1600';
+                    return 3200;
+                case 110:
+                    calc.innerHTML = '900/1800';
+                    return 3600;
+            }
+        } else if (han.value == 2) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = '400/700';
+                    return 1400;
+                case 25:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 30:
+                    calc.innerHTML = '500/1000';
+                    return 2000;
+                case 40:
+                    calc.innerHTML = '700/1300';
+                    return 2600;
+                case 50:
+                    calc.innerHTML = '800/1600';
+                    return 3200;
+                case 60:
+                    calc.innerHTML = '1000/2000';
+                    return 3900;
+                case 70:
+                    calc.innerHTML = '1200/2300';
+                    return 4500;
+                case 80:
+                    calc.innerHTML = '1300/2600';
+                    return 5200;
+                case 90:
+                    calc.innerHTML = '1500/2900';
+                    return 5800;
+                case 100:
+                    calc.innerHTML = '1600/3200';
+                    return 6400;
+                case 110:
+                    calc.innerHTML = '1800/3600';
+                    return 7100;
+            }
+        } else if (han.value == 3) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = '700/1300';
+                    return 2600;
+                case 25:
+                    calc.innerHTML = '800/1600';
+                    return 3200;
+                case 30:
+                    calc.innerHTML = '1000/2000';
+                    return 3900;
+                case 40:
+                    calc.innerHTML = '1300/2600';
+                    return 5200;
+                case 50:
+                    calc.innerHTML = '1600/3200';
+                    return 6400;
+                case 60:
+                    calc.innerHTML = '2000/3900';
+                    return 7700;
+                case 70:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 80:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 90:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 100:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 110:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+            }
+        } else if (han.value == 4) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = '1300/2600';
+                    return 5200;
+                case 25:
+                    calc.innerHTML = '1600/3200';
+                    return 6400;
+                case 30:
+                    calc.innerHTML = '2000/3900';
+                    return 7700;
+                case 40:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 50:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 60:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 70:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 80:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 90:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 100:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+                case 110:
+                    calc.innerHTML = 'Mangan 2000/4000';
+                    return 8000;
+            }
+        } else if (han.value == 5) {
+            calc.innerHTML = 'Mangan 2000/4000';
+            return 8000;
+        } else if (han.value == 6) {
+            calc.innerHTML = 'Haneman 3000/6000';
+            return 12000;
+        } else if (han.value == 7) {
+            calc.innerHTML = 'Haneman 3000/6000';
+            return 12000;
+        } else if (han.value == 8) {
+            calc.innerHTML = 'Baiman 4000/8000';
+            return 16000;
+        } else if (han.value == 9) {
+            calc.innerHTML = 'Baiman 4000/8000';
+            return 16000;
+        } else if (han.value == 10) {
+            calc.innerHTML = 'Baiman 4000/8000';
+            return 16000;
+        } else if (han.value == 11) {
+            calc.innerHTML = 'Sanbaiman 6000/12000';
+            return 24000;
+        } else if (han.value == 12) {
+            calc.innerHTML = 'Sanbaiman 6000/12000';
+            return 24000;
+        } else if (han.value == 13) {
+            calc.innerHTML = 'Yakuman 8000/16000';
+            return 32000;
+        }
+    }
 }
 
-if(han.value > 1){
-    fu.setAttribute('min', '20');
+// let updateCalc = () => {
+//     calc.innerHTML = calcPoint();
+// }
+
+let updateApplyActivate = () => {
+    if (updateApply.checked) {
+        document.getElementById('updateApplyHidden').disabled = true;
+        document.getElementById('matchinfo').submit();
+    }
 }
+
+let oyaChecker = () => {
+    for (let n of playerName) {
+        if (agari.value == n.value) {
+            return n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked;
+        }
+    }
+}
+
+let nameErrorShown = false;
+let pointsErrorShown = false;
+let toolContainer = document.querySelector('.toolContainer');
+let errorDiv = document.createElement('div');
+errorDiv.classList.add('errorMessage');
+
+let applyPoints = () => {
+    if (agari.value == '') {
+        if (!nameErrorShown) {
+            let errorMessage = "Name not selected";
+            errorDiv.innerHTML = errorMessage;
+            toolContainer.append(errorDiv);
+            nameErrorShown = true;
+        }
+    } else if (calc.innerHTML == 'n/a') {
+        if (!pointsErrorShown) {
+            let pointsErrorMessage = "Points invalid";
+            errorDiv.innerHTML = pointsErrorMessage;
+            toolContainer.append(errorDiv);
+            pointsErrorShown = true;
+        }
+    } else {
+        let count = 0
+        let arr = Array.from(riichi);
+        for (let r of arr) {
+            if (r.checked) {
+                count++
+                r.checked = false;
+            }
+        }
+        for (w of waits) {
+            w.value = "";
+        }
+        dora.value = "";
+        for (let n of playerName) {
+            let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
+            if (houju.value == "Tsumo") {
+                if (oyaChecker()) {
+                    if (agari.value == '') {
+                        break;
+                    } else if (agari.value == n.value) {
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        target.value = value.toLocaleString();
+                    } else {
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        target.value = value.toLocaleString();
+                    }
+                } else {
+                    if (agari.value == '') {
+                        break;
+                    } else if (agari.value == n.value) {
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        target.value = value.toLocaleString();
+                    } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        target.value = value.toLocaleString();
+                    } else {
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        target.value = value.toLocaleString();
+                    }
+                }
+            } else {
+                if (oyaChecker()) {
+                    if (agari.value == '') {
+                        break;
+                    } else if (agari.value == n.value) {
+                        let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        target.value = value.toLocaleString();
+                    } else {
+                        let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() / 3 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        target.value = value.toLocaleString();
+                    }
+                } else {
+                    if (agari.value == '') {
+                        break;
+                    } else if (agari.value == n.value) {
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        target.value = value.toLocaleString();
+                    } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        target.value = value.toLocaleString();
+                    } else {
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        target.value = value.toLocaleString();
+                    }
+                }
+            }
+        }
+        if (oyaChecker()) {
+            honba.valueAsNumber++;
+        } else {
+            for (let i = 0; i < oyaMarker.length; i++) {
+                if (oyaMarker[i].checked) {
+                    if (i == 3) {
+                        oyaMarker[0].checked = true;
+                        if (wind.value == 'EAST' && round[3].checked) {
+                            wind.value = 'SOUTH'
+                            round[0].checked = true;
+                        } else if (wind.value == 'SOUTH' && round[3].checked) {
+                            break;
+                        } else {
+                            let arr = Array.from(round);
+                            let current = arr.indexOf(arr.find(x => x.checked == true));
+                            arr[current + 1].checked = true;
+                        }
+                        break;
+                    } else {
+                        oyaMarker[i + 1].checked = true;
+                        if (wind.value == 'EAST' && round[3].checked) {
+                            wind.value = 'SOUTH'
+                            round[0].checked = true;
+                        } else if (wind.value == 'SOUTH' && round[3].checked) {
+                            break;
+                        } else {
+                            let arr = Array.from(round);
+                            let current = arr.indexOf(arr.find(x => x.checked == true));
+                            arr[current + 1].checked = true;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        updateApplyActivate();
+    }
+}
+
+applyButton.addEventListener('click', applyPoints);
 
 let updatePoints = (arr) => {
     let totalPoints = 0;
@@ -145,12 +621,13 @@ let ryukyoku = () => {
 ryukyokuButton.addEventListener('click', ryukyoku);
 
 let clear = () => {
-    let count = 0
     let arr = Array.from(riichi);
     for (let r of arr) {
         if (r.checked) {
-            count++
             r.checked = false;
+            let target = r.parentElement.parentElement.parentElement.parentElement.children[2].children[0].children[0];
+            let value = parseInt(target.value.replace(',', '')) + 1000;
+            target.value = value.toLocaleString();
         }
     }
     kyotaku.valueAsNumber = 0;
@@ -169,7 +646,7 @@ $(document).ready(function () {
         updateTextView($(this));
         updatePoints(points);
     });
-    $('input[type=checkbox]').on('change', function () {
+    $('.lowerContainer input[type=checkbox]').on('change', function () {
         if (this.checked == true) {
             let target = document.getElementById($(this)[0].value);
             let value = parseInt(target.value.replace(',', ''));
@@ -188,10 +665,38 @@ $(document).ready(function () {
     $('#kyotaku').on('change', function () {
         updatePoints(points);
     });
-    $('#han').on('change', function (){
-        updateCalc();
+    $('#han').on('change', function () {
+        if (oyaChecker()) {
+            calcOyaPoint();
+        } else {
+            calcKoPoint();
+        }
     });
-    $('#fu').on('change', function (){
-        updateCalc();
+    $('#fu').on('change', function () {
+        if (oyaChecker()) {
+            calcOyaPoint();
+        } else {
+            calcKoPoint();
+        }
     });
+    $('#agari').on('change', function () {
+        if (oyaChecker()) {
+            calcOyaPoint();
+        } else {
+            calcKoPoint();
+        }
+    });
+    $(oyaMarker).on('change', function () {
+        if (oyaChecker()) {
+            calcOyaPoint();
+        } else {
+            calcKoPoint();
+        }
+    });
+});
+
+form.addEventListener('submit', () => {
+    if (document.getElementById('updateApply').checked) {
+        document.getElementById('updateApplyHidden').disabled = true;
+    }
 });

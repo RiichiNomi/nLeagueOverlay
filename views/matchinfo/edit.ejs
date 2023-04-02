@@ -53,6 +53,14 @@
                     <div class="current">(<%= detail.honba %>)</div>
                 </li>
                 <li>
+                    <label for="honbaPoints"> Honba Points:</label>
+                    <select id="honbaPoints" name="honbaPoints">
+                        <option value="300">Regular 300</option>
+                        <option value="1500" <% if(detail.honbaPoints == "1500"){ %> selected <% } %>>Big Honba 1500
+                        </option>
+                    </select>
+                </li>
+                <li>
                     <label for="dora">Dora: </label>
                     <input type="text" maxlength="11" id="dora" name="dora" value="<%= detail.dora.join(',') %>">
                     <div class="current">(<%= detail.dora == "" ? "none" : detail.dora %>)</div>
@@ -121,13 +129,48 @@
                     <div class="toolPointContainer">
                         <div>
                             Han:
-                            <input type="number" id="han" min="1" max="13" value="1">
+                            <select id="han" name="han">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                            </select>
                         </div>
                         <div>
                             Fu:
-                            <input type="number" id="fu" min="30" max="110" step="10" value="30">
+                            <select id="fu" name="fu">
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <option value="60">60</option>
+                                <option value="70">70</option>
+                                <option value="80">80</option>
+                                <option value="90">90</option>
+                                <option value="100">100</option>
+                                <option value="110">110</option>
+                            </select>
                         </div>
                         <div id="calc"></div>
+                        <button type="button" id="apply">Apply</button>
+                        <label for="updateApply">
+                            <div class="updateApplyContainer">
+                                <input type="hidden" id="updateApplyHidden" name="updateApply" value="off">
+                                <input type="checkbox" id="updateApply" name="updateApply"
+                                    <% if (detail.updateApply == 'on') { %> checked <% } %>>
+                                Update on Apply
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>

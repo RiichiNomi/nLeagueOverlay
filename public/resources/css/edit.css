@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 h2 {
     display: inline;
     color: blue;
@@ -36,7 +40,7 @@ h2 {
     margin: 0;
 }
 
-.matchinfoDisplay  li{
+.matchinfoDisplay li {
     list-style-type: none;
 }
 
@@ -154,16 +158,32 @@ h2 {
     list-style-type: none;
 }
 
-.toolContainer{
+.toolContainer {
     display: flex;
     gap: 1rem;
     margin: 1rem 0 0 0;
 }
 
-.toolPointContainer{
+.toolPointContainer {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2rem;
     gap: 1rem;
     margin: 1rem 0 0 0;
+}
+
+.toolPointContainer button {
+    height: 100%;
+}
+
+.updateApplyContainer {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.errorMessage {
+    color: red;
 }
 
 #databaseButton {
@@ -180,6 +200,10 @@ h2 {
 
 #shortcut {
     margin: 1rem 0 0 0;
+}
+
+#calc {
+    width: 5rem;
 }
 
 @media (max-width: 920px) {
