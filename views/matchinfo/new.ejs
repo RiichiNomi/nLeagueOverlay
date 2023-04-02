@@ -184,8 +184,8 @@
                 <label for="nameW">
                     <li>Name:
                         <select id="nameW" name="nameW">
-                            <% for (let t of teaminfo) { %>
                             <option value="" selected disabled hidden>Select Member</option>
+                            <% for (let t of teaminfo) { %>
                             <% for(let i = 0; i < t.members.length; i++){ %>
                             <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
                             <% } %>

@@ -14,21 +14,40 @@ let fu = document.querySelector('#fu');
 let calc = document.querySelector('#calc');
 
 let calcPoint = () => {
-if (houju.value == "Tsumo")
-    if(han.value == 1){
-        switch (fu.valueAsNumber){
-            case 30:
-                return '500 all';
-            case 40:
-                return '700 all';
+    if (houju.value == "Tsumo") {
+        if (han.value == 1) {
+            switch (fu.valueAsNumber) {
+                case 30:
+                    return '500 all';
+                case 40:
+                    return '700 all';
+                case 50:
+                    return '800 all';
+                case 60:
+                    return '1000 all';
+                case 70:
+                    return '1200 all';
+                case 80:
+                    return '1300 all';
+                case 90:
+                    return '1500 all';
+                case 100:
+                    return '1600 all';
+                case 110:
+                    return '1800 all';
+
+            }
         }
     }
 }
 
-let updateCalc = () =>{
+let updateCalc = () => {
     calc.innerHTML = calcPoint();
 }
 
+if(han.value > 1){
+    fu.setAttribute('min', '20');
+}
 
 let updatePoints = (arr) => {
     let totalPoints = 0;
@@ -168,5 +187,11 @@ $(document).ready(function () {
     });
     $('#kyotaku').on('change', function () {
         updatePoints(points);
+    });
+    $('#han').on('change', function (){
+        updateCalc();
+    });
+    $('#fu').on('change', function (){
+        updateCalc();
     });
 });
