@@ -734,6 +734,13 @@ let updateApplyActivate = () => {
     }
 }
 
+let updateRiichiActivate = () => {
+    if (updateRiichi.checked) {
+        document.getElementById('updateRiichiHidden').disabled = true;
+        document.getElementById('matchinfo').submit();
+    }
+}
+
 let oyaChecker = () => {
     for (let n of playerName) {
         if (agari.value == n.value) {
@@ -861,6 +868,9 @@ let applyPoints = () => {
                     }
                 }
             }
+        }
+        if (updateRiichi.checked) {
+            document.getElementById('updateRiichiHidden').disabled = true;
         }
         updateApplyActivate();
     }
@@ -997,6 +1007,7 @@ $(document).ready(function () {
             target.value = value.toLocaleString();
             updatePoints(points);
         }
+        updateRiichiActivate();
         // else {
         //     let target = document.getElementById($(this)[0].value);
         //     let value = parseInt(target.value.replace(',', ''));
@@ -1062,5 +1073,8 @@ $(document).ready(function () {
 form.addEventListener('submit', () => {
     if (document.getElementById('updateApply').checked) {
         document.getElementById('updateApplyHidden').disabled = true;
+    }
+    if (document.getElementById('updateRiichi').checked) {
+        document.getElementById('updateRiichiHidden').disabled = true;
     }
 });

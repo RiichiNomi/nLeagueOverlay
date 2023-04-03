@@ -20,7 +20,7 @@ const matchSchema = new mongoose.Schema({
     nameE: String,
     pointsE: String,
     riichiE: String,
-    waitsE:  [String],
+    waitsE: [String],
     formattedWaitsE: [String],
     teamS: String,
     nameS: String,
@@ -41,7 +41,8 @@ const matchSchema = new mongoose.Schema({
     waitsN: [String],
     formattedWaitsN: [String],
     oya: String,
-    updateApply: [String]
+    updateApply: String,
+    updateRiichi: String
 });
 
 const Match = mongoose.model('Match', matchSchema);

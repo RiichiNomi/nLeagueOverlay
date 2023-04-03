@@ -81,7 +81,7 @@
                     <button type="submit" form="matchinfo">Update</button>
                     <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
                     <button type="button" id="ryukyoku">Ryukyoku</button>
-                    <button type="button" id="clear">Clear</button>
+                    <button type="button" id="clear">Clear (Give back riichi points)</button>
                 </div>
             </ul>
             <div>
@@ -163,14 +163,24 @@
                         </div>
                         <div id="calc"></div>
                         <button type="button" id="apply">Apply</button>
-                        <label for="updateApply">
-                            <div class="updateApplyContainer">
-                                <input type="hidden" id="updateApplyHidden" name="updateApply" value="off">
-                                <input type="checkbox" id="updateApply" name="updateApply"
-                                    <% if (detail.updateApply == 'on') { %> checked <% } %>>
-                                Update on Apply
-                            </div>
-                        </label>
+                        <div class="updateChecks">
+                            <label for="updateApply">
+                                <div class="updateApplyContainer">
+                                    <input type="hidden" id="updateApplyHidden" name="updateApply" value="off">
+                                    <input type="checkbox" id="updateApply" name="updateApply"
+                                        <% if (detail.updateApply == 'on') { %> checked <% } %>>
+                                    Update on Apply
+                                </div>
+                            </label>
+                            <label for="updateRiichi">
+                                <div class="updateRiichiContainer">
+                                    <input type="hidden" id="updateRiichiHidden" name="updateRiichi" value="off">
+                                    <input type="checkbox" id="updateRiichi" name="updateRiichi"
+                                        <% if (detail.updateRiichi == 'on') { %> checked <% } %>>
+                                    Update on Riichi
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
