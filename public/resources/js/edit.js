@@ -886,6 +886,7 @@ let applyPoints = () => {
         if (oyaChecker()) {
             honba.valueAsNumber++;
         } else {
+            honba.value = 0;
             for (let i = 0; i < oyaMarker.length; i++) {
                 if (oyaMarker[i].checked) {
                     if (i == 3) {
