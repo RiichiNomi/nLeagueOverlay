@@ -72,6 +72,10 @@ h2 {
     justify-content: space-between;
 }
 
+.pointBox {
+    width: 7rem;
+}
+
 .tenKi {
     background-color: #00c900
 }
@@ -182,9 +186,29 @@ h2 {
     gap: 0.2rem;
 }
 
+.updateRiichiContainer {
+    display: flex;
+    gap: 0.2rem;
+}
+
 .errorMessage {
     color: red;
 }
+
+.pointsEarned {
+    display: inline;
+    color: green;
+    margin: 0 0 0 0.5rem;
+    font-weight: bold;
+}
+
+.pointsLost {
+    display: inline;
+    color: red;
+    margin: 0 0 0 0.5rem;
+    font-weight: bold;
+}
+
 
 #databaseButton {
     margin: 0 0 0 10rem;

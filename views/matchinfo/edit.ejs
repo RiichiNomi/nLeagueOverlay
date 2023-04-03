@@ -131,7 +131,7 @@
                             Han:
                             <select id="han" name="han">
                                 <option value="1">1</option>
-                                <option value="2">2</option>
+                                <option value="2" selected>2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
@@ -150,7 +150,7 @@
                             <select id="fu" name="fu">
                                 <option value="20">20</option>
                                 <option value="25">25</option>
-                                <option value="30">30</option>
+                                <option value="30" selected>30</option>
                                 <option value="40">40</option>
                                 <option value="50">50</option>
                                 <option value="60">60</option>
@@ -218,7 +218,7 @@
                         </label>
                         <label for="pointsE">
                             <li>Points:
-                                <input type="text" inputmode="numeric" id="pointsE" name="pointsE"
+                                <input type="text" inputmode="numeric" id="pointsE" name="pointsE" class="pointBox"
                                     value="<%= detail.pointsE %>">
                                 <div class="scoreButton">
                                     <button type="button" onclick="incrementTenK(this)" class="tenKi">+10k</button>
@@ -277,7 +277,7 @@
                         </label>
                         <label for="pointsS">
                             <li>Points:
-                                <input type="text" inputmode="numeric" id="pointsS" name="pointsS"
+                                <input type="text" inputmode="numeric" id="pointsS" name="pointsS" class="pointBox"
                                     value="<%= detail.pointsS %>">
                                 <div class="scoreButton">
                                     <button type="button" onclick="incrementTenK(this)" class="tenKi">+10k</button>
@@ -336,7 +336,7 @@
                         </label>
                         <label for="pointsW">
                             <li>Points:
-                                <input type="text" inputmode="numeric" id="pointsW" name="pointsW"
+                                <input type="text" inputmode="numeric" id="pointsW" name="pointsW" class="pointBox"
                                     value="<%= detail.pointsW %>">
                                 <div class="scoreButton">
                                     <button type="button" onclick="incrementTenK(this)" class="tenKi">+10k</button>
@@ -396,7 +396,7 @@
                         </label>
                         <label for="pointsN">
                             <li>Points:
-                                <input type="text" inputmode="numeric" id="pointsN" name="pointsN"
+                                <input type="text" inputmode="numeric" id="pointsN" name="pointsN" class="pointBox"
                                     value="<%= detail.pointsN %>">
                                 <div class="scoreButton">
                                     <button type="button" onclick="incrementTenK(this)" class="tenKi">+10k</button>
