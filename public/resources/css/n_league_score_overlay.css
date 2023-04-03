@@ -19,6 +19,7 @@ body {
     font-family: 'Graphik-medium', sans-serif;
     margin: 0;
     background-color: black;
+    overflow-y: hidden;
 }
 
 .maincontainer {
