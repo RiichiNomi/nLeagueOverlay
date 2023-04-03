@@ -22,6 +22,56 @@ let fu = document.querySelector('#fu');
 let calc = document.querySelector('#calc');
 let applyButton = document.querySelector('#apply');
 
+let teamE = document.querySelector('#teamE');
+let teamS = document.querySelector('#teamS');
+let teamW = document.querySelector('#teamW');
+let teamN = document.querySelector('#teamN');
+
+let nameE = document.querySelector('#nameE');
+let nameS = document.querySelector('#nameS');
+let nameW = document.querySelector('#nameW');
+let nameN = document.querySelector('#nameN');
+
+$(teamE).on('change', function () {
+    for (let i = 0; i < nameE.options.length; i++) {
+        if (i == (3 * (teamE.selectedIndex)) || i == ((3 * (teamE.selectedIndex)) + 1) || i == ((3 * (teamE.selectedIndex)) + 2)) {
+            nameE.options[i].hidden = false;
+        } else {
+            nameE.options[i].hidden = true;
+        }
+    }
+})
+
+$(teamS).on('change', function () {
+    for (let i = 0; i < nameS.options.length; i++) {
+        if (i == (3 * (teamS.selectedIndex)) || i == ((3 * (teamS.selectedIndex)) + 1) || i == ((3 * (teamS.selectedIndex)) + 2)) {
+            nameS.options[i].hidden = false;
+        } else {
+            nameS.options[i].hidden = true;
+        }
+    }
+})
+
+$(teamW).on('change', function () {
+    for (let i = 0; i < nameW.options.length; i++) {
+        if (i == (3 * (teamW.selectedIndex )) || i == ((3 * (teamW.selectedIndex)) + 1) || i == ((3 * (teamW.selectedIndex)) + 2)) {
+            nameW.options[i].hidden = false;
+        } else {
+            nameW.options[i].hidden = true;
+        }
+    }
+})
+
+$(teamN).on('change', function () {
+    for (let i = 0; i < nameN.options.length; i++) {
+        if (i == (3 * (teamN.selectedIndex)) || i == ((3 * (teamN.selectedIndex)) + 1) || i == ((3 * (teamN.selectedIndex)) + 2)) {
+            nameN.options[i].hidden = false;
+        } else {
+            nameN.options[i].hidden = true;
+        }
+    }
+})
+
 let calcOyaPoint = () => {
     if (houju.value == "Tsumo") {
         if (han.value == 1) {
