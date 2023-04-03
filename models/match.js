@@ -41,8 +41,8 @@ const matchSchema = new mongoose.Schema({
     waitsN: [String],
     formattedWaitsN: [String],
     oya: String,
-    updateApply: String,
-    updateRiichi: String
+    updateApply: [String],
+    updateRiichi: [String]
 });
 
 const Match = mongoose.model('Match', matchSchema);

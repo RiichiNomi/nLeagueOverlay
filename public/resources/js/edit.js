@@ -54,7 +54,7 @@ $(teamS).on('change', function () {
 
 $(teamW).on('change', function () {
     for (let i = 0; i < nameW.options.length; i++) {
-        if (i == (3 * (teamW.selectedIndex )) || i == ((3 * (teamW.selectedIndex)) + 1) || i == ((3 * (teamW.selectedIndex)) + 2)) {
+        if (i == (3 * (teamW.selectedIndex)) || i == ((3 * (teamW.selectedIndex)) + 1) || i == ((3 * (teamW.selectedIndex)) + 2)) {
             nameW.options[i].hidden = false;
         } else {
             nameW.options[i].hidden = true;
@@ -821,11 +821,9 @@ let applyPoints = () => {
             pointsErrorShown = true;
         }
     } else {
-        let count = 0
         let arr = Array.from(riichi);
         for (let r of arr) {
             if (r.checked) {
-                count++
                 r.checked = false;
             }
         }
@@ -840,7 +838,7 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
@@ -850,7 +848,7 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
@@ -865,7 +863,7 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
@@ -875,7 +873,7 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + calcKoPoint() + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) + calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
@@ -884,6 +882,7 @@ let applyPoints = () => {
                 }
             }
         }
+        kyotaku.value = 0;
         if (oyaChecker()) {
             honba.valueAsNumber++;
         } else {
@@ -1053,9 +1052,13 @@ $(document).ready(function () {
         if (this.checked == true) {
             let target = document.getElementById($(this)[0].value);
             let value = parseInt(target.value.replace(',', ''));
+            kyotaku.valueAsNumber++
             value -= 1000;
             target.value = value.toLocaleString();
             updatePoints(points);
+        }
+        if (document.getElementById('updateApply').checked) {
+            document.getElementById('updateApplyHidden').disabled = true;
         }
         updateRiichiActivate();
         // else {
