@@ -165,8 +165,13 @@ let calcOyaPoint = () => {
                     calc.innerHTML = '3200 all';
                     return 9600;
                 case 60:
-                    calc.innerHTML = '3900 all';
-                    return 11600;
+                    if (kiriage == 'true') {
+                        calc.innerHTML = 'Mangan 4000 all';
+                        return 12000;
+                    } else {
+                        calc.innerHTML = '3900 all';
+                        return 11600;
+                    }
                 case 70:
                     calc.innerHTML = 'Mangan 4000 all';
                     return 12000;
@@ -192,8 +197,13 @@ let calcOyaPoint = () => {
                     calc.innerHTML = '3200 all';
                     return 9600;
                 case 30:
-                    calc.innerHTML = '3900 all';
-                    return 11600;
+                    if (kiriage == 'true') {
+                        calc.innerHTML = 'Mangan 4000 all';
+                        return 12000;
+                    } else {
+                        calc.innerHTML = '3900 all';
+                        return 11600;
+                    }
                 case 40:
                     calc.innerHTML = 'Mangan 4000 all';
                     return 12000;
@@ -338,8 +348,13 @@ let calcOyaPoint = () => {
                     calc.innerHTML = '9600';
                     return 9600;
                 case 60:
-                    calc.innerHTML = '11600';
-                    return 11600;
+                    if (kiriage.value == 'true') {
+                        calc.innerHTML = 'Mangan 12000';
+                        return 12000;
+                    } else {
+                        calc.innerHTML = '11600';
+                        return 11600;
+                    }
                 case 70:
                     calc.innerHTML = 'Mangan 12000';
                     return 12000;
@@ -365,8 +380,13 @@ let calcOyaPoint = () => {
                     calc.innerHTML = '9600';
                     return 9600;
                 case 30:
-                    calc.innerHTML = '11600';
-                    return 11600;
+                    if (kiriage.value == 'true') {
+                        calc.innerHTML = 'Mangan 12000';
+                        return 12000;
+                    } else {
+                        calc.innerHTML = '11600';
+                        return 11600;
+                    }
                 case 40:
                     calc.innerHTML = 'Mangan 12000';
                     return 12000;
@@ -516,8 +536,13 @@ let calcKoPoint = () => {
                     calc.innerHTML = '1600/3200';
                     return 6400;
                 case 60:
-                    calc.innerHTML = '2000/3900';
-                    return 7700;
+                    if (kiriage.value == 'true') {
+                        calc.innerHTML = 'Mangan 2000/4000';
+                        return 8000;
+                    } else {
+                        calc.innerHTML = '2000/3900';
+                        return 7700;
+                    }
                 case 70:
                     calc.innerHTML = 'Mangan 2000/4000';
                     return 8000;
@@ -543,8 +568,13 @@ let calcKoPoint = () => {
                     calc.innerHTML = '1600/3200';
                     return 6400;
                 case 30:
-                    calc.innerHTML = '2000/3900';
-                    return 7700;
+                    if (kiriage.value == 'true') {
+                        calc.innerHTML = 'Mangan 2000/4000';
+                        return 8000;
+                    } else {
+                        calc.innerHTML = '2000/3900';
+                        return 7700;
+                    }
                 case 40:
                     calc.innerHTML = 'Mangan 2000/4000';
                     return 8000;
@@ -689,8 +719,13 @@ let calcKoPoint = () => {
                     calc.innerHTML = '6400';
                     return 6400;
                 case 60:
-                    calc.innerHTML = '7700';
-                    return 7700;
+                    if (kiriage.value == 'true') {
+                        calc.innerHTML = 'Mangan 8000';
+                        return 8000;
+                    } else {
+                        calc.innerHTML = '7700';
+                        return 7700;
+                    }
                 case 70:
                     calc.innerHTML = 'Mangan 8000';
                     return 8000;
@@ -716,8 +751,13 @@ let calcKoPoint = () => {
                     calc.innerHTML = '6400';
                     return 6400;
                 case 30:
-                    calc.innerHTML = '7700';
-                    return 7700;
+                    if (kiriage.value == 'true') {
+                        calc.innerHTML = 'Mangan 8000';
+                        return 8000;
+                    } else {
+                        calc.innerHTML = '7700';
+                        return 7700;
+                    }
                 case 40:
                     calc.innerHTML = 'Mangan 8000';
                     return 8000;
@@ -781,6 +821,12 @@ let calcKoPoint = () => {
 let updateApplyActivate = () => {
     if (updateApply.checked) {
         document.getElementById('updateApplyHidden').disabled = true;
+        if (document.getElementById('hidePlayerInfo').checked) {
+            document.getElementById('hidePlayerInfoHidden').disabled = true;
+        }
+        if (document.getElementById('hideMatchInfo').checked) {
+            document.getElementById('hideMatchInfoHidden').disabled = true;
+        }
         document.getElementById('matchinfo').submit();
     }
 }
@@ -788,6 +834,12 @@ let updateApplyActivate = () => {
 let updateRiichiActivate = () => {
     if (updateRiichi.checked) {
         document.getElementById('updateRiichiHidden').disabled = true;
+        if (document.getElementById('hidePlayerInfo').checked) {
+            document.getElementById('hidePlayerInfoHidden').disabled = true;
+        }
+        if (document.getElementById('hideMatchInfo').checked) {
+            document.getElementById('hideMatchInfoHidden').disabled = true;
+        }
         document.getElementById('matchinfo').submit();
     }
 }
@@ -928,17 +980,6 @@ let applyPoints = () => {
 }
 
 applyButton.addEventListener('click', applyPoints);
-
-let pointsEarned = document.createElement('div');
-let pointsEarnedArr = document.querySelector('.pointsEarned');
-pointsEarned.classList.add('pointsEarned');
-let pointsLostOya = document.createElement('div');
-pointsLostOya.classList.add('pointsLost');
-let pointsLostOyaArr = document.querySelector('.pointsLostOya');
-let pointsLost = document.createElement('div');
-pointsLost.classList.add('pointsLost');
-let pointsLostArr = document.querySelectorAll('.pointsLost')
-let pointsLostShown = 0;
 
 let showPointMove = () => {
     for (let n of playerName) {
@@ -1250,6 +1291,14 @@ $(document).ready(function () {
     $('#honba').on('change', function () {
         showPointMove();
     });
+    $('#kiriage').on('change', function () {
+        if (oyaChecker()) {
+            calcOyaPoint();
+        } else {
+            calcKoPoint();
+        }
+        showPointMove();
+    });
     $('#han').on('change', function () {
         if (oyaChecker()) {
             calcOyaPoint();
@@ -1313,5 +1362,11 @@ form.addEventListener('submit', () => {
     }
     if (document.getElementById('updateRiichi').checked) {
         document.getElementById('updateRiichiHidden').disabled = true;
+    }
+    if (document.getElementById('hidePlayerInfo').checked) {
+        document.getElementById('hidePlayerInfoHidden').disabled = true;
+    }
+    if (document.getElementById('hideMatchInfo').checked) {
+        document.getElementById('hideMatchInfoHidden').disabled = true;
     }
 });

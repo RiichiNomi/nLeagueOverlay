@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+h1,
+h2 {
+    margin: 0.3rem 0 1rem 0;
+}
+
 h2 {
     display: inline;
     color: blue;
@@ -189,6 +194,13 @@ h2 {
 .updateRiichiContainer {
     display: flex;
     gap: 0.2rem;
+}
+
+.hideButtonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem 0 0 0;
+    gap: 1rem;
 }
 
 .errorMessage {

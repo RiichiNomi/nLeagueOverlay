@@ -14,6 +14,7 @@ const matchSchema = new mongoose.Schema({
     kyotaku: Number,
     honba: Number,
     honbaPoints: Number,
+    kiriage: String,
     dora: [String],
     formattedDora: [String],
     teamE: String,
@@ -42,7 +43,9 @@ const matchSchema = new mongoose.Schema({
     formattedWaitsN: [String],
     oya: String,
     updateApply: [String],
-    updateRiichi: [String]
+    updateRiichi: [String],
+    playerHidden: [String],
+    matchInfoHidden: [String]
 });
 
 const Match = mongoose.model('Match', matchSchema);

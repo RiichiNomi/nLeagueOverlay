@@ -109,6 +109,22 @@ socket.on('change', (data) => {
                 let container = document.getElementById(keys[i]);
                 let newTeam = Object.values(fields)[i];
                 container.src = `../public/resources/img/team_logo/${newTeam}.webp`;
+            } else if (keys[i] == ('playerHidden')) {
+                let lowerContainer = document.querySelector('.lowercontainer');
+                let status = Object.values(fields)[i];
+                if (status == 'on') {
+                    lowerContainer.classList.add('fadedown');
+                } else {
+                    lowerContainer.classList.remove('fadedown');
+                }
+            } else if (keys[i] == ('matchInfoHidden')) {
+                let upperContainer = document.querySelector('.uppercontainer');
+                let status = Object.values(fields)[i];
+                if (status == 'on') {
+                    upperContainer.classList.add('fadeup');
+                } else {
+                    upperContainer.classList.remove('fadeup');
+                }
             } else {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];

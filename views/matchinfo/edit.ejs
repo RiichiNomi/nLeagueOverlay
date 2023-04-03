@@ -61,6 +61,14 @@
                     </select>
                 </li>
                 <li>
+                    <label for="kiriage"> Kiriage:</label>
+                    <select id="kiriage" name="kiriage">
+                        <option value="true">True</option>
+                        <option value="false" <% if(detail.kiriage == "false"){ %> selected <% } %>>False
+                        </option>
+                    </select>
+                </li>
+                <li>
                     <label for="dora">Dora: </label>
                     <input type="text" maxlength="11" id="dora" name="dora" value="<%= detail.dora.join(',') %>">
                     <div class="current">(<%= detail.dora == "" ? "none" : detail.dora %>)</div>
@@ -181,6 +189,26 @@
                                 </div>
                             </label>
                         </div>
+                    </div>
+                    <div class="hideButtonContainer">
+                        <label for="hideMatchInfo">
+                            <div class="hideMatchInfoContainer">
+                                <input type="hidden" id="hideMatchInfoHidden" name="matchInfoHidden" value="off">
+                                <input type="checkbox" id="hideMatchInfo" name="matchInfoHidden"
+                                    <% if (detail.matchInfoHidden == 'on') { %> checked <% } %>>
+                                Hide Match Info
+                                <div class="current"><% if (detail.matchInfoHidden == 'on') { %> (Hidden) <% } %></div>
+                            </div>
+                        </label>
+                        <label for="hidePlayerInfo">
+                            <div class="hidePlayerInfoContainer">
+                                <input type="hidden" id="hidePlayerInfoHidden" name="playerHidden" value="off">
+                                <input type="checkbox" id="hidePlayerInfo" name="playerHidden"
+                                    <% if (detail.playerHidden == 'on') { %> checked <% } %>>
+                                Hide Player Info
+                                <div class="current"><% if (detail.playerHidden == 'on') { %> (Hidden) <% } %></div>
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
