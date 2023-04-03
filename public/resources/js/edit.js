@@ -196,6 +196,179 @@ let calcOyaPoint = () => {
             calc.innerHTML = 'Yakuman 16000 all';
             return 48000;
         }
+    } else {
+        if (han.value == 1) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 30:
+                    calc.innerHTML = '1500';
+                    return 1500;
+                case 40:
+                    calc.innerHTML = '2000';
+                    return 2000;
+                case 50:
+                    calc.innerHTML = '2400';
+                    return 2400;
+                case 60:
+                    calc.innerHTML = '2900';
+                    return 2900;
+                case 70:
+                    calc.innerHTML = '3400';
+                    return 3400;
+                case 80:
+                    calc.innerHTML = '3900';
+                    return 3900;
+                case 90:
+                    calc.innerHTML = '4400';
+                    return 4400;
+                case 100:
+                    calc.innerHTML = '4800';
+                    return 4800;
+                case 110:
+                    calc.innerHTML = '5300';
+                    return 5300;
+            }
+        } else if (han.value == 2) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = '2400';
+                    return 2400;
+                case 30:
+                    calc.innerHTML = '2900';
+                    return 2900;
+                case 40:
+                    calc.innerHTML = '3900';
+                    return 3900;
+                case 50:
+                    calc.innerHTML = '4800';
+                    return 4800;
+                case 60:
+                    calc.innerHTML = '5800';
+                    return 5800;
+                case 70:
+                    calc.innerHTML = '6800';
+                    return 6800;
+                case 80:
+                    calc.innerHTML = '7700';
+                    return 7700;
+                case 90:
+                    calc.innerHTML = '8700';
+                    return 8700;
+                case 100:
+                    calc.innerHTML = '9600';
+                    return 9600;
+                case 110:
+                    calc.innerHTML = '10600';
+                    return 10600;
+            }
+        } else if (han.value == 3) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = '4800';
+                    return 4800;
+                case 30:
+                    calc.innerHTML = '5800';
+                    return 5800;
+                case 40:
+                    calc.innerHTML = '7700';
+                    return 7700;
+                case 50:
+                    calc.innerHTML = '9600';
+                    return 9600;
+                case 60:
+                    calc.innerHTML = '11600';
+                    return 11600;
+                case 70:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 80:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 90:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 100:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 110:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+            }
+        } else if (han.value == 4) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = '9600';
+                    return 9600;
+                case 30:
+                    calc.innerHTML = '11600';
+                    return 11600;
+                case 40:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 50:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 60:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 70:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 80:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 90:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 100:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+                case 110:
+                    calc.innerHTML = 'Mangan 12000';
+                    return 12000;
+            }
+        } else if (han.value == 5) {
+            calc.innerHTML = 'Mangan 12000';
+            return 12000;
+        } else if (han.value == 6) {
+            calc.innerHTML = 'Haneman 18000';
+            return 18000;
+        } else if (han.value == 7) {
+            calc.innerHTML = 'Haneman 18000';
+            return 18000;
+        } else if (han.value == 8) {
+            calc.innerHTML = 'Baiman 24000';
+            return 24000;
+        } else if (han.value == 9) {
+            calc.innerHTML = 'Baiman 24000';
+            return 24000;
+        } else if (han.value == 10) {
+            calc.innerHTML = 'Baiman 24000';
+            return 24000;
+        } else if (han.value == 11) {
+            calc.innerHTML = 'Sanbaiman 36000';
+            return 36000;
+        } else if (han.value == 12) {
+            calc.innerHTML = 'Sanbaiman 36000';
+            return 36000;
+        } else if (han.value == 13) {
+            calc.innerHTML = 'Yakuman 48000';
+            return 48000;
+        }
     }
 }
 
@@ -374,6 +547,179 @@ let calcKoPoint = () => {
             calc.innerHTML = 'Yakuman 8000/16000';
             return 32000;
         }
+    } else {
+        if (han.value == 1) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 30:
+                    calc.innerHTML = '1000';
+                    return 1000;
+                case 40:
+                    calc.innerHTML = '1300';
+                    return 1300;
+                case 50:
+                    calc.innerHTML = '1600';
+                    return 1600;
+                case 60:
+                    calc.innerHTML = '2000';
+                    return 2000;
+                case 70:
+                    calc.innerHTML = '2300';
+                    return 2300;
+                case 80:
+                    calc.innerHTML = '2600';
+                    return 2600;
+                case 90:
+                    calc.innerHTML = '2900';
+                    return 2900;
+                case 100:
+                    calc.innerHTML = '3200';
+                    return 3200;
+                case 110:
+                    calc.innerHTML = '3600';
+                    return 3600;
+            }
+        } else if (han.value == 2) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = '1600';
+                    return 1600;
+                case 30:
+                    calc.innerHTML = '2000';
+                    return 2000;
+                case 40:
+                    calc.innerHTML = '2600';
+                    return 2600;
+                case 50:
+                    calc.innerHTML = '3200';
+                    return 3200;
+                case 60:
+                    calc.innerHTML = '3900';
+                    return 3900;
+                case 70:
+                    calc.innerHTML = '4500';
+                    return 4500;
+                case 80:
+                    calc.innerHTML = '5200';
+                    return 5200;
+                case 90:
+                    calc.innerHTML = '5800';
+                    return 5800;
+                case 100:
+                    calc.innerHTML = '6400';
+                    return 6400;
+                case 110:
+                    calc.innerHTML = '7100';
+                    return 7100;
+            }
+        } else if (han.value == 3) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = '3200';
+                    return 3200;
+                case 30:
+                    calc.innerHTML = '3900';
+                    return 3900;
+                case 40:
+                    calc.innerHTML = '5200';
+                    return 5200;
+                case 50:
+                    calc.innerHTML = '6400';
+                    return 6400;
+                case 60:
+                    calc.innerHTML = '7700';
+                    return 7700;
+                case 70:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 80:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 90:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 100:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 110:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+            }
+        } else if (han.value == 4) {
+            switch (parseInt(fu.value)) {
+                case 20:
+                    calc.innerHTML = 'n/a';
+                    return 0;
+                case 25:
+                    calc.innerHTML = '6400';
+                    return 6400;
+                case 30:
+                    calc.innerHTML = '7700';
+                    return 7700;
+                case 40:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 50:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 60:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 70:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 80:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 90:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 100:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+                case 110:
+                    calc.innerHTML = 'Mangan 8000';
+                    return 8000;
+            }
+        } else if (han.value == 5) {
+            calc.innerHTML = 'Mangan 8000';
+            return 8000;
+        } else if (han.value == 6) {
+            calc.innerHTML = 'Haneman 12000';
+            return 12000;
+        } else if (han.value == 7) {
+            calc.innerHTML = 'Haneman 12000';
+            return 12000;
+        } else if (han.value == 8) {
+            calc.innerHTML = 'Baiman 16000';
+            return 16000;
+        } else if (han.value == 9) {
+            calc.innerHTML = 'Baiman 16000';
+            return 16000;
+        } else if (han.value == 10) {
+            calc.innerHTML = 'Baiman 16000';
+            return 16000;
+        } else if (han.value == 11) {
+            calc.innerHTML = 'Sanbaiman 24000';
+            return 24000;
+        } else if (han.value == 12) {
+            calc.innerHTML = 'Sanbaiman 24000';
+            return 24000;
+        } else if (han.value == 13) {
+            calc.innerHTML = 'Yakuman 32000';
+            return 32000;
+        }
     }
 }
 
@@ -464,21 +810,18 @@ let applyPoints = () => {
                     } else if (agari.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
                         target.value = value.toLocaleString();
-                    } else {
-                        let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() / 3 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    } else if (houju.value == n.value) {
+                        let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
                         target.value = value.toLocaleString();
                     }
                 } else {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) + calcKoPoint() + count * 1000 + honba.valueAsNumber * parseInt(honbaPoints.value);
                         target.value = value.toLocaleString();
-                    } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                        target.value = value.toLocaleString();
-                    } else {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    } else if (houju.value == n.value) {
+                        let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
                         target.value = value.toLocaleString();
                     }
                 }
@@ -684,6 +1027,27 @@ $(document).ready(function () {
             calcOyaPoint();
         } else {
             calcKoPoint();
+        }
+        for (let i = 0; i < houju.options.length; i++) {
+            if (agari.value == houju.options[i].value) {
+                houju.options[i].hidden = true;
+            } else {
+                houju.options[i].hidden = false;
+            }
+        }
+    });
+    $('#houju').on('change', function () {
+        if (oyaChecker()) {
+            calcOyaPoint();
+        } else {
+            calcKoPoint();
+        }
+        for (let i = 1; i < agari.options.length; i++) {
+            if (houju.value == agari.options[i].value) {
+                agari.options[i].hidden = true;
+            } else {
+                agari.options[i].hidden = false;
+            }
         }
     });
     $(oyaMarker).on('change', function () {
