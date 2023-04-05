@@ -105,6 +105,11 @@ body {
     position: relative;
     perspective: 1000px;
     margin: auto auto 1.8rem;
+    transition: scale 0.5s ease;
+}
+
+.scaleOut {
+    scale: 1.2;
 }
 
 .carousel {

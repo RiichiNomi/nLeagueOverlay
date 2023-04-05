@@ -4,6 +4,7 @@ let carousel = document.querySelector('.carousel');
 let riichiTitle = document.querySelector('.riichiTitle');
 let riichiText = document.querySelector('.riichiText');
 let riichiAnimation = document.querySelector('.riichiAnimation');
+let scene = document.querySelector('.scene');
 let cell = document.querySelectorAll('.carousel__cell');
 let leftbar = document.querySelector('.leftbar');
 let rightbar = document.querySelector('.rightbar');
@@ -38,7 +39,7 @@ let animate = (n) => {
                     cell[i].classList.add('fadeout');
                 }
             }
-            carousel.style.scale = 1.2;
+            scene.classList.add('scaleOut');
         }, 1200);
         setTimeout(() => {
             // lightning.classList.remove('show');
@@ -51,7 +52,7 @@ let animate = (n) => {
                     cell[i].classList.remove('fadeout');
                 }
             }
-            carousel.style.scale = 1;
+            scene.classList.remove('scaleOut');
             leftbar.classList.remove('animateLeftbar', 'show');
             rightbar.classList.remove('animateRightbar', 'show');
         }, 5000);
