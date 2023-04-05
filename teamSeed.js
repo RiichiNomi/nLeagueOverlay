@@ -68,7 +68,7 @@ const team8 = new Team({
     members: ["Claire P.", "Andrew H.", "Mike V."],
     score: 183.9,
     game: 10,
-    logo: "spaceFalcon"
+    logo: "peregrineFalkkans"
 })
 
 Team.insertMany([team1, team2, team3, team4, team5, team6, team7, team8])

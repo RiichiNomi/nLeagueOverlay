@@ -82,19 +82,19 @@ socket.on('change', (data) => {
                 let n = 0;
                 if (riichiTeam.toLowerCase().includes('destroyers'.toLowerCase())) {
                     n = 0;
-                } else if (riichiTeam.toLowerCase().includes('rinshankaibros'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('rinshan'.toLowerCase())) {
                     n = 1;
-                } else if (riichiTeam.toLowerCase().includes('brooklynSours'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('brooklyn'.toLowerCase())) {
                     n = 2;
-                } else if (riichiTeam.toLowerCase().includes('opieDopes'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('opie'.toLowerCase())) {
                     n = 3;
-                } else if (riichiTeam.toLowerCase().includes('emperorPenguins'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('emperor'.toLowerCase())) {
                     n = 4;
-                } else if (riichiTeam.toLowerCase().includes('queensMahjongTriad'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('queens'.toLowerCase())) {
                     n = 5;
-                } else if (riichiTeam.toLowerCase().includes('teamYakumen'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('yakumen'.toLowerCase())) {
                     n = 6;
-                } else if (riichiTeam.toLowerCase().includes('space'.toLowerCase())) {
+                } else if (riichiTeam.toLowerCase().includes('peregrine'.toLowerCase())) {
                     n = 7;
                 }
                 console.log(n);
