@@ -124,10 +124,6 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 10px;
-    top: 10px;
-    font-weight: bold;
-    font-size: 40px;
     transition: all 0.5s;
 }
 
@@ -174,4 +170,66 @@ body {
 
 #riichiAnimation {
     height: 200px;
+}
+
+@media (-webkit-device-pixel-ratio: 1) {
+
+    .scene {
+        width: 12rem;
+        height: 12rem;
+        margin: auto auto 2.2rem;
+    }
+
+    .riichiAnimation {
+        height: 34rem;
+    }
+
+    .carousel__cell img {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .carousel__cell:nth-child(1) {
+        transform: rotateY(0deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(2) {
+        transform: rotateY(45deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(3) {
+        transform: rotateY(90deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(4) {
+        transform: rotateY(135deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(5) {
+        transform: rotateY(180deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(6) {
+        transform: rotateY(225deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(7) {
+        transform: rotateY(270deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(8) {
+        transform: rotateY(315deg) translateZ(22.6rem);
+    }
+
+    .riichiTitle {
+        margin: 2rem 0 0 0;
+        font-size: 6rem;
+    }
+
+    .leftbar,
+    .rightbar {
+        width: 15rem;
+        height: 0.3rem;
+    }
+
 }
