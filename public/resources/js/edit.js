@@ -975,6 +975,9 @@ let applyPoints = () => {
         if (updateRiichi.checked) {
             document.getElementById('updateRiichiHidden').disabled = true;
         }
+        if (document.getElementById('mute').checked) {
+            document.getElementById('muteHidden').disabled = true;
+        }
         updateApplyActivate();
     }
 }
@@ -1275,6 +1278,9 @@ $(document).ready(function () {
         if (document.getElementById('updateApply').checked) {
             document.getElementById('updateApplyHidden').disabled = true;
         }
+        if (document.getElementById('mute').checked) {
+            document.getElementById('muteHidden').disabled = true;
+        }
         updateRiichiActivate();
         // else {
         //     let target = document.getElementById($(this)[0].value);
@@ -1368,5 +1374,8 @@ form.addEventListener('submit', () => {
     }
     if (document.getElementById('hideMatchInfo').checked) {
         document.getElementById('hideMatchInfoHidden').disabled = true;
+    }
+    if (document.getElementById('mute').checked) {
+        document.getElementById('muteHidden').disabled = true;
     }
 });

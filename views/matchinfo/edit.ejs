@@ -28,19 +28,20 @@
                     <label for="wind"> Wind:</label>
                     <select id="wind" name="wind">
                         <option id="east" value="EAST">EAST</option>
-                        <option id="south" value="SOUTH" <% if(detail.wind == "SOUTH"){ %> selected <% } %>>SOUTH
+                        <option id="south" value="SOUTH" <% if(detail.wind=="SOUTH" ){ %> selected <% } %>>SOUTH
                         </option>
                     </select>
                     <div class="current">(<%= detail.wind %>)</div>
                 </li>
                 <li>
                     <label for="round">Round: </label>
-                    <% for(let i = 1; i <= 4; i++){
-                    let checked = (detail.round == i) ? "checked" : "" %>
-                    <input type="radio" id="round" name="round" value="<%=i%>" <%=checked%>>
-                    <label for="<%=i%>"><%=i%></label>
-                    <% } %>
-                    <div class="current">(<%= detail.round %>)</div>
+                    <% for(let i=1; i <=4; i++){ let checked=(detail.round==i) ? "checked" : "" %>
+                        <input type="radio" id="round" name="round" value="<%=i%>" <%=checked%>>
+                        <label for="<%=i%>">
+                            <%=i%>
+                        </label>
+                        <% } %>
+                            <div class="current">(<%= detail.round %>)</div>
                 </li>
                 <li>
                     <label for="">Kyotaku: </label>
@@ -56,7 +57,7 @@
                     <label for="honbaPoints"> Honba Points:</label>
                     <select id="honbaPoints" name="honbaPoints">
                         <option value="300">Regular 300</option>
-                        <option value="1500" <% if(detail.honbaPoints == "1500"){ %> selected <% } %>>Big Honba 1500
+                        <option value="1500" <% if(detail.honbaPoints=="1500" ){ %> selected <% } %>>Big Honba 1500
                         </option>
                     </select>
                 </li>
@@ -64,14 +65,14 @@
                     <label for="kiriage"> Kiriage:</label>
                     <select id="kiriage" name="kiriage">
                         <option value="true">True</option>
-                        <option value="false" <% if(detail.kiriage == "false"){ %> selected <% } %>>False
+                        <option value="false" <% if(detail.kiriage=="false" ){ %> selected <% } %>>False
                         </option>
                     </select>
                 </li>
                 <li>
                     <label for="dora">Dora: </label>
                     <input type="text" maxlength="11" id="dora" name="dora" value="<%= detail.dora.join(',') %>">
-                    <div class="current">(<%= detail.dora == "" ? "none" : detail.dora %>)</div>
+                    <div class="current">(<%= detail.dora=="" ? "none" : detail.dora %>)</div>
                 </li>
                 <li>
                     <label for="week">Week: </label>
@@ -120,18 +121,34 @@
                     <div class="toolContainer">
                         <select name="agari" id="agari">
                             <option value="" selected disabled hidden>Select Name</option>
-                            <option value="<%= detail.nameE %>"><%= detail.nameE %></option>
-                            <option value="<%= detail.nameS %>"><%= detail.nameS %></option>
-                            <option value="<%= detail.nameW %>"><%= detail.nameW %></option>
-                            <option value="<%= detail.nameN %>"><%= detail.nameN %></option>
+                            <option value="<%= detail.nameE %>">
+                                <%= detail.nameE %>
+                            </option>
+                            <option value="<%= detail.nameS %>">
+                                <%= detail.nameS %>
+                            </option>
+                            <option value="<%= detail.nameW %>">
+                                <%= detail.nameW %>
+                            </option>
+                            <option value="<%= detail.nameN %>">
+                                <%= detail.nameN %>
+                            </option>
                         </select>
                         <div> &#8592; </div>
                         <select name="houju" id="houju">
                             <option value="Tsumo" selected>Tsumo</option>
-                            <option value="<%= detail.nameE %>"><%= detail.nameE %></option>
-                            <option value="<%= detail.nameS %>"><%= detail.nameS %></option>
-                            <option value="<%= detail.nameW %>"><%= detail.nameW %></option>
-                            <option value="<%= detail.nameN %>"><%= detail.nameN %></option>
+                            <option value="<%= detail.nameE %>">
+                                <%= detail.nameE %>
+                            </option>
+                            <option value="<%= detail.nameS %>">
+                                <%= detail.nameS %>
+                            </option>
+                            <option value="<%= detail.nameW %>">
+                                <%= detail.nameW %>
+                            </option>
+                            <option value="<%= detail.nameN %>">
+                                <%= detail.nameN %>
+                            </option>
                         </select>
                     </div>
                     <div class="toolPointContainer">
@@ -175,17 +192,17 @@
                             <label for="updateApply">
                                 <div class="updateApplyContainer">
                                     <input type="hidden" id="updateApplyHidden" name="updateApply" value="off">
-                                    <input type="checkbox" id="updateApply" name="updateApply"
-                                        <% if (detail.updateApply == 'on') { %> checked <% } %>>
-                                    Update on Apply
+                                    <input type="checkbox" id="updateApply" name="updateApply" <% if
+                                        (detail.updateApply=='on' ) { %> checked <% } %>>
+                                        Update on Apply
                                 </div>
                             </label>
                             <label for="updateRiichi">
                                 <div class="updateRiichiContainer">
                                     <input type="hidden" id="updateRiichiHidden" name="updateRiichi" value="off">
-                                    <input type="checkbox" id="updateRiichi" name="updateRiichi"
-                                        <% if (detail.updateRiichi == 'on') { %> checked <% } %>>
-                                    Update on Riichi
+                                    <input type="checkbox" id="updateRiichi" name="updateRiichi" <% if
+                                        (detail.updateRiichi=='on' ) { %> checked <% } %>>
+                                        Update on Riichi
                                 </div>
                             </label>
                         </div>
@@ -194,19 +211,34 @@
                         <label for="hideMatchInfo">
                             <div class="hideMatchInfoContainer">
                                 <input type="hidden" id="hideMatchInfoHidden" name="matchInfoHidden" value="off">
-                                <input type="checkbox" id="hideMatchInfo" name="matchInfoHidden"
-                                    <% if (detail.matchInfoHidden == 'on') { %> checked <% } %>>
-                                Hide Match Info
-                                <div class="current"><% if (detail.matchInfoHidden == 'on') { %> (Hidden) <% } %></div>
+                                <input type="checkbox" id="hideMatchInfo" name="matchInfoHidden" <% if
+                                    (detail.matchInfoHidden=='on' ) { %> checked <% } %>>
+                                    Hide Match Info
+                                    <div class="current">
+                                        <% if (detail.matchInfoHidden=='on' ) { %> (Hidden) <% } %>
+                                    </div>
                             </div>
                         </label>
                         <label for="hidePlayerInfo">
                             <div class="hidePlayerInfoContainer">
                                 <input type="hidden" id="hidePlayerInfoHidden" name="playerHidden" value="off">
-                                <input type="checkbox" id="hidePlayerInfo" name="playerHidden"
-                                    <% if (detail.playerHidden == 'on') { %> checked <% } %>>
-                                Hide Player Info
-                                <div class="current"><% if (detail.playerHidden == 'on') { %> (Hidden) <% } %></div>
+                                <input type="checkbox" id="hidePlayerInfo" name="playerHidden" <% if
+                                    (detail.playerHidden=='on' ) { %> checked <% } %>>
+                                    Hide Player Info
+                                    <div class="current">
+                                        <% if (detail.playerHidden=='on' ) { %> (Hidden) <% } %>
+                                    </div>
+                            </div>
+                        </label>
+                        <label for="mute">
+                            <div class="muteContainer">
+                                <input type="hidden" id="muteHidden" name="mute" value="off">
+                                <input type="checkbox" id="mute" name="mute" <% if (detail.mute=='on' ) { %> checked <%
+                                    } %>>
+                                    Mute Riichi Sound
+                                    <div class="current">
+                                        <% if (detail.mute=='on' ) { %> (Muted) <% } %>
+                                    </div>
                             </div>
                         </label>
                     </div>
@@ -226,9 +258,10 @@
                             <li>Team:
                                 <select id="teamE" name="teamE">
                                     <% for (let t of teaminfo) { %>
-                                    <option value="<%= t.team %>" <% if(t.team == detail.teamE){ %> selected <% } %>>
-                                        <%= t.team %> </option>
-                                    <% } %>
+                                        <option value="<%= t.team %>" <% if(t.team==detail.teamE){ %> selected <% } %>>
+                                                <%= t.team %>
+                                        </option>
+                                        <% } %>
                                 </select>
                             </li>
                         </label>
@@ -236,11 +269,13 @@
                             <li>Name:
                                 <select id="nameE" name="nameE">
                                     <% for (let t of teaminfo) { %>
-                                    <% for(let i = 0; i < t.members.length; i++){ %>
-                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameE){ %> selected
-                                        <% } %>> <%= t.members[i] %> </option>
-                                    <% } %>
-                                    <% } %>
+                                        <% for(let i=0; i < t.members.length; i++){ %>
+                                            <option value="<%= t.members[i] %>" <% if(t.members[i]==detail.nameE){ %>
+                                                selected
+                                                <% } %>> <%= t.members[i] %>
+                                            </option>
+                                            <% } %>
+                                                <% } %>
                                 </select>
                             </li>
                         </label>
@@ -266,14 +301,14 @@
                         <div class="checkbox">
                             <label for="oyaE">
                                 <li>Oya:
-                                    <input type="radio" id="oyaE" name="oya" value="east"
-                                        <% if(detail.oya == 'east') { %> checked <% } %>>
+                                    <input type="radio" id="oyaE" name="oya" value="east" <% if(detail.oya=='east' ) {
+                                        %> checked <% } %>>
                                 </li>
                             </label>
                             <label for="riichiE">
                                 <li>Riichi:
-                                    <input type="checkbox" id="riichiE" name="riichiE" value='pointsE'
-                                        <% if(detail.riichiE == 'pointsE') { %> checked <% } %>>
+                                    <input type="checkbox" id="riichiE" name="riichiE" value='pointsE' <%
+                                        if(detail.riichiE=='pointsE' ) { %> checked <% } %>>
                                 </li>
                             </label>
                         </div>
@@ -285,9 +320,10 @@
                             <li>Team:
                                 <select id="teamS" name="teamS">
                                     <% for (let t of teaminfo) { %>
-                                    <option value="<%= t.team %>" <% if(t.team == detail.teamS){ %> selected <% } %>>
-                                        <%= t.team %> </option>
-                                    <% } %>
+                                        <option value="<%= t.team %>" <% if(t.team==detail.teamS){ %> selected <% } %>>
+                                                <%= t.team %>
+                                        </option>
+                                        <% } %>
                                 </select>
                             </li>
                         </label>
@@ -295,11 +331,13 @@
                             <li>Name:
                                 <select id="nameS" name="nameS">
                                     <% for (let t of teaminfo) { %>
-                                    <% for(let i = 0; i < t.members.length; i++){ %>
-                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameS){ %> selected
-                                        <% } %>> <%= t.members[i] %> </option>
-                                    <% } %>
-                                    <% } %>
+                                        <% for(let i=0; i < t.members.length; i++){ %>
+                                            <option value="<%= t.members[i] %>" <% if(t.members[i]==detail.nameS){ %>
+                                                selected
+                                                <% } %>> <%= t.members[i] %>
+                                            </option>
+                                            <% } %>
+                                                <% } %>
                                 </select>
                             </li>
                         </label>
@@ -325,14 +363,14 @@
                         <div class="checkbox">
                             <label for="oyaS">
                                 <li>Oya:
-                                    <input type="radio" id="oyaS" name="oya" value="south"
-                                        <% if(detail.oya == 'south') { %> checked <% } %>>
+                                    <input type="radio" id="oyaS" name="oya" value="south" <% if(detail.oya=='south' ) {
+                                        %> checked <% } %>>
                                 </li>
                             </label>
                             <label for="riichiS">
                                 <li>Riichi:
-                                    <input type="checkbox" id="riichiS" name="riichiS" value='pointsS'
-                                        <% if(detail.riichiS == 'pointsS') { %> checked <% } %>>
+                                    <input type="checkbox" id="riichiS" name="riichiS" value='pointsS' <%
+                                        if(detail.riichiS=='pointsS' ) { %> checked <% } %>>
                                 </li>
                             </label>
                         </div>
@@ -344,9 +382,10 @@
                             <li>Team:
                                 <select id="teamW" name="teamW">
                                     <% for (let t of teaminfo) { %>
-                                    <option value="<%= t.team %>" <% if(t.team == detail.teamW){ %> selected <% } %>>
-                                        <%= t.team %> </option>
-                                    <% } %>
+                                        <option value="<%= t.team %>" <% if(t.team==detail.teamW){ %> selected <% } %>>
+                                                <%= t.team %>
+                                        </option>
+                                        <% } %>
                                 </select>
                             </li>
                         </label>
@@ -354,11 +393,13 @@
                             <li>Name:
                                 <select id="nameW" name="nameW">
                                     <% for (let t of teaminfo) { %>
-                                    <% for(let i = 0; i < t.members.length; i++){ %>
-                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameW){ %> selected
-                                        <% } %>> <%= t.members[i] %> </option>
-                                    <% } %>
-                                    <% } %>
+                                        <% for(let i=0; i < t.members.length; i++){ %>
+                                            <option value="<%= t.members[i] %>" <% if(t.members[i]==detail.nameW){ %>
+                                                selected
+                                                <% } %>> <%= t.members[i] %>
+                                            </option>
+                                            <% } %>
+                                                <% } %>
                                 </select>
                             </li>
                         </label>
@@ -385,14 +426,14 @@
                         <div class="checkbox">
                             <label for="oyaW">
                                 <li>Oya:
-                                    <input type="radio" id="oyaW" name="oya" value="west"
-                                        <% if(detail.oya == 'west') { %> checked <% } %>>
+                                    <input type="radio" id="oyaW" name="oya" value="west" <% if(detail.oya=='west' ) {
+                                        %> checked <% } %>>
                                 </li>
                             </label>
                             <label for="riichiW">
                                 <li>Riichi:
-                                    <input type="checkbox" id="riichiW" name="riichiW" value='pointsW'
-                                        <% if(detail.riichiW == 'pointsW') { %> checked <% } %>>
+                                    <input type="checkbox" id="riichiW" name="riichiW" value='pointsW' <%
+                                        if(detail.riichiW=='pointsW' ) { %> checked <% } %>>
                                 </li>
                             </label>
                         </div>
@@ -404,9 +445,10 @@
                             <li>Team:
                                 <select id="teamN" name="teamN">
                                     <% for (let t of teaminfo) { %>
-                                    <option value="<%= t.team %>" <% if(t.team == detail.teamN){ %> selected <% } %>>
-                                        <%= t.team %> </option>
-                                    <% } %>
+                                        <option value="<%= t.team %>" <% if(t.team==detail.teamN){ %> selected <% } %>>
+                                                <%= t.team %>
+                                        </option>
+                                        <% } %>
                                 </select>
                             </li>
                         </label>
@@ -414,11 +456,13 @@
                             <li>Name:
                                 <select id="nameN" name="nameN">
                                     <% for (let t of teaminfo) { %>
-                                    <% for(let i = 0; i < t.members.length; i++){ %>
-                                    <option value="<%= t.members[i] %>" <% if(t.members[i] == detail.nameN){ %> selected
-                                        <% } %>> <%= t.members[i] %> </option>
-                                    <% } %>
-                                    <% } %>
+                                        <% for(let i=0; i < t.members.length; i++){ %>
+                                            <option value="<%= t.members[i] %>" <% if(t.members[i]==detail.nameN){ %>
+                                                selected
+                                                <% } %>> <%= t.members[i] %>
+                                            </option>
+                                            <% } %>
+                                                <% } %>
                                 </select>
                             </li>
                         </label>
@@ -445,14 +489,14 @@
                         <div class="checkbox">
                             <label for="oyaN">
                                 <li>Oya:
-                                    <input type="radio" id="oyaN" name="oya" value="north"
-                                        <% if(detail.oya == 'north') { %> checked <% } %>>
+                                    <input type="radio" id="oyaN" name="oya" value="north" <% if(detail.oya=='north' ) {
+                                        %> checked <% } %>>
                                 </li>
                             </label>
                             <label for="riichiN">
                                 <li>Riichi:
-                                    <input type="checkbox" id="riichiN" name="riichiN" value='pointsN'
-                                        <% if(detail.riichiN == 'pointsN') { %> checked <% } %>>
+                                    <input type="checkbox" id="riichiN" name="riichiN" value='pointsN' <%
+                                        if(detail.riichiN=='pointsN' ) { %> checked <% } %>>
                                 </li>
                             </label>
                         </div>
@@ -464,7 +508,8 @@
             <button type="submit" form="matchinfo">Update</button>
             <a href="/overlay/<%=detail._id%>" target="_blank" class="button">Open Overlay</a>
             <a href="/matchinfo" class="button" id="databaseButton">Go to Database</a>
-            <div class="id">ID: <%= detail._id %></div>
+            <div class="id">ID: <%= detail._id %>
+            </div>
             <div>*Click anywhere on the overlay to enable Riichi sound*</div>
         </div>
     </form>

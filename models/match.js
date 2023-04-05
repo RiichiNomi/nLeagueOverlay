@@ -51,7 +51,11 @@ const matchSchema = new mongoose.Schema({
         default: 'on'
     },
     playerHidden: [String],
-    matchInfoHidden: [String]
+    matchInfoHidden: [String],
+    mute: {
+        type: [String],
+        default: 'on'
+    }
 });
 
 const Match = mongoose.model('Match', matchSchema);

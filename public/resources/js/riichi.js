@@ -10,7 +10,8 @@ let leftbar = document.querySelector('.leftbar');
 let rightbar = document.querySelector('.rightbar');
 // let riichiSE = document.querySelector('#riichiSE');
 let riichiSE = new Howl({
-    src: ['../resources/se/riichi.mp3']
+    src: ['../resources/se/riichi.mp3'],
+    mute: true
 })
 
 let lockFlag = false;
@@ -101,6 +102,13 @@ socket.on('change', (data) => {
                 console.log(n);
                 if (Object.values(fields)[i] !== '') {
                     animate(n);
+                }
+            } else if (keys[i].includes('mute')) {
+                let status = Object.values(fields)[i];
+                if (status == 'off') {
+                    riichiSE._muted = false;
+                } else {
+                    riichiSE._muted = true;
                 }
             }
         }

@@ -125,6 +125,8 @@ socket.on('change', (data) => {
                 } else {
                     upperContainer.classList.remove('fadeup');
                 }
+            } else if (keys[i].includes('mute')) {
+                return;
             } else {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];

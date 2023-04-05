@@ -196,6 +196,7 @@ app.put('/matchinfo/:id', async (req, res) => {
     let splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
     req.body.formattedWaitsN = formatWaits(splitWaitsN);
     const detail = await Match.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+    // console.log(detail);
     res.redirect(`/matchinfo/${detail._id}/edit`);
 })
 
