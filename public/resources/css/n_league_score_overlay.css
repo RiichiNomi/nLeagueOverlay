@@ -318,7 +318,7 @@ body {
     }
 
     .lowercontainer {
-        margin-top: 45vw;
+        transform: translateY(-495px);
         width: 915px;
     }
 

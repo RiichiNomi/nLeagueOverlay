@@ -238,3 +238,15 @@ body {
     }
 
 }
+
+@media only screen and (orientation:portrait) {
+    .riichiAnimation {
+        width: 915px;
+        height: 13rem;
+    }
+
+    .scene {
+        width: 5rem;
+        height: 5rem;
+    }
+}
