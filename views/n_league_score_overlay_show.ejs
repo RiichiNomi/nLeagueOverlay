@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js""></script>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>N-League</title>
     <link rel=" stylesheet" href="../public/resources/css/n_league_score_overlay.css">
-        <!-- <link rel="icon" href="./resources/img/letter-j-icon.png"> 
+    <link rel="stylesheet" href="../../public/resources/css/riichi.css">
+    <!-- <link rel="icon" href="./resources/img/letter-j-icon.png"> 
         -->
 </head>
 
@@ -54,6 +56,35 @@
                         <%= detail.date %>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="riichiAnimation">
+            <div class="scene">
+                <div class="carousel">
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/destroyers.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/rinshankaibros.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/brooklynSours.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/opieDopes.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/emperorPenguins.webp"
+                            alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/queensMahjongTriad.webp"
+                            alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/teamYakumen.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/spaceFalcon.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="riichiTitle">
+                <div class="leftbar"></div>
+                <div class="riichiText">RIICHI</div>
+                <div class="rightbar"></div>
             </div>
         </div>
         <div class="lowercontainer <% if(detail.playerHidden == 'on'){ %> fadedown <% } %>">
@@ -183,5 +214,6 @@
     </div>
 </body>
 <script src="../public/resources/js/n_league_score_overlay_show.js"></script>
+<script src="../public/resources/js/riichi.js"></script>
 
 </html>

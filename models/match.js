@@ -42,8 +42,14 @@ const matchSchema = new mongoose.Schema({
     waitsN: [String],
     formattedWaitsN: [String],
     oya: String,
-    updateApply: [String],
-    updateRiichi: [String],
+    updateApply: {
+        type: [String],
+        default: 'on'
+    },
+    updateRiichi: {
+        type: [String],
+        default: 'on'
+    },
     playerHidden: [String],
     matchInfoHidden: [String]
 });

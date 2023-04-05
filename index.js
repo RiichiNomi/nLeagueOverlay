@@ -79,6 +79,11 @@ app.get('/', (req, res) => {
     res.redirect('/matchinfo');
 })
 
+app.get('/riichi', async (req, res) => {
+    const teaminfo = await Team.find({});
+    res.render('riichi', { teaminfo });
+})
+
 app.get('/overlay/:id', async (req, res) => {
     const { id } = req.params;
     const detail = await Match.findById(id);
