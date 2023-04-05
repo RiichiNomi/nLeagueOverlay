@@ -14,7 +14,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 22rem;
     font-weight: bold;
     font-size: 3rem;
     color: white;
@@ -100,8 +99,8 @@ body {
 }
 
 .scene {
-    width: 115px;
-    height: 100px;
+    width: 6rem;
+    height: 6rem;
     position: relative;
     perspective: 1000px;
     margin: auto auto 1.8rem;
