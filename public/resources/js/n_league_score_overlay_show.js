@@ -1,76 +1,51 @@
-let namebox = document.querySelectorAll('.playername');
-let waitsText = document.querySelectorAll('.waitsTextE, .waitsTextS, .waitsTextW, .waitsTextN');
-let waitsContainer = document.querySelectorAll('.waitsContainer');
-let doraContainer = document.querySelector('.dora');
-let oyaBorder = document.querySelectorAll('.context');
-let riichiMarker = document.querySelectorAll('.riichiMarker');
+const namebox = document.querySelectorAll('.playername');
+const waitsText = document.querySelectorAll('.waitsTextE, .waitsTextS, .waitsTextW, .waitsTextN');
+const waitsContainer = document.querySelectorAll('.waitsContainer');
+const doraContainer = document.querySelector('.dora');
+const oyaBorder = document.querySelectorAll('.context');
+const riichiMarker = document.querySelectorAll('.riichiMarker');
 const socket = io();
 // document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale=' + (1 / window.devicePixelRatio));
 
-
-let addLetter = (suitNumbers, letter) => {
-    let formatted = []
-    for (n of suitNumbers) {
-        formatted.push(n + letter);
+const formatWaits = (tileString) => {
+    const chars = tileString.split('');
+    const temp = [];
+    const tiles = [];
+    while (chars.length) {
+      const char = chars.shift();
+      if ('1235468790'.includes(char)) {
+        temp.unshift(char);
+      } else if ('mpsz'.includes(char)) {
+        while (temp.length) {
+          tiles.push(temp.pop() + char);
+        }
+      } else {
+        throw new Error('Illegal Character')
+      }
     }
-    return formatted;
+    return tiles;
 }
 
-let formatWaits = (arr) => {
-    let letterPositions = [];
-    if (arr.indexOf('m') !== -1) {
-        letterPositions.push(arr.indexOf('m'));
-    }
-
-    if (arr.indexOf('p') !== -1) {
-        letterPositions.push(arr.indexOf('p'));
-    }
-
-    if (arr.indexOf('s') !== -1) {
-        letterPositions.push(arr.indexOf('s'));
-    }
-
-    if (arr.indexOf('z') !== -1) {
-        letterPositions.push(arr.indexOf('z'));
-    }
-    function compareNumbers(a, b) {
-        return a - b;
-    }
-    letterPositions = letterPositions.sort(compareNumbers);
-    let formattedWaits = [];
-    let firstSuitNumbers = arr.slice(0, letterPositions[0]);
-    let firstLetter = arr[letterPositions[0]];
-    let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
-    formattedWaits.push(...firstSuitWaits);
-    for (let i = 1; i < letterPositions.length; i++) {
-        let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
-        let followingLetter = arr[letterPositions[i]];
-        let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
-        formattedWaits.push(...followingSuitWaits);
-    }
-    return formattedWaits
-}
-
-let fields = {};
+const fields = {};
 
 socket.on('change', (data) => {
     console.log(data);
-    let { updateDescription } = data;
-    let { updatedFields } = updateDescription;
-    let keys = Object.keys(updatedFields);
+    const { updateDescription } = data;
+    const { updatedFields } = updateDescription;
+    const keys = Object.keys(updatedFields);
     fields = updatedFields;
-    for (let i = 0; i < keys.length; i++) {
+    for (const i = 0; i < keys.length; i++) {
         if (keys[i].includes('formatted')) {
             console.log(keys[i]);
         } else if (keys[i].includes('waits')) {
-            let container = document.getElementById(keys[i]);
+            const container = document.getElementById(keys[i]);
             container.innerHTML = '';
-            let updatedValue = Object.values(fields)[i];
-            let splitValue = updatedValue[0].split('').map(s => s.trim());
-            let formattedNewWaits = formatWaits(splitValue);
+            const updatedValue = Object.values(fields)[i];
+            const splitValue = updatedValue[0].split('').map(s => s.trim());
+            const formattedNewWaits = formatWaits(splitValue);
             if (formattedNewWaits[0] !== "") {
-                for (let j = 0; j < formattedNewWaits.length; j++) {
-                    let img = document.createElement('img');
+                for (const j = 0; j < formattedNewWaits.length; j++) {
+                    const img = document.createElement('img');
                     img.src = `../public/resources/img/pai_image/${formattedNewWaits[j]}.png`
                     container.appendChild(img);
                 };
@@ -79,37 +54,37 @@ socket.on('change', (data) => {
             // marqueeWaits(waitsContainer);
         } else if (keys[i].includes('dora')) {
             doraContainer.innerHTML = '';
-            let updatedValue = Object.values(fields)[i];
-            let splitValue = updatedValue[0].split('').map(s => s.trim());
-            let formattedNewDora = formatWaits(splitValue);
+            const updatedValue = Object.values(fields)[i];
+            const splitValue = updatedValue[0].split('').map(s => s.trim());
+            const formattedNewDora = formatWaits(splitValue);
             if (formattedNewDora[0] !== "") {
-                for (let k = 0; k < formattedNewDora.length; k++) {
-                    let img = document.createElement('img');
+                for (const k = 0; k < formattedNewDora.length; k++) {
+                    const img = document.createElement('img');
                     img.src = `../public/resources/img/pai_image/${formattedNewDora[k]}.png`
                     doraContainer.appendChild(img);
                 };
             }
         } else if (keys[i].includes('oya')) {
-            for (let l = 0; l < oyaBorder.length; l++) {
+            for (const l = 0; l < oyaBorder.length; l++) {
                 oyaBorder[l].classList.remove('oya');
             }
-            let newOya = Object.values(fields)[i];
-            let newOyaBorder = document.getElementById(newOya);
+            const newOya = Object.values(fields)[i];
+            const newOyaBorder = document.getElementById(newOya);
             newOyaBorder.classList.add('oya');
         } else if (keys[i].includes('riichi')) {
-            let container = document.getElementById(keys[i]);
+            const container = document.getElementById(keys[i]);
             if (Object.values(fields)[i] == "") {
                 container.classList.remove('riichi');
             } else {
                 container.classList.add('riichi');
             }
         } else if (keys[i].includes('team')) {
-            let container = document.getElementById(keys[i]);
-            let newTeam = Object.values(fields)[i];
+            const container = document.getElementById(keys[i]);
+            const newTeam = Object.values(fields)[i];
             container.src = `../public/resources/img/team_logo/${newTeam}.webp`;
         } else {
-            let container = document.getElementById(keys[i]);
-            let updatedValue = Object.values(fields)[i];
+            const container = document.getElementById(keys[i]);
+            const updatedValue = Object.values(fields)[i];
             container.innerHTML = updatedValue;
         }
     }
@@ -128,9 +103,9 @@ mutationObserver.observe(waitsContainer[3], { childList: true });
 
 
 changeFontSize = (arr) => {
-    for (let x of arr) {
+    for (const x of arr) {
         if (x.offsetWidth > x.parentElement.offsetWidth) {
-            let compSize = getComputedStyle(x).fontSize;
+            const compSize = getComputedStyle(x).fontSize;
             x.style.fontSize = parseFloat(compSize) * 0.85 + 'px';
         }
     }
@@ -138,7 +113,7 @@ changeFontSize = (arr) => {
 
 
 marqueeWaits = (arr) => {
-    for (let x of arr) {
+    for (const x of arr) {
         if (x.offsetWidth > x.parentElement.offsetWidth) {
             x.classList.add('marquee')
         } else {
@@ -148,7 +123,7 @@ marqueeWaits = (arr) => {
 }
 
 toggleWaitsText = (arr) => {
-    for (let x of arr) {
+    for (const x of arr) {
         if (x.nextElementSibling.children[0].childElementCount > 0) {
             x.style.opacity = 1;
         } else {
@@ -158,7 +133,7 @@ toggleWaitsText = (arr) => {
 }
 
 
-let start = () => {
+const start = () => {
     changeFontSize(namebox);
     marqueeWaits(waitsContainer);
     toggleWaitsText(waitsText);
