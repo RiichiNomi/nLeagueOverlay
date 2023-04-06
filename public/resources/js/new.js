@@ -1,15 +1,15 @@
-let timeStamp = document.querySelector('#timestamp');
-let dateText = document.querySelector('#date');
+const timeStamp = document.querySelector('#timestamp');
+const dateText = document.querySelector('#date');
 
-let teamE = document.querySelector('#teamE');
-let teamS = document.querySelector('#teamS');
-let teamW = document.querySelector('#teamW');
-let teamN = document.querySelector('#teamN');
+const teamE = document.querySelector('#teamE');
+const teamS = document.querySelector('#teamS');
+const teamW = document.querySelector('#teamW');
+const teamN = document.querySelector('#teamN');
 
-let nameE = document.querySelector('#nameE');
-let nameS = document.querySelector('#nameS');
-let nameW = document.querySelector('#nameW');
-let nameN = document.querySelector('#nameN');
+const nameE = document.querySelector('#nameE');
+const nameS = document.querySelector('#nameS');
+const nameW = document.querySelector('#nameW');
+const nameN = document.querySelector('#nameN');
 
 $(teamE).on('change', function () {
   for (let i = 1; i < nameE.options.length; i++) {
@@ -51,22 +51,22 @@ $(teamN).on('change', function () {
   }
 })
 
-let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
-let tPointsText = document.querySelector('#totalPoints');
+const points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
+const tPointsText = document.querySelector('#totalPoints');
 
-let twentyFiveButton = document.querySelector('#twentyFive');
-let thirtyButton = document.querySelector('#thirty');
+const twentyFiveButton = document.querySelector('#twentyFive');
+const thirtyButton = document.querySelector('#thirty');
 
-let setTwentyFive = () => {
-  let arr = Array.from(points);
+const setTwentyFive = () => {
+  const arr = Array.from(points);
   for (let p of arr) {
     p.value = '25,000';
   }
   updatePoints(points);
 }
 
-let setThirty = () => {
-  let arr = Array.from(points);
+const setThirty = () => {
+  const arr = Array.from(points);
   for (let p of arr) {
     p.value = '30,000';
   }
@@ -77,8 +77,8 @@ twentyFiveButton.addEventListener('click', setTwentyFive);
 thirtyButton.addEventListener('click', setThirty);
 
 
-let updatePoints = (arr) => {
-  let totalPoints = 0;
+const updatePoints = (arr) => {
+  const totalPoints = 0;
   for (p of arr) {
     totalPoints += parseInt(p.value.replace(',', ''));
   }
@@ -86,21 +86,21 @@ let updatePoints = (arr) => {
 }
 updatePoints(points);
 
-let today = new Date();
+const today = new Date();
 
-let getFormattedDate = (date) => {
-  let year = date.getYear() - 100;
+const getFormattedDate = (date) => {
+  const year = date.getYear() - 100;
 
-  let month = (1 + date.getMonth()).toString();
+  const month = (1 + date.getMonth()).toString();
   month = month.length > 1 ? month : '0' + month;
 
-  let day = date.getDate().toString();
+  const day = date.getDate().toString();
   day = day.length > 1 ? day : '0' + day;
 
   return month + '.' + day + '.' + year;
 }
 
-let formattedDate = getFormattedDate(today);
+const formattedDate = getFormattedDate(today);
 
 const options = {
   weekday: "short",
@@ -124,7 +124,7 @@ timeStamp.setAttribute("value", mediumTime.format(today));
 dateText.setAttribute("value", formattedDate);
 
 function updateTextView(_obj) {
-  let num = getNumber(_obj.val());
+  const num = getNumber(_obj.val());
   if (num == 0) {
     _obj.val('');
   } else {
@@ -133,8 +133,8 @@ function updateTextView(_obj) {
 }
 
 function getNumber(_str) {
-  let arr = _str.split('');
-  let out = new Array();
+  const arr = _str.split('');
+  const out = new Array();
   for (let cnt = 0; cnt < arr.length; cnt++) {
     if (isNaN(arr[cnt]) == false) {
       out.push(arr[cnt]);

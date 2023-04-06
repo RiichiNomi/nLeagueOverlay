@@ -1,37 +1,37 @@
-let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
-let riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN');
-let waits = document.querySelectorAll('#waitsE, #waitsS, #waitsW, #waitsN');
-let playerName = document.querySelectorAll('#nameE, #nameS, #nameW, #nameN');
-let kyotaku = document.querySelector('#kyotaku');
-let honba = document.querySelector('#honba');
-let honbaPoints = document.querySelector('#honbaPoints');
-let dora = document.querySelector('#dora');
-let ryukyokuButton = document.querySelector('#ryukyoku')
-let clearButton = document.querySelector('#clear');
-let tPointsText = document.querySelector('#totalPoints');
-let oyaMarker = document.querySelectorAll('#oyaE, #oyaS, #oyaW, #oyaN');
-let wind = document.querySelector('#wind');
-let round = document.querySelectorAll('#round');
-let updateApply = document.querySelector('#updateApply');
-let form = document.querySelector('#matchinfo');
+const points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
+const riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN');
+const waits = document.querySelectorAll('#waitsE, #waitsS, #waitsW, #waitsN');
+const playerName = document.querySelectorAll('#nameE, #nameS, #nameW, #nameN');
+const kyotaku = document.querySelector('#kyotaku');
+const honba = document.querySelector('#honba');
+const honbaPoints = document.querySelector('#honbaPoints');
+const dora = document.querySelector('#dora');
+const ryukyokuButton = document.querySelector('#ryukyoku')
+const clearButton = document.querySelector('#clear');
+const tPointsText = document.querySelector('#totalPoints');
+const oyaMarker = document.querySelectorAll('#oyaE, #oyaS, #oyaW, #oyaN');
+const wind = document.querySelector('#wind');
+const round = document.querySelectorAll('#round');
+const updateApply = document.querySelector('#updateApply');
+const form = document.querySelector('#matchinfo');
 
-let agari = document.querySelector('#agari');
-let houju = document.querySelector('#houju');
-let han = document.querySelector('#han');
-let fu = document.querySelector('#fu');
-let calc = document.querySelector('#calc');
-let applyButton = document.querySelector('#apply');
-let shortcut = document.querySelector('#shortcut');
+const agari = document.querySelector('#agari');
+const houju = document.querySelector('#houju');
+const han = document.querySelector('#han');
+const fu = document.querySelector('#fu');
+const calc = document.querySelector('#calc');
+const applyButton = document.querySelector('#apply');
+const shortcut = document.querySelector('#shortcut');
 
-let teamE = document.querySelector('#teamE');
-let teamS = document.querySelector('#teamS');
-let teamW = document.querySelector('#teamW');
-let teamN = document.querySelector('#teamN');
+const teamE = document.querySelector('#teamE');
+const teamS = document.querySelector('#teamS');
+const teamW = document.querySelector('#teamW');
+const teamN = document.querySelector('#teamN');
 
-let nameE = document.querySelector('#nameE');
-let nameS = document.querySelector('#nameS');
-let nameW = document.querySelector('#nameW');
-let nameN = document.querySelector('#nameN');
+const nameE = document.querySelector('#nameE');
+const nameS = document.querySelector('#nameS');
+const nameW = document.querySelector('#nameW');
+const nameN = document.querySelector('#nameN');
 
 $(teamE).on('change', function () {
     for (let i = 0; i < nameE.options.length; i++) {
@@ -73,7 +73,7 @@ $(teamN).on('change', function () {
     }
 })
 
-let calcOyaPoint = () => {
+const calcOyaPoint = () => {
     if (houju.value == "Tsumo") {
         if (han.value == 1) {
             switch (parseInt(fu.value)) {
@@ -444,7 +444,7 @@ let calcOyaPoint = () => {
 }
 
 
-let calcKoPoint = () => {
+const calcKoPoint = () => {
     if (houju.value == "Tsumo") {
         if (han.value == 1) {
             switch (parseInt(fu.value)) {
@@ -814,11 +814,11 @@ let calcKoPoint = () => {
     }
 }
 
-// let updateCalc = () => {
+// const updateCalc = () => {
 //     calc.innerHTML = calcPoint();
 // }
 
-let updateApplyActivate = () => {
+const updateApplyActivate = () => {
     if (updateApply.checked) {
         document.getElementById('updateApplyHidden').disabled = true;
         if (document.getElementById('hidePlayerInfo').checked) {
@@ -831,7 +831,7 @@ let updateApplyActivate = () => {
     }
 }
 
-let updateRiichiActivate = () => {
+const updateRiichiActivate = () => {
     if (updateRiichi.checked) {
         document.getElementById('updateRiichiHidden').disabled = true;
         if (document.getElementById('hidePlayerInfo').checked) {
@@ -844,7 +844,7 @@ let updateRiichiActivate = () => {
     }
 }
 
-let oyaChecker = () => {
+const oyaChecker = () => {
     for (let n of playerName) {
         if (agari.value == n.value) {
             return n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked;
@@ -852,29 +852,29 @@ let oyaChecker = () => {
     }
 }
 
-let nameErrorShown = false;
-let pointsErrorShown = false;
-let toolContainer = document.querySelector('.toolContainer');
-let errorDiv = document.createElement('div');
+const nameErrorShown = false;
+const pointsErrorShown = false;
+const toolContainer = document.querySelector('.toolContainer');
+const errorDiv = document.createElement('div');
 errorDiv.classList.add('errorMessage');
 
-let applyPoints = () => {
+const applyPoints = () => {
     if (agari.value == '') {
         if (!nameErrorShown) {
-            let errorMessage = "Name not selected";
+            const errorMessage = "Name not selected";
             errorDiv.innerHTML = errorMessage;
             toolContainer.append(errorDiv);
             nameErrorShown = true;
         }
     } else if (calc.innerHTML == 'n/a') {
         if (!pointsErrorShown) {
-            let pointsErrorMessage = "Points invalid";
+            const pointsErrorMessage = "Points invalid";
             errorDiv.innerHTML = pointsErrorMessage;
             toolContainer.append(errorDiv);
             pointsErrorShown = true;
         }
     } else {
-        let arr = Array.from(riichi);
+        const arr = Array.from(riichi);
         for (let r of arr) {
             if (r.checked) {
                 r.checked = false;
@@ -885,29 +885,29 @@ let applyPoints = () => {
         }
         dora.value = "";
         for (let n of playerName) {
-            let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
+            const target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
             if (houju.value == "Tsumo") {
                 if (oyaChecker()) {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        const value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        const value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                         target.value = value.toLocaleString();
                     }
                 } else {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        const value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        const value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                         target.value = value.toLocaleString();
                     } else {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        const value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                         target.value = value.toLocaleString();
                     }
                 }
@@ -916,20 +916,20 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        const value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        const value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
                         target.value = value.toLocaleString();
                     }
                 } else {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        const value = parseInt(target.value.replace(',', '')) + calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        const value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
                         target.value = value.toLocaleString();
                     }
                 }
@@ -950,8 +950,8 @@ let applyPoints = () => {
                         } else if (wind.value == 'SOUTH' && round[3].checked) {
                             break;
                         } else {
-                            let arr = Array.from(round);
-                            let current = arr.indexOf(arr.find(x => x.checked == true));
+                            const arr = Array.from(round);
+                            const current = arr.indexOf(arr.find(x => x.checked == true));
                             arr[current + 1].checked = true;
                         }
                         break;
@@ -963,8 +963,8 @@ let applyPoints = () => {
                         } else if (wind.value == 'SOUTH' && round[3].checked) {
                             break;
                         } else {
-                            let arr = Array.from(round);
-                            let current = arr.indexOf(arr.find(x => x.checked == true));
+                            const arr = Array.from(round);
+                            const current = arr.indexOf(arr.find(x => x.checked == true));
                             arr[current + 1].checked = true;
                         }
                         break;
@@ -984,20 +984,20 @@ let applyPoints = () => {
 
 applyButton.addEventListener('click', applyPoints);
 
-let showPointMove = () => {
+const showPointMove = () => {
     for (let n of playerName) {
-        let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
+        const target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
         if (houju.value == "Tsumo") {
             if (oyaChecker()) {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    const value = Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
                         };
-                        let pointsEarned = document.createElement('div');
+                        const pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
                         pointsEarned.innerHTML = '+' + value.toLocaleString();
@@ -1005,12 +1005,12 @@ let showPointMove = () => {
                         target.nextSibling.innerHTML = '+' + value.toLocaleString();
                     }
                 } else {
-                    let value = Math.ceil(calcOyaPoint() / 3 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    const value = Math.ceil(calcOyaPoint() / 3 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
                         };
-                        let pointsLost = document.createElement('div');
+                        const pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
                         pointsLost.innerHTML = '-' + value.toLocaleString();
@@ -1022,12 +1022,12 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    const value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
                         };
-                        let pointsEarned = document.createElement('div');
+                        const pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
                         pointsEarned.innerHTML = '+' + value.toLocaleString();
@@ -1035,12 +1035,12 @@ let showPointMove = () => {
                         target.nextSibling.innerHTML = '+' + value.toLocaleString();
                     }
                 } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
-                    let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    const value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
                         };
-                        let pointsLost = document.createElement('div');
+                        const pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
                         pointsLost.innerHTML = '-' + value.toLocaleString();
@@ -1048,12 +1048,12 @@ let showPointMove = () => {
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
-                    let value = Math.ceil(calcKoPoint() / 4 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    const value = Math.ceil(calcKoPoint() / 4 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
                         };
-                        let pointsLost = document.createElement('div');
+                        const pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
                         pointsLost.innerHTML = '-' + value.toLocaleString();
@@ -1067,12 +1067,12 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    const value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
                         };
-                        let pointsEarned = document.createElement('div');
+                        const pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
                         pointsEarned.innerHTML = '+' + value.toLocaleString();
@@ -1080,12 +1080,12 @@ let showPointMove = () => {
                         target.nextSibling.innerHTML = '+' + value.toLocaleString();
                     }
                 } else if (houju.value == n.value) {
-                    let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    const value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
                         };
-                        let pointsLost = document.createElement('div');
+                        const pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
                         pointsLost.innerHTML = '-' + value.toLocaleString();
@@ -1103,12 +1103,12 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    const value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
                         };
-                        let pointsEarned = document.createElement('div');
+                        const pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
                         pointsEarned.innerHTML = '+' + value.toLocaleString();
@@ -1116,12 +1116,12 @@ let showPointMove = () => {
                         target.nextSibling.innerHTML = '+' + value.toLocaleString();
                     }
                 } else if (houju.value == n.value) {
-                    let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    const value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
                         };
-                        let pointsLost = document.createElement('div');
+                        const pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
                         pointsLost.innerHTML = '-' + value.toLocaleString();
@@ -1142,8 +1142,8 @@ let showPointMove = () => {
 
 
 
-let updatePoints = (arr) => {
-    let totalPoints = 0;
+const updatePoints = (arr) => {
+    const totalPoints = 0;
     for (p of arr) {
         totalPoints += parseInt(p.value.replace(',', ''));
     }
@@ -1153,13 +1153,13 @@ let updatePoints = (arr) => {
 updatePoints(points);
 
 function updateTextView(_obj) {
-    let num = getNumber(_obj.val());
+    const num = getNumber(_obj.val());
     $(_obj.val(num.toLocaleString()));
 }
 
 function getNumber(_str) {
-    let arr = _str.replace(',', '').split('');
-    let out = new Array();
+    const arr = _str.replace(',', '').split('');
+    const out = new Array();
     for (let i = 0; i < arr.length; i++) {
         out.push(arr[i]);
     }
@@ -1169,58 +1169,58 @@ function getNumber(_str) {
 
 
 
-let incrementOne = (e) => {
+const incrementOne = (e) => {
     console.log(e);
-    let target = e.parentElement.parentElement.firstElementChild;
-    let value = parseInt(target.value.replace(',', ''));
+    const target = e.parentElement.parentElement.firstElementChild;
+    const value = parseInt(target.value.replace(',', ''));
     value += 100;
     target.value = value.toLocaleString();
     updatePoints(points);
 }
 
-let decrementOne = (e) => {
-    let target = e.parentElement.parentElement.firstElementChild;
-    let value = parseInt(target.value.replace(',', ''));
+const decrementOne = (e) => {
+    const target = e.parentElement.parentElement.firstElementChild;
+    const value = parseInt(target.value.replace(',', ''));
     value -= 100;
     target.value = value.toLocaleString();
     updatePoints(points);
 }
-let incrementOneK = (e) => {
+const incrementOneK = (e) => {
     console.log(e);
-    let target = e.parentElement.parentElement.firstElementChild;
-    let value = parseInt(target.value.replace(',', ''));
+    const target = e.parentElement.parentElement.firstElementChild;
+    const value = parseInt(target.value.replace(',', ''));
     value += 1000;
     target.value = value.toLocaleString();
     updatePoints(points);
 }
 
-let decrementOneK = (e) => {
-    let target = e.parentElement.parentElement.firstElementChild;
-    let value = parseInt(target.value.replace(',', ''));
+const decrementOneK = (e) => {
+    const target = e.parentElement.parentElement.firstElementChild;
+    const value = parseInt(target.value.replace(',', ''));
     value -= 1000;
     target.value = value.toLocaleString();
     updatePoints(points);
 }
-let incrementTenK = (e) => {
+const incrementTenK = (e) => {
     console.log(e);
-    let target = e.parentElement.parentElement.firstElementChild;
-    let value = parseInt(target.value.replace(',', ''));
+    const target = e.parentElement.parentElement.firstElementChild;
+    const value = parseInt(target.value.replace(',', ''));
     value += 10000;
     target.value = value.toLocaleString();
     updatePoints(points);
 }
 
-let decrementTenK = (e) => {
-    let target = e.parentElement.parentElement.firstElementChild;
-    let value = parseInt(target.value.replace(',', ''));
+const decrementTenK = (e) => {
+    const target = e.parentElement.parentElement.firstElementChild;
+    const value = parseInt(target.value.replace(',', ''));
     value -= 10000;
     target.value = value.toLocaleString();
     updatePoints(points);
 }
 
-let ryukyoku = () => {
-    let count = 0
-    let arr = Array.from(riichi);
+const ryukyoku = () => {
+    const count = 0
+    const arr = Array.from(riichi);
     console.log(arr);
     for (let r of arr) {
         if (r.checked) {
@@ -1240,13 +1240,13 @@ let ryukyoku = () => {
 
 ryukyokuButton.addEventListener('click', ryukyoku);
 
-let clear = () => {
-    let arr = Array.from(riichi);
+const clear = () => {
+    const arr = Array.from(riichi);
     for (let r of arr) {
         if (r.checked) {
             r.checked = false;
-            let target = r.parentElement.parentElement.parentElement.parentElement.children[2].children[0].children[0];
-            let value = parseInt(target.value.replace(',', '')) + 1000;
+            const target = r.parentElement.parentElement.parentElement.parentElement.children[2].children[0].children[0];
+            const value = parseInt(target.value.replace(',', '')) + 1000;
             target.value = value.toLocaleString();
         }
     }
@@ -1268,8 +1268,8 @@ $(document).ready(function () {
     });
     $('.lowerContainer input[type=checkbox]').on('change', function () {
         if (this.checked == true) {
-            let target = document.getElementById($(this)[0].value);
-            let value = parseInt(target.value.replace(',', ''));
+            const target = document.getElementById($(this)[0].value);
+            const value = parseInt(target.value.replace(',', ''));
             kyotaku.valueAsNumber++
             value -= 1000;
             target.value = value.toLocaleString();
@@ -1283,8 +1283,8 @@ $(document).ready(function () {
         }
         updateRiichiActivate();
         // else {
-        //     let target = document.getElementById($(this)[0].value);
-        //     let value = parseInt(target.value.replace(',', ''));
+        //     const target = document.getElementById($(this)[0].value);
+        //     const value = parseInt(target.value.replace(',', ''));
         //     value += 1000;
         //     target.value = value.toLocaleString();
         //     updatePoints(points);
