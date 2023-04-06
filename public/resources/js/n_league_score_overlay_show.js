@@ -7,48 +7,23 @@ let riichiMarker = document.querySelectorAll('.riichiMarker');
 const socket = io();
 // document.querySelector("meta[name=viewport]").setAttribute('content', 'width=device-width, initial-scale=' + (1 / window.devicePixelRatio));
 
-
-let addLetter = (suitNumbers, letter) => {
-    let formatted = []
-    for (n of suitNumbers) {
-        formatted.push(n + letter);
+const formatWaits = (tileString) => {
+    let chars = tileString.split('');
+    let temp = [];
+    let tiles = [];
+    while (chars.length) {
+        let char = chars.shift();
+        if ('1235468790'.includes(char)) {
+            temp.unshift(char);
+        } else if ('mpsz'.includes(char)) {
+            while (temp.length) {
+                tiles.push(temp.pop() + char);
+            }
+        } else {
+            char = '';
+        }
     }
-    return formatted;
-}
-
-let formatWaits = (arr) => {
-    let letterPositions = [];
-    if (arr.indexOf('m') !== -1) {
-        letterPositions.push(arr.indexOf('m'));
-    }
-
-    if (arr.indexOf('p') !== -1) {
-        letterPositions.push(arr.indexOf('p'));
-    }
-
-    if (arr.indexOf('s') !== -1) {
-        letterPositions.push(arr.indexOf('s'));
-    }
-
-    if (arr.indexOf('z') !== -1) {
-        letterPositions.push(arr.indexOf('z'));
-    }
-    function compareNumbers(a, b) {
-        return a - b;
-    }
-    letterPositions = letterPositions.sort(compareNumbers);
-    let formattedWaits = [];
-    let firstSuitNumbers = arr.slice(0, letterPositions[0]);
-    let firstLetter = arr[letterPositions[0]];
-    let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
-    formattedWaits.push(...firstSuitWaits);
-    for (let i = 1; i < letterPositions.length; i++) {
-        let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
-        let followingLetter = arr[letterPositions[i]];
-        let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
-        formattedWaits.push(...followingSuitWaits);
-    }
-    return formattedWaits
+    return tiles;
 }
 
 let fields = {};
@@ -68,7 +43,7 @@ socket.on('change', (data) => {
                 let container = document.getElementById(keys[i]);
                 container.innerHTML = '';
                 let updatedValue = Object.values(fields)[i];
-                let splitValue = updatedValue[0].split('').map(s => s.trim());
+                let splitValue = updatedValue[0];
                 let formattedNewWaits = formatWaits(splitValue);
                 if (formattedNewWaits[0] !== "") {
                     for (let j = 0; j < formattedNewWaits.length; j++) {
@@ -82,7 +57,7 @@ socket.on('change', (data) => {
             } else if (keys[i].includes('dora')) {
                 doraContainer.innerHTML = '';
                 let updatedValue = Object.values(fields)[i];
-                let splitValue = updatedValue[0].split('').map(s => s.trim());
+                let splitValue = updatedValue[0];
                 let formattedNewDora = formatWaits(splitValue);
                 if (formattedNewDora[0] !== "") {
                     for (let k = 0; k < formattedNewDora.length; k++) {

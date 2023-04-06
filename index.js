@@ -142,61 +142,90 @@ app.put('/matchinfo/:id', async (req, res) => {
         req.body.riichiN = ""
     }
 
-    let addLetter = (suitNumbers, letter) => {
-        let formatted = []
-        for (n of suitNumbers) {
-            formatted.push(n + letter);
+    const formatWaits = (tileString) => {
+        let chars = tileString.split('');
+        let temp = [];
+        let tiles = [];
+        while (chars.length) {
+            let char = chars.shift();
+            if ('1235468790'.includes(char)) {
+                temp.unshift(char);
+            } else if ('mpsz'.includes(char)) {
+                while (temp.length) {
+                    tiles.push(temp.pop() + char);
+                }
+            } else {
+                char = '';
+            }
         }
-        return formatted;
+        return tiles;
     }
 
-    let formatWaits = (arr) => {
-        let letterPositions = [];
-        if (arr.indexOf('m') !== -1) {
-            letterPositions.push(arr.indexOf('m'));
-        }
+    // let addLetter = (suitNumbers, letter) => {
+    //     let formatted = []
+    //     for (n of suitNumbers) {
+    //         formatted.push(n + letter);
+    //     }
+    //     return formatted;
+    // }
 
-        if (arr.indexOf('p') !== -1) {
-            letterPositions.push(arr.indexOf('p'));
-        }
+    // let formatWaits = (arr) => {
+    //     let letterPositions = [];
+    //     if (arr.indexOf('m') !== -1) {
+    //         letterPositions.push(arr.indexOf('m'));
+    //     }
 
-        if (arr.indexOf('s') !== -1) {
-            letterPositions.push(arr.indexOf('s'));
-        }
+    //     if (arr.indexOf('p') !== -1) {
+    //         letterPositions.push(arr.indexOf('p'));
+    //     }
 
-        if (arr.indexOf('z') !== -1) {
-            letterPositions.push(arr.indexOf('z'));
-        }
-        function compareNumbers(a, b) {
-            return a - b;
-        }
-        letterPositions = letterPositions.sort(compareNumbers);
-        let formattedWaits = [];
-        let firstSuitNumbers = arr.slice(0, letterPositions[0]);
-        let firstLetter = arr[letterPositions[0]];
-        let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
-        formattedWaits.push(...firstSuitWaits);
-        for (let i = 1; i < letterPositions.length; i++) {
-            let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
-            let followingLetter = arr[letterPositions[i]];
-            let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
-            formattedWaits.push(...followingSuitWaits);
-        }
-        return formattedWaits
+    //     if (arr.indexOf('s') !== -1) {
+    //         letterPositions.push(arr.indexOf('s'));
+    //     }
 
-    }
-    let splitDora = req.body.dora.split('').map(s => s.trim());
+    //     if (arr.indexOf('z') !== -1) {
+    //         letterPositions.push(arr.indexOf('z'));
+    //     }
+    //     function compareNumbers(a, b) {
+    //         return a - b;
+    //     }
+    //     letterPositions = letterPositions.sort(compareNumbers);
+    //     let formattedWaits = [];
+    //     let firstSuitNumbers = arr.slice(0, letterPositions[0]);
+    //     let firstLetter = arr[letterPositions[0]];
+    //     let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
+    //     formattedWaits.push(...firstSuitWaits);
+    //     for (let i = 1; i < letterPositions.length; i++) {
+    //         let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
+    //         let followingLetter = arr[letterPositions[i]];
+    //         let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
+    //         formattedWaits.push(...followingSuitWaits);
+    //     }
+    //     return formattedWaits
+
+    // }
+    // let splitDora = req.body.dora.split('').map(s => s.trim());
+    // req.body.formattedDora = formatWaits(splitDora);
+    // let splitWaitsE = req.body.waitsE.split('').map(s => s.trim());
+    // req.body.formattedWaitsE = formatWaits(splitWaitsE);
+    // let splitWaitsS = req.body.waitsS.split('').map(s => s.trim());
+    // req.body.formattedWaitsS = formatWaits(splitWaitsS);
+    // let splitWaitsW = req.body.waitsW.split('').map(s => s.trim());
+    // req.body.formattedWaitsW = formatWaits(splitWaitsW);
+    // let splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
+    // req.body.formattedWaitsN = formatWaits(splitWaitsN);
+    let splitDora = req.body.dora
     req.body.formattedDora = formatWaits(splitDora);
-    let splitWaitsE = req.body.waitsE.split('').map(s => s.trim());
+    let splitWaitsE = req.body.waitsE
     req.body.formattedWaitsE = formatWaits(splitWaitsE);
-    let splitWaitsS = req.body.waitsS.split('').map(s => s.trim());
+    let splitWaitsS = req.body.waitsS
     req.body.formattedWaitsS = formatWaits(splitWaitsS);
-    let splitWaitsW = req.body.waitsW.split('').map(s => s.trim());
+    let splitWaitsW = req.body.waitsW
     req.body.formattedWaitsW = formatWaits(splitWaitsW);
-    let splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
+    let splitWaitsN = req.body.waitsN
     req.body.formattedWaitsN = formatWaits(splitWaitsN);
     const detail = await Match.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-    // console.log(detail);
+    // console.log(req.body);
     res.redirect(`/matchinfo/${detail._id}/edit`);
 })
 
