@@ -51,7 +51,7 @@ const io = new Server(server);
 //     }
 //   });
 
-// const matchinfo = [
+// let matchinfo = [
 //     {
 //         id: uuid(),
 //         timestamp: 'March 9th, 2023 - 7:00PM (Sample1)',
@@ -142,16 +142,16 @@ app.put('/matchinfo/:id', async (req, res) => {
         req.body.riichiN = ""
     }
 
-    const addLetter = (suitNumbers, letter) => {
-        const formatted = []
+    let addLetter = (suitNumbers, letter) => {
+        let formatted = []
         for (n of suitNumbers) {
             formatted.push(n + letter);
         }
         return formatted;
     }
 
-    const formatWaits = (arr) => {
-        const letterPositions = [];
+    let formatWaits = (arr) => {
+        let letterPositions = [];
         if (arr.indexOf('m') !== -1) {
             letterPositions.push(arr.indexOf('m'));
         }
@@ -171,29 +171,29 @@ app.put('/matchinfo/:id', async (req, res) => {
             return a - b;
         }
         letterPositions = letterPositions.sort(compareNumbers);
-        const formattedWaits = [];
-        const firstSuitNumbers = arr.slice(0, letterPositions[0]);
-        const firstLetter = arr[letterPositions[0]];
-        const firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
+        let formattedWaits = [];
+        let firstSuitNumbers = arr.slice(0, letterPositions[0]);
+        let firstLetter = arr[letterPositions[0]];
+        let firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
         formattedWaits.push(...firstSuitWaits);
         for (let i = 1; i < letterPositions.length; i++) {
-            const followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
-            const followingLetter = arr[letterPositions[i]];
-            const followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
+            let followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
+            let followingLetter = arr[letterPositions[i]];
+            let followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
             formattedWaits.push(...followingSuitWaits);
         }
         return formattedWaits
 
     }
-    const splitDora = req.body.dora.split('').map(s => s.trim());
+    let splitDora = req.body.dora.split('').map(s => s.trim());
     req.body.formattedDora = formatWaits(splitDora);
-    const splitWaitsE = req.body.waitsE.split('').map(s => s.trim());
+    let splitWaitsE = req.body.waitsE.split('').map(s => s.trim());
     req.body.formattedWaitsE = formatWaits(splitWaitsE);
-    const splitWaitsS = req.body.waitsS.split('').map(s => s.trim());
+    let splitWaitsS = req.body.waitsS.split('').map(s => s.trim());
     req.body.formattedWaitsS = formatWaits(splitWaitsS);
-    const splitWaitsW = req.body.waitsW.split('').map(s => s.trim());
+    let splitWaitsW = req.body.waitsW.split('').map(s => s.trim());
     req.body.formattedWaitsW = formatWaits(splitWaitsW);
-    const splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
+    let splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
     req.body.formattedWaitsN = formatWaits(splitWaitsN);
     const detail = await Match.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
     // console.log(detail);
@@ -202,8 +202,8 @@ app.put('/matchinfo/:id', async (req, res) => {
 
 // app.patch('/matchinfo/:id', (req, res) => {
 //     const { id } = req.params;
-//     const newMatchInfo = req.body;
-//     const detail = matchinfo.find(e => e.id === id);
+//     let newMatchInfo = req.body;
+//     let detail = matchinfo.find(e => e.id === id);
 //     detail = newMatchInfo;
 //     res.redirect('/matchinfo');
 // })
