@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js""></script>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+        integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>N-League</title>
     <link rel=" stylesheet" href="../public/resources/css/n_league_score_overlay.css">
-        <!-- <link rel="icon" href="./resources/img/letter-j-icon.png"> 
+    <link rel="stylesheet" href="../../public/resources/css/riichi.css">
+    <!-- <link rel="icon" href="./resources/img/letter-j-icon.png"> 
         -->
 </head>
 
@@ -16,7 +20,7 @@
     <div class="maincontainer">
         <div><img class="reference" src="../public/resources/img/reference.png" alt=""></div>
         <div><img class="reference2" src="../public/resources/img/reference2.png" alt=""></div>
-        <div class="uppercontainer">
+        <div class="uppercontainer <% if(detail.matchInfoHidden == 'on'){ %> fadeup <% } %>">
             <div class="matchinfo">
                 <div class="winds">
                     <div id="wind"><%=detail.wind%></div>
@@ -56,15 +60,46 @@
                 </div>
             </div>
         </div>
-        <div class="lowercontainer">
+        <div class="riichiAnimation">
+            <div class="scene">
+                <div class="carousel">
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/destroyers.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/rinshankaibros.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/brooklynSours.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/opieDopes.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/emperorPenguins.webp"
+                            alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/queensMahjongTriad.webp"
+                            alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/teamYakumen.webp" alt="">
+                    </div>
+                    <div class="carousel__cell"><img src="../public/resources/img/team_logo/peregrineFalkkans.webp"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="riichiTitle">
+                <div class="leftbar"></div>
+                <div class="riichiText">RIICHI</div>
+                <div class="rightbar"></div>
+            </div>
+        </div>
+        <div class="lowercontainer <% if(detail.playerHidden == 'on'){ %> fadedown <% } %>">
             <div class="playerinfo">
                 <div class="card" id="player1">
                     <div id="riichiE" class="riichiMarker <% if(detail.riichiE == 'pointsE') { %> riichi <% } %>">
-                            <img src="../public/resources/img/577959-1k.png" alt="">
+                        <img src="../public/resources/img/577959-1k.png" alt="">
                     </div>
                     <div id="east" class="context oyaBorder <% if(detail.oya == 'east') { %> oya <% } %>">
                         <div class="pic">
-                            <img id="teamE" class="playerpic" src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
+                            <img id="teamE" class="playerpic"
+                                src="../public/resources/img/team_logo/<%= teamE.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -89,10 +124,11 @@
                 <div class="card" id="player2">
                     <div id="riichiS" class="riichiMarker <% if(detail.riichiS == 'pointsS') { %> riichi <% } %>">
                         <img src="../public/resources/img/577959-1k.png" alt="">
-                </div>
-                    <div id="south" class="context pyaBorder <% if(detail.oya == 'south') { %> oya <% } %>">
+                    </div>
+                    <div id="south" class="context oyaBorder <% if(detail.oya == 'south') { %> oya <% } %>">
                         <div class="pic">
-                            <img id="teamS" class="playerpic" src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
+                            <img id="teamS" class="playerpic"
+                                src="../public/resources/img/team_logo/<%= teamS.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -118,10 +154,11 @@
                 <div class="card" id="player3">
                     <div id="riichiW" class="riichiMarker <% if(detail.riichiW == 'pointsW') { %> riichi <% } %>">
                         <img src="../public/resources/img/577959-1k.png" alt="">
-                </div>
+                    </div>
                     <div id="west" class="context oyaBorder <% if(detail.oya == 'west') { %> oya <% } %>">
                         <div class="pic">
-                            <img id="teamW" class="playerpic" src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
+                            <img id="teamW" class="playerpic"
+                                src="../public/resources/img/team_logo/<%= teamW.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -148,10 +185,11 @@
                 <div class="card" id="player4">
                     <div id="riichiN" class="riichiMarker <% if(detail.riichiN == 'pointsN') { %> riichi <% } %>">
                         <img src="../public/resources/img/577959-1k.png" alt="">
-                </div>
+                    </div>
                     <div id="north" class="context oyaBorder <% if(detail.oya == 'north') { %> oya <% } %>">
                         <div class="pic">
-                            <img id="teamN" class="playerpic" src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
+                            <img id="teamN" class="playerpic"
+                                src="../public/resources/img/team_logo/<%= teamN.logo %>.webp">
                         </div>
                         <div class="info">
                             <div class="waits">
@@ -179,5 +217,13 @@
     </div>
 </body>
 <script src="../public/resources/js/n_league_score_overlay_show.js"></script>
+<script src="../public/resources/js/riichi.js"></script>
+<script>
+    let riichiSE = new Howl({
+        src: ['../resources/se/riichi.mp3'],
+        <% if (detail.mute == 'on') { %> mute: true 
+            <% }else if(detail.mute == 'off') { %> mute: false <% } %>
+    })
+</script>
 
 </html>

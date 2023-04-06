@@ -77,3 +77,9 @@
 #timestamp {
     border: 0;
 }
+
+#pointSet {
+    display: flex;
+    gap: 1rem;
+    margin: 0 0 0 6rem;
+}

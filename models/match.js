@@ -13,13 +13,15 @@ const matchSchema = new mongoose.Schema({
     round: Number,
     kyotaku: Number,
     honba: Number,
+    honbaPoints: Number,
+    kiriage: String,
     dora: [String],
     formattedDora: [String],
     teamE: String,
     nameE: String,
     pointsE: String,
     riichiE: String,
-    waitsE:  [String],
+    waitsE: [String],
     formattedWaitsE: [String],
     teamS: String,
     nameS: String,
@@ -39,7 +41,21 @@ const matchSchema = new mongoose.Schema({
     riichiN: String,
     waitsN: [String],
     formattedWaitsN: [String],
-    oya: String
+    oya: String,
+    updateApply: {
+        type: [String],
+        default: 'on'
+    },
+    updateRiichi: {
+        type: [String],
+        default: 'on'
+    },
+    playerHidden: [String],
+    matchInfoHidden: [String],
+    mute: {
+        type: [String],
+        default: 'on'
+    }
 });
 
 const Match = mongoose.model('Match', matchSchema);

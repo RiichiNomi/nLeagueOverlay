@@ -1,0 +1,252 @@
+body {
+    background-color: black;
+}
+
+.riichiAnimation {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    height: 19rem;
+    transition: opacity 0.5s ease;
+}
+
+.riichiTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 3rem;
+    color: white;
+    transition: opacity 0.5s ease;
+}
+
+.riichiText {
+    text-shadow: 0 0 1rem rgba(56, 0, 59, 1);
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s ease, letter-spacing 3s ease, transform 0.2s ease;
+}
+
+.riichiTextSpread {
+    transform: scale(1);
+    letter-spacing: 0.2rem;
+}
+
+.leftbar,
+.rightbar {
+    opacity: 0;
+    width: 10rem;
+    height: 0.1rem;
+    background: white;
+}
+
+.animateLeftbar {
+    animation-name: riichiBarLeft;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.animateRightbar {
+    animation-name: riichiBarRight;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes riichiBarLeft {
+    0% {
+        transform: translateX(-13rem);
+    }
+
+    100% {
+        transform: translateX(6rem);
+        width: 0;
+    }
+}
+
+@keyframes riichiBarRight {
+    0% {
+        transform: translateX(13rem);
+    }
+
+    100% {
+        transform: translateX(-6rem);
+        width: 0;
+    }
+}
+
+.button {
+    color: white;
+}
+
+.lightningHidden {
+    opacity: 0;
+    position: relative;
+    bottom: 18rem;
+    margin: auto;
+    width: 20rem;
+    height: 20rem;
+}
+
+.show {
+    opacity: 1;
+}
+
+.lightningHidden img {
+    width: 20rem;
+    height: 20rem;
+}
+
+.scene {
+    width: 6rem;
+    height: 6rem;
+    position: relative;
+    perspective: 1000px;
+    margin: auto auto 1.8rem;
+    transition: transform 0.5s ease;
+}
+
+.scaleOut {
+    transform: scale(1.2);
+
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0, 0, 0, 1.15);
+}
+
+.spin {
+    transform: rotateY(360deg);
+}
+
+.carousel__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.carousel__cell img {
+    width: 6rem;
+    height: 6rem;
+}
+
+.carousel__cell:nth-child(1) {
+    transform: rotateY(0deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(2) {
+    transform: rotateY(45deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(3) {
+    transform: rotateY(90deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(4) {
+    transform: rotateY(135deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(5) {
+    transform: rotateY(180deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(6) {
+    transform: rotateY(225deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(7) {
+    transform: rotateY(270deg) translateZ(200px);
+}
+
+.carousel__cell:nth-child(8) {
+    transform: rotateY(315deg) translateZ(200px);
+}
+
+.fadeout {
+    opacity: 0;
+}
+
+#riichiAnimation {
+    height: 200px;
+}
+
+@media (-webkit-device-pixel-ratio: 1) {
+
+    .scene {
+        width: 12rem;
+        height: 12rem;
+        margin: auto auto 2.2rem;
+    }
+
+    .riichiAnimation {
+        height: 34rem;
+    }
+
+    .carousel__cell img {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .carousel__cell:nth-child(1) {
+        transform: rotateY(0deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(2) {
+        transform: rotateY(45deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(3) {
+        transform: rotateY(90deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(4) {
+        transform: rotateY(135deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(5) {
+        transform: rotateY(180deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(6) {
+        transform: rotateY(225deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(7) {
+        transform: rotateY(270deg) translateZ(22.6rem);
+    }
+
+    .carousel__cell:nth-child(8) {
+        transform: rotateY(315deg) translateZ(22.6rem);
+    }
+
+    .riichiTitle {
+        margin: 2rem 0 0 0;
+        font-size: 6rem;
+    }
+
+    .leftbar,
+    .rightbar {
+        width: 15rem;
+        height: 0.3rem;
+    }
+
+}
+
+@media only screen and (orientation:portrait) {
+    .riichiAnimation {
+        width: 915px;
+        height: 13rem;
+    }
+
+    .scene {
+        width: 5rem;
+        height: 5rem;
+    }
+}

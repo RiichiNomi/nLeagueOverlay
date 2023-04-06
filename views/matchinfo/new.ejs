@@ -18,7 +18,7 @@
                 <li>
                     <label for="timestamp">Timestamp:</label>
                     <input type="text" id="timestamp" name="timestamp" size="60" readonly>
-                </li> 
+                </li>
                 <li>
                     <label for="wind"> Wind:</label>
                     <select id="wind" name="wind">
@@ -44,6 +44,20 @@
                 <li>
                     <label for="honba">Honba: </label>
                     <input type="number" id="honba" name="honba" min="0" max="10" value="0">
+                </li>
+                <li>
+                    <label for="honbaPoints"> Honba Points:</label>
+                    <select id="honbaPoints" name="honbaPoints">
+                        <option value="300">Regular 300</option>
+                        <option value="1500">Big Honba 1500</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="kiriage"> Kiriage:</label>
+                    <select id="kiriage" name="kiriage">
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
                 </li>
                 <li>
                     <label for="dora">Dora: </label>
@@ -91,152 +105,156 @@
     <div class="lowerTitle">
         <h1>Player Info:</h1>
         <h3 id="totalPoints">Total Points: </h3>
+        <div id="pointSet">
+            <button type="button" id="twentyFive">25,000 All</button>
+            <button type="button" id="thirty">30,000 All</button>
+        </div>
     </div>
     <ul class="playerinfo">
-    <li>East:
-        <ul>
-            <label for="teamE">
-                <li>Team:
-                    <select id="teamE" name="teamE">
-                        <option value="" selected disabled hidden>Select Team</option>
-                        <% for (let t of teaminfo) { %>
-                        <option value="<%= t.team %>"> <%= t.team %> </option>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="nameE">
-                <li>Name:
-                    <select id="nameE" name="nameE">
-                        <option value="" selected disabled hidden>Select Member</option>
-                        <% for (let t of teaminfo) { %>
-                        <% for(let i = 0; i < t.members.length; i++){ %>
-                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
-                        <% } %>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="pointsE">
-                <li>Points:
-                    <input type="text" inputmode="numeric" id="pointsE" name="pointsE" value="30,000">
-                </li>
-            </label>
-            <label for="oyaE">
-                <li>Oya:
-                    <input type="radio" id="oyaE" name="oya" value="east" checked>
-                </li>
-            </label>
-        </ul>
-    </li>
-    <li>South:
-        <ul>
-            <label for="teamS">
-                <li>Team:
-                    <select id="teamS" name="teamS">
-                        <option value="" selected disabled hidden>Select Team</option>
-                        <% for (let t of teaminfo) { %>
-                        <option value="<%= t.team %>"> <%= t.team %> </option>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="nameS">
-                <li>Name:
-                    <select id="nameS" name="nameS">
-                        <option value="" selected disabled hidden>Select Member</option>
-                        <% for (let t of teaminfo) { %>
-                        <% for(let i = 0; i < t.members.length; i++){ %>
-                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
-                        <% } %>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="pointsS">
-                <li>Points:
-                    <input type="text" inputmode="numeric" id="pointsS" name="pointsS" value="30,000">
-                </li>
-            </label>
-            <label for="oyaS">
-                <li>Oya:
-                    <input type="radio" id="oyaS" name="oya" value="south">
-                </li>
-            </label>
-        </ul>
-    </li>
-    <li>West:
-        <ul>
-            <label for="teamW">
-                <li>Team:
-                    <select id="teamW" name="teamW">
-                        <option value="" selected disabled hidden>Select Team</option>
-                        <% for (let t of teaminfo) { %>
-                        <option value="<%= t.team %>"> <%= t.team %> </option>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="nameW">
-                <li>Name:
-                    <select id="nameW" name="nameW">
-                        <% for (let t of teaminfo) { %>
-                        <option value="" selected disabled hidden>Select Member</option>
-                        <% for(let i = 0; i < t.members.length; i++){ %>
-                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
-                        <% } %>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="pointsW">
-                <li>Points:
-                    <input type="text" inputmode="numeric" id="pointsW" name="pointsW" value="30,000">
-                </li>
-            </label>
-            <label for="oyaW">
-                <li>Oya:
-                    <input type="radio" id="oyaW" name="oya" value="west">
-                </li>
-            </label>
-        </ul>
-    </li>
-    <li>North:
-        <ul>
-            <label for="teamN">
-                <li>Team:
-                    <select id="teamN" name="teamN">
-                        <option value="" selected disabled hidden>Select Team</option>
-                        <% for (let t of teaminfo) { %>
-                        <option value="<%= t.team %>"> <%= t.team %> </option>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="nameN">
-                <li>Name:
-                    <select id="nameN" name="nameN">
-                        <option value="" selected disabled hidden>Select Member</option>
-                        <% for (let t of teaminfo) { %>
-                        <% for(let i = 0; i < t.members.length; i++){ %>
-                        <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
-                        <% } %>
-                        <% } %>
-                    </select>
-                </li>
-            </label>
-            <label for="pointsN">
-                <li>Points:
-                    <input type="text" inputmode="numeric" id="pointsN" name="pointsN" value="30,000">
-                </li>
-            </label>
-            <label for="oyaN">
-                <li>Oya:
-                    <input type="radio" id="oyaN" name="oya" value="north">
-                </li>
-            </label>
-        </ul>
-    </li>
+        <li>East:
+            <ul>
+                <label for="teamE">
+                    <li>Team:
+                        <select id="teamE" name="teamE">
+                            <option value="" selected disabled hidden>Select Team</option>
+                            <% for (let t of teaminfo) { %>
+                            <option value="<%= t.team %>"> <%= t.team %> </option>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="nameE">
+                    <li>Name:
+                        <select id="nameE" name="nameE">
+                            <option value="" selected disabled hidden>Select Member</option>
+                            <% for (let t of teaminfo) { %>
+                            <% for(let i = 0; i < t.members.length; i++){ %>
+                            <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                            <% } %>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="pointsE">
+                    <li>Points:
+                        <input type="text" inputmode="numeric" id="pointsE" name="pointsE" value="30,000">
+                    </li>
+                </label>
+                <label for="oyaE">
+                    <li>Oya:
+                        <input type="radio" id="oyaE" name="oya" value="east" checked>
+                    </li>
+                </label>
+            </ul>
+        </li>
+        <li>South:
+            <ul>
+                <label for="teamS">
+                    <li>Team:
+                        <select id="teamS" name="teamS">
+                            <option value="" selected disabled hidden>Select Team</option>
+                            <% for (let t of teaminfo) { %>
+                            <option value="<%= t.team %>"> <%= t.team %> </option>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="nameS">
+                    <li>Name:
+                        <select id="nameS" name="nameS">
+                            <option value="" selected disabled hidden>Select Member</option>
+                            <% for (let t of teaminfo) { %>
+                            <% for(let i = 0; i < t.members.length; i++){ %>
+                            <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                            <% } %>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="pointsS">
+                    <li>Points:
+                        <input type="text" inputmode="numeric" id="pointsS" name="pointsS" value="30,000">
+                    </li>
+                </label>
+                <label for="oyaS">
+                    <li>Oya:
+                        <input type="radio" id="oyaS" name="oya" value="south">
+                    </li>
+                </label>
+            </ul>
+        </li>
+        <li>West:
+            <ul>
+                <label for="teamW">
+                    <li>Team:
+                        <select id="teamW" name="teamW">
+                            <option value="" selected disabled hidden>Select Team</option>
+                            <% for (let t of teaminfo) { %>
+                            <option value="<%= t.team %>"> <%= t.team %> </option>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="nameW">
+                    <li>Name:
+                        <select id="nameW" name="nameW">
+                            <option value="" selected disabled hidden>Select Member</option>
+                            <% for (let t of teaminfo) { %>
+                            <% for(let i = 0; i < t.members.length; i++){ %>
+                            <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                            <% } %>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="pointsW">
+                    <li>Points:
+                        <input type="text" inputmode="numeric" id="pointsW" name="pointsW" value="30,000">
+                    </li>
+                </label>
+                <label for="oyaW">
+                    <li>Oya:
+                        <input type="radio" id="oyaW" name="oya" value="west">
+                    </li>
+                </label>
+            </ul>
+        </li>
+        <li>North:
+            <ul>
+                <label for="teamN">
+                    <li>Team:
+                        <select id="teamN" name="teamN">
+                            <option value="" selected disabled hidden>Select Team</option>
+                            <% for (let t of teaminfo) { %>
+                            <option value="<%= t.team %>"> <%= t.team %> </option>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="nameN">
+                    <li>Name:
+                        <select id="nameN" name="nameN">
+                            <option value="" selected disabled hidden>Select Member</option>
+                            <% for (let t of teaminfo) { %>
+                            <% for(let i = 0; i < t.members.length; i++){ %>
+                            <option value="<%= t.members[i] %>"> <%= t.members[i] %> </option>
+                            <% } %>
+                            <% } %>
+                        </select>
+                    </li>
+                </label>
+                <label for="pointsN">
+                    <li>Points:
+                        <input type="text" inputmode="numeric" id="pointsN" name="pointsN" value="30,000">
+                    </li>
+                </label>
+                <label for="oyaN">
+                    <li>Oya:
+                        <input type="radio" id="oyaN" name="oya" value="north">
+                    </li>
+                </label>
+            </ul>
+        </li>
     </ul>
     <button>Submit</button>
     </form>

@@ -79,6 +79,11 @@ app.get('/', (req, res) => {
     res.redirect('/matchinfo');
 })
 
+app.get('/riichi', async (req, res) => {
+    const teaminfo = await Team.find({});
+    res.render('riichi', { teaminfo });
+})
+
 app.get('/overlay/:id', async (req, res) => {
     const { id } = req.params;
     const detail = await Match.findById(id);
@@ -171,7 +176,7 @@ app.put('/matchinfo/:id', async (req, res) => {
         const firstLetter = arr[letterPositions[0]];
         const firstSuitWaits = addLetter(firstSuitNumbers, firstLetter);
         formattedWaits.push(...firstSuitWaits);
-        for (const i = 1; i < letterPositions.length; i++) {
+        for (let i = 1; i < letterPositions.length; i++) {
             const followingSuitNumbers = arr.slice(letterPositions[i - 1] + 1, letterPositions[i]);
             const followingLetter = arr[letterPositions[i]];
             const followingSuitWaits = addLetter(followingSuitNumbers, followingLetter);
@@ -191,6 +196,7 @@ app.put('/matchinfo/:id', async (req, res) => {
     const splitWaitsN = req.body.waitsN.split('').map(s => s.trim());
     req.body.formattedWaitsN = formatWaits(splitWaitsN);
     const detail = await Match.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+    // console.log(detail);
     res.redirect(`/matchinfo/${detail._id}/edit`);
 })
 

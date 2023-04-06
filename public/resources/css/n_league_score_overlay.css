@@ -19,6 +19,7 @@ body {
     font-family: 'Graphik-medium', sans-serif;
     margin: 0;
     background-color: black;
+    overflow-y: hidden;
 }
 
 .maincontainer {
@@ -31,11 +32,25 @@ body {
 .uppercontainer {
     display: flex;
     justify-content: space-between;
+    transition: all 0.7s ease;
 }
 
 .lowercontainer {
     margin-top: auto;
+    transition: all 0.7s ease;
 }
+
+.fadeup {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.fadedown {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+
 
 /* .oyaborder{
     background: radial-gradient(circle, rgba(255,41,41,1) 0%, rgba(255,135,135,1) 100%);
@@ -279,6 +294,7 @@ body {
     width: 100%;
 }
 
+
 @keyframes marquee {
     from {
         transform: translateX(0%);
@@ -301,12 +317,12 @@ body {
         height: 100%;
     }
 
-    .lowercontainer{
-        margin-top: 45vw;
+    .lowercontainer {
+        transform: translateY(-495px);
         width: 915px;
     }
-    
-    .uppercontainer{
+
+    .uppercontainer {
         width: 915px;
     }
 }
