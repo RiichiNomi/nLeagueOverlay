@@ -157,7 +157,7 @@ socket.on('change', (data) => {
 const mutationObserver = new MutationObserver(entries => {
     setTimeout(() => {
         marqueeWaits(waitsContainer)
-    }, 100);
+    }, 500);
 })
 
 mutationObserver.observe(waitsContainer[0], { childList: true });
