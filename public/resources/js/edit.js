@@ -982,6 +982,9 @@ let applyPoints = () => {
         if (updateRiichi.checked) {
             document.getElementById('updateRiichiHidden').disabled = true;
         }
+        if (document.getElementById('updateRyukyoku').checked) {
+            document.getElementById('updateRyukyokuHidden').disabled = true;
+        }
         if (document.getElementById('mute').checked) {
             document.getElementById('muteHidden').disabled = true;
         }

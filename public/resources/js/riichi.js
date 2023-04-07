@@ -52,11 +52,11 @@ let animate = (n) => {
             scene.classList.remove('scaleOut');
             leftbar.classList.remove('animateLeftbar', 'show');
             rightbar.classList.remove('animateRightbar', 'show');
-        }, 5000);
+        }, 4500);
         setTimeout(() => {
             riichiText.classList.remove('riichiTextSpread');
             lockFlag = false;
-        }, 5200)
+        }, 4700)
     }
 }
 

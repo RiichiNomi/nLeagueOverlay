@@ -26,6 +26,19 @@ const formatWaits = (tileString) => {
     return tiles;
 }
 
+function numAnimation(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = (Math.floor(progress * (end - start) + start)).toLocaleString();
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
 let fields = {};
 
 socket.on('change', (data) => {
@@ -101,8 +114,10 @@ socket.on('change', (data) => {
                 container.innerHTML = updatedValue;
             } else if (keys[i].includes('points')) {
                 let container = document.getElementById(keys[i]);
+                let currentValue = parseInt(container.innerHTML.replace(',',''));
                 let updatedValue = Object.values(fields)[i];
-                container.innerHTML = updatedValue;
+                let parseUpdatedValue = parseInt(updatedValue.replace(',',''));
+                numAnimation(container, currentValue , parseUpdatedValue, 1000);
             } else if (keys[i].includes('honba')) {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
@@ -116,6 +131,18 @@ socket.on('change', (data) => {
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
             } else if (keys[i].includes('kyotaku')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            }else if (keys[i].includes('week')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            }else if (keys[i].includes('game')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            } else if (keys[i].includes('date')) {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
