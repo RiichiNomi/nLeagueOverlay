@@ -1280,7 +1280,7 @@ let ryukyoku = () => {
         }
     }
     console.log(count);
-    kyotaku.valueAsNumber = kyotaku.valueAsNumber + count;
+    // kyotaku.valueAsNumber = kyotaku.valueAsNumber + count;
     honba.valueAsNumber++;
     updatePoints(points);
     for (w of waits) {

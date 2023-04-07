@@ -115,7 +115,11 @@ socket.on('change', (data) => {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
-            } else {
+            } else if (keys[i].includes('kyotaku')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            }else {
                 console.log(keys[i]);
                 console.log(Object.values(fields)[i]);
             }
