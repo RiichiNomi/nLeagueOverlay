@@ -67,14 +67,20 @@ h2 {
 
 .buttonContainer {
     display: flex;
-    padding: 1rem 0;
+    flex-direction: column;
+}
+
+.featureButton {
+    padding: 1rem 0 0 0;
     gap: 1rem;
     align-items: baseline;
 }
 
+
 .checkbox {
     display: flex;
     justify-content: space-between;
+    padding: 0.5rem 0 0 0;
 }
 
 .pointBox {
@@ -186,6 +192,10 @@ h2 {
     height: 100%;
 }
 
+.updateChecks{
+    white-space: nowrap;
+}
+
 .updateApplyContainer {
     display: flex;
     gap: 0.2rem;
@@ -196,10 +206,21 @@ h2 {
     gap: 0.2rem;
 }
 
+.updateRyukyokuContainer {
+    display: flex;
+    gap: 0.2rem;
+}
+
 .hideButtonContainer {
     display: flex;
     justify-content: space-evenly;
     margin: 2rem 0 0 0;
+    gap: 1rem;
+}
+
+.pointSet {
+    display: flex;
+    padding: 1rem 0 0 0;
     gap: 1rem;
 }
 
@@ -221,6 +242,14 @@ h2 {
     font-weight: bold;
 }
 
+.waits {
+    display: flex;
+    gap: 1rem;
+}
+
+.waitBox {
+    width: 7rem;
+}
 
 #databaseButton {
     margin: 0 0 0 10rem;

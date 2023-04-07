@@ -37,14 +37,12 @@ socket.on('change', (data) => {
     fields = updatedFields;
     if (window.location.pathname.slice(9) == data.documentKey._id) {
         for (let i = 0; i < keys.length; i++) {
-            if (keys[i].includes('formatted')) {
-                console.log(keys[i]);
-            } else if (keys[i].includes('waits')) {
-                let container = document.getElementById(keys[i]);
+            if (keys[i].includes('formattedWaits')) {
+                let target = keys[i][9].toLowerCase() + keys[i].slice(10);
+                console.log(target);
+                let container = document.getElementById(target);
                 container.innerHTML = '';
-                let updatedValue = Object.values(fields)[i];
-                let splitValue = updatedValue[0];
-                let formattedNewWaits = formatWaits(splitValue);
+                let formattedNewWaits = Object.values(fields)[i];
                 if (formattedNewWaits[0] !== "") {
                     for (let j = 0; j < formattedNewWaits.length; j++) {
                         let img = document.createElement('img');
@@ -53,12 +51,9 @@ socket.on('change', (data) => {
                     };
                 }
                 toggleWaitsText(waitsText);
-                // marqueeWaits(waitsContainer);
-            } else if (keys[i].includes('dora')) {
+            } else if (keys[i] == 'formattedDora') {
                 doraContainer.innerHTML = '';
-                let updatedValue = Object.values(fields)[i];
-                let splitValue = updatedValue[0];
-                let formattedNewDora = formatWaits(splitValue);
+                let formattedNewDora = Object.values(fields)[i];
                 if (formattedNewDora[0] !== "") {
                     for (let k = 0; k < formattedNewDora.length; k++) {
                         let img = document.createElement('img');
@@ -100,12 +95,29 @@ socket.on('change', (data) => {
                 } else {
                     upperContainer.classList.remove('fadeup');
                 }
-            } else if (keys[i].includes('mute')) {
-                return;
-            } else {
+            } else if (keys[i].includes('name')) {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
+            } else if (keys[i].includes('points')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            } else if (keys[i].includes('honba')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            } else if (keys[i].includes('round')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            } else if (keys[i].includes('wind')) {
+                let container = document.getElementById(keys[i]);
+                let updatedValue = Object.values(fields)[i];
+                container.innerHTML = updatedValue;
+            } else {
+                console.log(keys[i]);
+                console.log(Object.values(fields)[i]);
             }
         }
     }

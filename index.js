@@ -141,6 +141,18 @@ app.put('/matchinfo/:id', async (req, res) => {
     if (!req.body.riichiN) {
         req.body.riichiN = ""
     }
+    if (!req.body.tenpaiE) {
+        req.body.tenpaiE = ""
+    }
+    if (!req.body.tenpaiS) {
+        req.body.tenpaiS = ""
+    }
+    if (!req.body.tenpaiW) {
+        req.body.tenpaiW = ""
+    }
+    if (!req.body.tenpaiN) {
+        req.body.tenpaiN = ""
+    }
 
     const formatWaits = (tileString) => {
         let chars = tileString.split('');
@@ -225,7 +237,7 @@ app.put('/matchinfo/:id', async (req, res) => {
     let splitWaitsN = req.body.waitsN
     req.body.formattedWaitsN = formatWaits(splitWaitsN);
     const detail = await Match.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-    // console.log(req.body);
+    // console.log(detail);
     res.redirect(`/matchinfo/${detail._id}/edit`);
 })
 

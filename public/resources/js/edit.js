@@ -1,5 +1,6 @@
 let points = document.querySelectorAll('#pointsE, #pointsS, #pointsW, #pointsN');
 let riichi = document.querySelectorAll('#riichiE, #riichiS, #riichiW, #riichiN');
+let tenpai = document.querySelectorAll('#tenpaiE, #tenpaiS, #tenpaiW, #tenpaiN');
 let waits = document.querySelectorAll('#waitsE, #waitsS, #waitsW, #waitsN');
 let playerName = document.querySelectorAll('#nameE, #nameS, #nameW, #nameN');
 let kyotaku = document.querySelector('#kyotaku');
@@ -880,6 +881,12 @@ let applyPoints = () => {
                 r.checked = false;
             }
         }
+        let tenpaiArr = Array.from(tenpai);
+        for (let t of tenpaiArr) {
+            if (t.checked) {
+                t.checked = false;
+            }
+        }
         for (w of waits) {
             w.value = "";
         }
@@ -1219,13 +1226,57 @@ let decrementTenK = (e) => {
 }
 
 let ryukyoku = () => {
-    let count = 0
+    let count = 0;
     let arr = Array.from(riichi);
     console.log(arr);
     for (let r of arr) {
         if (r.checked) {
             count++
             r.checked = false;
+        }
+    }
+    let tenpaiCount = 0;
+    let tenpaiArr = Array.from(tenpai);
+    let oyaTenpai = false;
+    for (let t of tenpaiArr) {
+        if (t.checked) {
+            tenpaiCount++
+            if (t.parentNode.parentNode.parentNode.parentNode.children[4].children[0].children[0].children[0].checked) {
+                oyaTenpai = true;
+            }
+        }
+    }
+    for (let t of tenpaiArr) {
+        let target = t.parentNode.parentNode.parentNode.parentNode.children[2].children[0].children[0];
+        if (tenpaiCount == 1) {
+            if (t.checked) {
+                let value = parseInt(target.value.replace(',', '')) + 3000;
+                target.value = value.toLocaleString();
+                t.checked = false;
+            } else {
+                let value = parseInt(target.value.replace(',', '')) - 1000;
+                target.value = value.toLocaleString();
+            }
+        } else if (tenpaiCount == 2) {
+            if (t.checked) {
+                let value = parseInt(target.value.replace(',', '')) + 1500;
+                target.value = value.toLocaleString();
+                t.checked = false;
+            } else {
+                let value = parseInt(target.value.replace(',', '')) - 1500;
+                target.value = value.toLocaleString();
+            }
+        } else if (tenpaiCount == 3) {
+            if (t.checked) {
+                let value = parseInt(target.value.replace(',', '')) + 1000;
+                target.value = value.toLocaleString();
+                t.checked = false;
+            } else {
+                let value = parseInt(target.value.replace(',', '')) - 3000;
+                target.value = value.toLocaleString();
+            }
+        } else {
+            t.checked = false;
         }
     }
     console.log(count);
@@ -1236,6 +1287,42 @@ let ryukyoku = () => {
         w.value = "";
     }
     dora.value = "";
+    if (!oyaTenpai) {
+        for (let i = 0; i < oyaMarker.length; i++) {
+            if (oyaMarker[i].checked) {
+                if (i == 3) {
+                    oyaMarker[0].checked = true;
+                    if (wind.value == 'EAST' && round[3].checked) {
+                        wind.value = 'SOUTH'
+                        round[0].checked = true;
+                    } else if (wind.value == 'SOUTH' && round[3].checked) {
+                        break;
+                    } else {
+                        let arr = Array.from(round);
+                        let current = arr.indexOf(arr.find(x => x.checked == true));
+                        arr[current + 1].checked = true;
+                    }
+                    break;
+                } else {
+                    oyaMarker[i + 1].checked = true;
+                    if (wind.value == 'EAST' && round[3].checked) {
+                        wind.value = 'SOUTH'
+                        round[0].checked = true;
+                    } else if (wind.value == 'SOUTH' && round[3].checked) {
+                        break;
+                    } else {
+                        let arr = Array.from(round);
+                        let current = arr.indexOf(arr.find(x => x.checked == true));
+                        arr[current + 1].checked = true;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+    if (updateRyukyoku.checked) {
+        hiddenButtonDeactivatedSubmit();
+    }
 }
 
 ryukyokuButton.addEventListener('click', ryukyoku);
@@ -1249,6 +1336,10 @@ let clear = () => {
             let value = parseInt(target.value.replace(',', '')) + 1000;
             target.value = value.toLocaleString();
         }
+    }
+    let tenpaiArr = Array.from(tenpai);
+    for (let t of tenpaiArr) {
+        t.checked = false;
     }
     kyotaku.valueAsNumber = 0;
     honba.valueAsNumber = 0;
@@ -1266,17 +1357,30 @@ $(document).ready(function () {
         updateTextView($(this));
         updatePoints(points);
     });
-    $('.lowerContainer input[type=checkbox]').on('change', function () {
+    $('input[type=text].waitBox').on('keyup', function () {
+        if (this.value !== '') {
+            this.parentNode.parentNode.parentNode.children[1].children[0].children[0].checked = true;
+        } else {
+            this.parentNode.parentNode.parentNode.children[1].children[0].children[0].checked = false;
+        }
+    });
+    $('.lowerContainer input[type=checkbox].riichi').on('change', function () {
         if (this.checked == true) {
             let target = document.getElementById($(this)[0].value);
             let value = parseInt(target.value.replace(',', ''));
             kyotaku.valueAsNumber++
             value -= 1000;
             target.value = value.toLocaleString();
+            this.parentNode.parentNode.parentNode.parentNode.children[3].children[1].children[0].children[0].checked = true;
             updatePoints(points);
+        } else {
+            this.parentNode.parentNode.parentNode.parentNode.children[3].children[1].children[0].children[0].checked = false;
         }
         if (document.getElementById('updateApply').checked) {
             document.getElementById('updateApplyHidden').disabled = true;
+        }
+        if (document.getElementById('updateRyukyoku').checked) {
+            document.getElementById('updateRyukyokuHidden').disabled = true;
         }
         if (document.getElementById('mute').checked) {
             document.getElementById('muteHidden').disabled = true;
@@ -1362,12 +1466,95 @@ $(document).ready(function () {
     });
 });
 
+let hiddenButtonDeactivatedSubmit = () => {
+    if (document.getElementById('updateApply').checked) {
+        document.getElementById('updateApplyHidden').disabled = true;
+    }
+    if (document.getElementById('updateRiichi').checked) {
+        document.getElementById('updateRiichiHidden').disabled = true;
+    }
+    if (document.getElementById('updateRyukyoku').checked) {
+        document.getElementById('updateRyukyokuHidden').disabled = true;
+    }
+    if (document.getElementById('hidePlayerInfo').checked) {
+        document.getElementById('hidePlayerInfoHidden').disabled = true;
+    }
+    if (document.getElementById('hideMatchInfo').checked) {
+        document.getElementById('hideMatchInfoHidden').disabled = true;
+    }
+    if (document.getElementById('mute').checked) {
+        document.getElementById('muteHidden').disabled = true;
+    }
+    document.getElementById('matchinfo').submit();
+}
+
+let twentyFiveButton = document.querySelector('#twentyFive');
+let thirtyButton = document.querySelector('#thirty');
+let resetAllButton = document.querySelector('#resetAll');
+
+let setTwentyFive = () => {
+    if (confirm('Are you sure you want to set all points to 25,000?')) {
+        let arr = Array.from(points);
+        for (let p of arr) {
+            p.value = '25,000';
+        }
+        updatePoints(points);
+        hiddenButtonDeactivatedSubmit();
+    }
+}
+
+let setThirty = () => {
+    if (confirm('Are you sure you want to set all points to 30,000?')) {
+        let arr = Array.from(points);
+        for (let p of arr) {
+            p.value = '30,000';
+        }
+        updatePoints(points);
+        hiddenButtonDeactivatedSubmit();
+    }
+}
+
+let resetAll = () => {
+    if (confirm('Are you sure you want to reset the game? (25,000 points All)')) {
+        let arr = Array.from(points);
+        for (let p of arr) {
+            p.value = '25,000';
+        }
+        updatePoints(points);
+        let riichiArr = Array.from(riichi);
+        for (let r of riichiArr) {
+            r.checked = false;
+        }
+        let tenpaiArr = Array.from(tenpai);
+        for (let t of tenpaiArr) {
+            t.checked = false;
+        }
+        wind.value = 'EAST';
+        round[0].checked = true;
+        kyotaku.value = 0;
+        honba.value = 0;
+        oyaMarker[0].checked = true
+        for (w of waits) {
+            w.value = "";
+        }
+        dora.value = "";
+        hiddenButtonDeactivatedSubmit();
+    }
+}
+
+twentyFiveButton.addEventListener('click', setTwentyFive);
+thirtyButton.addEventListener('click', setThirty);
+resetAllButton.addEventListener('click', resetAll);
+
 form.addEventListener('submit', () => {
     if (document.getElementById('updateApply').checked) {
         document.getElementById('updateApplyHidden').disabled = true;
     }
     if (document.getElementById('updateRiichi').checked) {
         document.getElementById('updateRiichiHidden').disabled = true;
+    }
+    if (document.getElementById('updateRyukyoku').checked) {
+        document.getElementById('updateRyukyokuHidden').disabled = true;
     }
     if (document.getElementById('hidePlayerInfo').checked) {
         document.getElementById('hidePlayerInfoHidden').disabled = true;
@@ -1379,3 +1566,4 @@ form.addEventListener('submit', () => {
         document.getElementById('muteHidden').disabled = true;
     }
 });
+
