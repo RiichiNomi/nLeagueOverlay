@@ -238,6 +238,24 @@ body {
     }
 
 }
+@media (max-width: 420px) {
+
+    .riichiAnimation {
+        height: 11rem;
+    }
+.pointsEarned, .pointsLost{
+    width: 7.5rem;
+    bottom: 2rem
+}
+
+}
+
+@media (max-width: 920px) {
+
+    .riichiAnimation {
+        height: 11rem;
+    }
+}
 
 @media only screen and (orientation:portrait) {
     .riichiAnimation {
