@@ -299,6 +299,42 @@ body {
     width: 100%;
 }
 
+.pointsEarned,
+.pointsLost {
+    opacity: 0;
+    width: 7rem;
+    position: absolute;
+    bottom: 5rem;
+    font-size: 1.7rem;
+    text-align: end;
+    transform: translate(-3rem, 0);
+    transition: all 0.3s ease;
+}
+
+.pointsEarned {
+    display: inline;
+    color: green;
+}
+
+.pointsLost {
+    display: inline;
+    color: red;
+}
+
+.showPL{
+    opacity: 1;
+}
+
+.moveDown {
+    transform: translate(0, 5rem);
+}
+
+.moveRight {
+    transform: translate(0, 0);
+}
+
+
+
 
 @keyframes marquee {
     from {
@@ -454,4 +490,12 @@ body {
         text-indent: 0.5em;
     }
 
+    .pointsEarned,
+    .pointsLost {
+        width: 14rem;
+        position: absolute;
+        bottom: 9rem;
+        font-size: 3rem;
+        text-align: end;
+    }
 }

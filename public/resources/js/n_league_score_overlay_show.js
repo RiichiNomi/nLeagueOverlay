@@ -29,15 +29,15 @@ const formatWaits = (tileString) => {
 function numAnimation(obj, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      obj.innerHTML = (Math.floor(progress * (end - start) + start)).toLocaleString();
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = (Math.floor(progress * (end - start) + start)).toLocaleString();
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
     };
     window.requestAnimationFrame(step);
-  }
+}
 
 let fields = {};
 
@@ -114,10 +114,58 @@ socket.on('change', (data) => {
                 container.innerHTML = updatedValue;
             } else if (keys[i].includes('points')) {
                 let container = document.getElementById(keys[i]);
-                let currentValue = parseInt(container.innerHTML.replace(',',''));
+                let currentValue = parseInt(container.innerHTML.replace(',', ''));
                 let updatedValue = Object.values(fields)[i];
-                let parseUpdatedValue = parseInt(updatedValue.replace(',',''));
-                numAnimation(container, currentValue , parseUpdatedValue, 1000);
+                let parseUpdatedValue = parseInt(updatedValue.replace(',', ''));
+                let plContainer = document.createElement('div');
+                let plDifference = parseUpdatedValue - currentValue;
+                if (plDifference > 0) {
+                    plContainer.classList.add('pointsEarned');
+                    plContainer.innerHTML = '+' + plDifference;
+                    if (container.parentNode.children.length < 4) {
+                        container.parentNode.append(plContainer);
+                    } else if (container.parentNode.children[3].className == 'pointsLost') {
+                        container.parentNode.children[3].remove();
+                        container.parentNode.append(plContainer);
+                    } else if (container.parentNode.children[3].className == 'pointsEarned') {
+                        container.parentNode.children[3].innerHTML = '+' + plDifference;
+                    }
+                    setTimeout(() => {
+                        container.parentNode.children[3].classList.add('showPL');
+                        container.parentNode.children[3].classList.add('moveRight');
+                    }, 100)
+                    setTimeout(() => {
+                        container.parentNode.children[3].classList.replace('moveRight', 'moveDown');
+                        container.parentNode.children[3].classList.remove('showPL');
+                        setTimeout(() => {
+                            container.parentNode.children[3].classList.remove('moveDown');
+                            numAnimation(container, currentValue, parseUpdatedValue, 1000);
+                        }, 200)
+                    }, 4000)
+                } else if (plDifference < 0) {
+                    plContainer.classList.add('pointsLost');
+                    plContainer.innerHTML = plDifference;
+                    if (container.parentNode.children.length < 4) {
+                        container.parentNode.append(plContainer);
+                    } else if (container.parentNode.children[3].className == 'pointsEarned') {
+                        container.parentNode.children[3].remove();
+                        container.parentNode.append(plContainer);
+                    } else if (container.parentNode.children[3].className == 'pointsLost') {
+                        container.parentNode.children[3].innerHTML = plDifference;
+                    }
+                    setTimeout(() => {
+                        container.parentNode.children[3].classList.add('showPL');
+                        container.parentNode.children[3].classList.add('moveRight');
+                    }, 100)
+                    setTimeout(() => {
+                        container.parentNode.children[3].classList.replace('moveRight', 'moveDown');
+                        container.parentNode.children[3].classList.remove('showPL');
+                        setTimeout(() => {
+                            container.parentNode.children[3].classList.remove('moveDown');
+                            numAnimation(container, currentValue, parseUpdatedValue, 1000);
+                        }, 200)
+                    }, 4000)
+                }
             } else if (keys[i].includes('honba')) {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
@@ -134,11 +182,11 @@ socket.on('change', (data) => {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
-            }else if (keys[i].includes('week')) {
+            } else if (keys[i].includes('week')) {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
-            }else if (keys[i].includes('game')) {
+            } else if (keys[i].includes('game')) {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
@@ -146,7 +194,7 @@ socket.on('change', (data) => {
                 let container = document.getElementById(keys[i]);
                 let updatedValue = Object.values(fields)[i];
                 container.innerHTML = updatedValue;
-            }else {
+            } else {
                 console.log(keys[i]);
                 console.log(Object.values(fields)[i]);
             }
@@ -157,7 +205,7 @@ socket.on('change', (data) => {
 const mutationObserver = new MutationObserver(entries => {
     setTimeout(() => {
         marqueeWaits(waitsContainer)
-    }, 500);
+    }, 1000);
 })
 
 mutationObserver.observe(waitsContainer[0], { childList: true });

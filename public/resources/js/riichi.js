@@ -95,7 +95,7 @@ socket.on('change', (data) => {
                 } else if (riichiTeam.toLowerCase().includes('peregrine'.toLowerCase())) {
                     n = 7;
                 }
-                console.log(n);
+                // console.log(n);
                 if (Object.values(fields)[i] !== '') {
                     animate(n);
                 }
