@@ -893,6 +893,7 @@ let applyPoints = () => {
         dora.value = "";
         for (let n of playerName) {
             let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
+            let riichiCheck = n.parentElement.parentElement.parentElement.children[4].children[1].children[0].children[0].checked;
             if (houju.value == "Tsumo") {
                 if (oyaChecker()) {
                     if (agari.value == '') {
@@ -902,6 +903,9 @@ let applyPoints = () => {
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
                         target.value = value.toLocaleString();
                     }
                 } else {
@@ -912,9 +916,15 @@ let applyPoints = () => {
                         target.value = value.toLocaleString();
                     } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
                         target.value = value.toLocaleString();
                     }
                 }
@@ -927,6 +937,9 @@ let applyPoints = () => {
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
                         target.value = value.toLocaleString();
                     }
                 } else {
@@ -937,6 +950,9 @@ let applyPoints = () => {
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
                         target.value = value.toLocaleString();
                     }
                 }
@@ -997,6 +1013,7 @@ applyButton.addEventListener('click', applyPoints);
 let showPointMove = () => {
     for (let n of playerName) {
         let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
+        let riichiCheck = n.parentElement.parentElement.parentElement.children[4].children[1].children[0].children[0].checked;
         if (houju.value == "Tsumo") {
             if (oyaChecker()) {
                 if (agari.value == '') {
@@ -1016,6 +1033,9 @@ let showPointMove = () => {
                     }
                 } else {
                     let value = Math.ceil(calcOyaPoint() / 3 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    if (riichiCheck) {
+                        value += 1000;
+                    }
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1046,6 +1066,9 @@ let showPointMove = () => {
                     }
                 } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
                     let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    if (riichiCheck) {
+                        value += 1000;
+                    }
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1059,6 +1082,9 @@ let showPointMove = () => {
                     }
                 } else {
                     let value = Math.ceil(calcKoPoint() / 4 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    if (riichiCheck) {
+                        value += 1000;
+                    }
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1091,6 +1117,9 @@ let showPointMove = () => {
                     }
                 } else if (houju.value == n.value) {
                     let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    if (riichiCheck) {
+                        value += 1000;
+                    }
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1105,8 +1134,20 @@ let showPointMove = () => {
                 } else {
                     if (target.nextSibling.className == 'pointsEarned') {
                         target.nextSibling.remove();
+                        if (riichiCheck) {
+                            let value = 1000;
+                            let pointsLost = document.createElement('div');
+                            pointsLost.classList.add('pointsLost');
+                            target.insertAdjacentElement('afterend', pointsLost);
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else if (target.nextSibling.className == 'pointsLost') {
-                        target.nextSibling.remove();
+                        if (riichiCheck) {
+                            let value = 1000;
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                        } else {
+                            target.nextSibling.remove();
+                        }
                     }
                 }
             } else {
@@ -1127,6 +1168,9 @@ let showPointMove = () => {
                     }
                 } else if (houju.value == n.value) {
                     let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    if (riichiCheck) {
+                        value += 1000;
+                    }
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1141,8 +1185,20 @@ let showPointMove = () => {
                 } else {
                     if (target.nextSibling.className == 'pointsEarned') {
                         target.nextSibling.remove();
+                        if (riichiCheck) {
+                            let value = 1000;
+                            let pointsLost = document.createElement('div');
+                            pointsLost.classList.add('pointsLost');
+                            target.insertAdjacentElement('afterend', pointsLost);
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else if (target.nextSibling.className == 'pointsLost') {
-                        target.nextSibling.remove();
+                        if (riichiCheck) {
+                            let value = 1000;
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                        } else {
+                            target.nextSibling.remove();
+                        }
                     }
                 }
             }
@@ -1236,6 +1292,9 @@ let ryukyoku = () => {
         if (r.checked) {
             count++
             r.checked = false;
+            let target = r.parentNode.parentNode.parentNode.parentNode.children[2].children[0].children[0];
+            let value = parseInt(target.value.replace(',', '')) - 1000;
+            target.value = value.toLocaleString();
         }
     }
     let tenpaiCount = 0;
@@ -1369,13 +1428,13 @@ $(document).ready(function () {
     });
     $('.lowerContainer input[type=checkbox].riichi').on('change', function () {
         if (this.checked == true) {
-            let target = document.getElementById($(this)[0].value);
-            let value = parseInt(target.value.replace(',', ''));
+            // let target = document.getElementById($(this)[0].value);
+            // let value = parseInt(target.value.replace(',', ''));
             kyotaku.valueAsNumber++
-            value -= 1000;
-            target.value = value.toLocaleString();
+            // value -= 1000;
+            // target.value = value.toLocaleString();
             this.parentNode.parentNode.parentNode.parentNode.children[3].children[1].children[0].children[0].checked = true;
-            updatePoints(points);
+            // updatePoints(points);
         } else {
             this.parentNode.parentNode.parentNode.parentNode.children[3].children[1].children[0].children[0].checked = false;
         }

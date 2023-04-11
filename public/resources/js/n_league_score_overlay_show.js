@@ -119,6 +119,10 @@ socket.on('change', (data) => {
                 let parseUpdatedValue = parseInt(updatedValue.replace(',', ''));
                 let plContainer = document.createElement('div');
                 let plDifference = parseUpdatedValue - currentValue;
+                // let riichiChecker = container.parentNode.parentNode.parentNode.children[0].className == 'riichiMarker riichi';
+                // if(riichiChecker){
+                //     plDifference -= 1000;
+                // }
                 if (plDifference > 0) {
                     plContainer.classList.add('pointsEarned');
                     plContainer.innerHTML = '+' + plDifference;
