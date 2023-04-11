@@ -875,22 +875,6 @@ let applyPoints = () => {
             pointsErrorShown = true;
         }
     } else {
-        let arr = Array.from(riichi);
-        for (let r of arr) {
-            if (r.checked) {
-                r.checked = false;
-            }
-        }
-        let tenpaiArr = Array.from(tenpai);
-        for (let t of tenpaiArr) {
-            if (t.checked) {
-                t.checked = false;
-            }
-        }
-        for (w of waits) {
-            w.value = "";
-        }
-        dora.value = "";
         for (let n of playerName) {
             let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
             let riichiCheck = n.parentElement.parentElement.parentElement.children[4].children[1].children[0].children[0].checked;
@@ -903,6 +887,7 @@ let applyPoints = () => {
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        console.log(riichiCheck);
                         if (riichiCheck) {
                             value -= 1000;
                         }
@@ -941,6 +926,12 @@ let applyPoints = () => {
                             value -= 1000;
                         }
                         target.value = value.toLocaleString();
+                    } else {
+                        let value = parseInt(target.value.replace(',', ''));
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
+                        target.value = value.toLocaleString();
                     }
                 } else {
                     if (agari.value == '') {
@@ -950,6 +941,12 @@ let applyPoints = () => {
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        if (riichiCheck) {
+                            value -= 1000;
+                        }
+                        target.value = value.toLocaleString();
+                    } else {
+                        let value = parseInt(target.value.replace(',', ''));
                         if (riichiCheck) {
                             value -= 1000;
                         }
@@ -995,6 +992,22 @@ let applyPoints = () => {
                 }
             }
         }
+        let arr = Array.from(riichi);
+        for (let r of arr) {
+            if (r.checked) {
+                r.checked = false;
+            }
+        }
+        let tenpaiArr = Array.from(tenpai);
+        for (let t of tenpaiArr) {
+            if (t.checked) {
+                t.checked = false;
+            }
+        }
+        for (w of waits) {
+            w.value = "";
+        }
+        dora.value = "";
         if (updateRiichi.checked) {
             document.getElementById('updateRiichiHidden').disabled = true;
         }
@@ -1019,7 +1032,8 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    let value = Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
@@ -1027,15 +1041,21 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        }
                     } else {
-                        target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        }
                     }
                 } else {
                     let value = Math.ceil(calcOyaPoint() / 3 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                    if (riichiCheck) {
-                        value += 1000;
-                    }
+                    let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1043,8 +1063,15 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        pointsLost.innerHTML = '-' + value.toLocaleString();
+                        if (riichiCheck) {
+                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        } else {
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else {
+                        if (riichiCheck) {
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 }
@@ -1052,7 +1079,8 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
@@ -1060,15 +1088,21 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        }
                     } else {
-                        target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        }
                     }
                 } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
                     let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                    if (riichiCheck) {
-                        value += 1000;
-                    }
+                    let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1076,15 +1110,20 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        pointsLost.innerHTML = '-' + value.toLocaleString();
+                        if (riichiCheck) {
+                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        } else {
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else {
+                        if (riichiCheck) {
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
                     let value = Math.ceil(calcKoPoint() / 4 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                    if (riichiCheck) {
-                        value += 1000;
-                    }
+                    let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1092,8 +1131,15 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        pointsLost.innerHTML = '-' + value.toLocaleString();
+                        if (riichiCheck) {
+                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        } else {
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else {
+                        if (riichiCheck) {
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 }
@@ -1103,7 +1149,8 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
@@ -1111,15 +1158,21 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        }
                     } else {
-                        target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        }
                     }
                 } else if (houju.value == n.value) {
                     let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
-                    if (riichiCheck) {
-                        value += 1000;
-                    }
+                    let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1127,24 +1180,31 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        pointsLost.innerHTML = '-' + value.toLocaleString();
+                        if (riichiCheck) {
+                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        } else {
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else {
+                        if (riichiCheck) {
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
                     if (target.nextSibling.className == 'pointsEarned') {
                         target.nextSibling.remove();
                         if (riichiCheck) {
-                            let value = 1000;
+                            let riichiStick = 1000;
                             let pointsLost = document.createElement('div');
                             pointsLost.classList.add('pointsLost');
                             target.insertAdjacentElement('afterend', pointsLost);
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                            pointsLost.innerHTML = '-' + riichiStick.toLocaleString();
                         }
                     } else if (target.nextSibling.className == 'pointsLost') {
                         if (riichiCheck) {
-                            let value = 1000;
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                            let riichiStick = 1000;
+                            target.nextSibling.innerHTML = '-' + riichiStick.toLocaleString();
                         } else {
                             target.nextSibling.remove();
                         }
@@ -1154,7 +1214,8 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                    let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value)
+                    let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
                             target.nextSibling.remove();
@@ -1162,15 +1223,21 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            pointsEarned.innerHTML = '+' + value.toLocaleString();
+                        }
                     } else {
-                        target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        if (bonus !== 0) {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
+                        } else {
+                            target.nextSibling.innerHTML = '+' + value.toLocaleString();
+                        }
                     }
                 } else if (houju.value == n.value) {
                     let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
-                    if (riichiCheck) {
-                        value += 1000;
-                    }
+                    let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
                             target.nextSibling.remove();
@@ -1178,24 +1245,31 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        pointsLost.innerHTML = '-' + value.toLocaleString();
+                        if (riichiCheck) {
+                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        } else {
+                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                        }
                     } else {
+                        if (riichiCheck) {
+                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
                     if (target.nextSibling.className == 'pointsEarned') {
                         target.nextSibling.remove();
                         if (riichiCheck) {
-                            let value = 1000;
+                            let riichiStick = 1000;
                             let pointsLost = document.createElement('div');
                             pointsLost.classList.add('pointsLost');
                             target.insertAdjacentElement('afterend', pointsLost);
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
+                            pointsLost.innerHTML = '-' + riichiStick.toLocaleString();
                         }
                     } else if (target.nextSibling.className == 'pointsLost') {
                         if (riichiCheck) {
-                            let value = 1000;
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                            let riichiStick = 1000;
+                            target.nextSibling.innerHTML = '-' + riichiStick.toLocaleString();
                         } else {
                             target.nextSibling.remove();
                         }
