@@ -24,6 +24,10 @@ let calc = document.querySelector('#calc');
 let applyButton = document.querySelector('#apply');
 let shortcut = document.querySelector('#shortcut');
 
+let winningHandButton = document.querySelector('#winningHandButton');
+let winningHandPage = document.querySelector('#winningHandPage');
+let winningPlayerArr = Array.from(winningPlayer.options);
+
 let teamE = document.querySelector('#teamE');
 let teamS = document.querySelector('#teamS');
 let teamW = document.querySelector('#teamW');
@@ -884,16 +888,15 @@ let applyPoints = () => {
                         break;
                     } else if (agari.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                        console.log(riichiCheck);
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     }
                 } else {
@@ -901,21 +904,21 @@ let applyPoints = () => {
                         break;
                     } else if (agari.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     }
                 }
@@ -925,21 +928,21 @@ let applyPoints = () => {
                         break;
                     } else if (agari.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', ''));
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     }
                 } else {
@@ -947,21 +950,21 @@ let applyPoints = () => {
                         break;
                     } else if (agari.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) + calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
                         let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     } else {
                         let value = parseInt(target.value.replace(',', ''));
-                        if (riichiCheck) {
-                            value -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     value -= 1000;
+                        // }
                         target.value = value.toLocaleString();
                     }
                 }
@@ -1053,9 +1056,9 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        if (riichiCheck) {
-                            bonus -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     bonus -= 1000;
+                        // }
                         if (bonus !== 0) {
                             pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
                         } else {
@@ -1078,15 +1081,16 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        if (riichiCheck) {
-                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        pointsLost.innerHTML = '-' + value.toLocaleString();
                     } else {
-                        if (riichiCheck) {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        }
+                        // if (riichiCheck) {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 }
@@ -1103,9 +1107,9 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        if (riichiCheck) {
-                            bonus -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     bonus -= 1000;
+                        // }
                         if (bonus !== 0) {
                             pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
                         } else {
@@ -1128,15 +1132,16 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        if (riichiCheck) {
-                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        pointsLost.innerHTML = '-' + value.toLocaleString();
                     } else {
-                        if (riichiCheck) {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        }
+                        // if (riichiCheck) {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // }
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
@@ -1149,17 +1154,19 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        if (riichiCheck) {
-                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        pointsLost.innerHTML = '-' + value.toLocaleString();
                     } else {
-                        if (riichiCheck) {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 }
             }
@@ -1177,9 +1184,9 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        if (riichiCheck) {
-                            bonus -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     bonus -= 1000;
+                        // }
                         if (bonus !== 0) {
                             pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
                         } else {
@@ -1202,35 +1209,38 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        if (riichiCheck) {
-                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        pointsLost.innerHTML = '-' + value.toLocaleString();
                     } else {
-                        if (riichiCheck) {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
                     if (target.nextSibling.className == 'pointsEarned') {
                         target.nextSibling.remove();
-                        if (riichiCheck) {
-                            let riichiStick = 1000;
-                            let pointsLost = document.createElement('div');
-                            pointsLost.classList.add('pointsLost');
-                            target.insertAdjacentElement('afterend', pointsLost);
-                            pointsLost.innerHTML = '-' + riichiStick.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     let riichiStick = 1000;
+                        //     let pointsLost = document.createElement('div');
+                        //     pointsLost.classList.add('pointsLost');
+                        //     target.insertAdjacentElement('afterend', pointsLost);
+                        //     pointsLost.innerHTML = '-' + riichiStick.toLocaleString();
+                        // }
                     } else if (target.nextSibling.className == 'pointsLost') {
-                        if (riichiCheck) {
-                            let riichiStick = 1000;
-                            target.nextSibling.innerHTML = '-' + riichiStick.toLocaleString();
-                        } else {
-                            target.nextSibling.remove();
-                        }
+                        // if (riichiCheck) {
+                        //     let riichiStick = 1000;
+                        //     target.nextSibling.innerHTML = '-' + riichiStick.toLocaleString();
+                        // } else {
+                        //     target.nextSibling.remove();
+                        // }
+                        target.nextSibling.remove();
                     }
                 }
             } else {
@@ -1246,9 +1256,9 @@ let showPointMove = () => {
                         let pointsEarned = document.createElement('div');
                         pointsEarned.classList.add('pointsEarned');
                         target.insertAdjacentElement('afterend', pointsEarned);
-                        if (riichiCheck) {
-                            bonus -= 1000;
-                        }
+                        // if (riichiCheck) {
+                        //     bonus -= 1000;
+                        // }
                         if (bonus !== 0) {
                             pointsEarned.innerHTML = '+' + value.toLocaleString() + ' (+' + bonus.toLocaleString() + ')';
                         } else {
@@ -1271,35 +1281,38 @@ let showPointMove = () => {
                         let pointsLost = document.createElement('div');
                         pointsLost.classList.add('pointsLost');
                         target.insertAdjacentElement('afterend', pointsLost);
-                        if (riichiCheck) {
-                            pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        } else {
-                            pointsLost.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     pointsLost.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        pointsLost.innerHTML = '-' + value.toLocaleString();
                     } else {
-                        if (riichiCheck) {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
-                        }else {
-                            target.nextSibling.innerHTML = '-' + value.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString() + ' (-' + riichiStick.toLocaleString() + ')';
+                        // } else {
+                        //     target.nextSibling.innerHTML = '-' + value.toLocaleString();
+                        // }
+                        target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
                     if (target.nextSibling.className == 'pointsEarned') {
                         target.nextSibling.remove();
-                        if (riichiCheck) {
-                            let riichiStick = 1000;
-                            let pointsLost = document.createElement('div');
-                            pointsLost.classList.add('pointsLost');
-                            target.insertAdjacentElement('afterend', pointsLost);
-                            pointsLost.innerHTML = '-' + riichiStick.toLocaleString();
-                        }
+                        // if (riichiCheck) {
+                        //     let riichiStick = 1000;
+                        //     let pointsLost = document.createElement('div');
+                        //     pointsLost.classList.add('pointsLost');
+                        //     target.insertAdjacentElement('afterend', pointsLost);
+                        //     pointsLost.innerHTML = '-' + riichiStick.toLocaleString();
+                        // }
                     } else if (target.nextSibling.className == 'pointsLost') {
-                        if (riichiCheck) {
-                            let riichiStick = 1000;
-                            target.nextSibling.innerHTML = '-' + riichiStick.toLocaleString();
-                        } else {
-                            target.nextSibling.remove();
-                        }
+                        // if (riichiCheck) {
+                        //     let riichiStick = 1000;
+                        //     target.nextSibling.innerHTML = '-' + riichiStick.toLocaleString();
+                        // } else {
+                        //     target.nextSibling.remove();
+                        // }
+                        target.nextSibling.remove();
                     }
                 }
             }
@@ -1393,9 +1406,9 @@ let ryukyoku = () => {
         if (r.checked) {
             count++
             r.checked = false;
-            let target = r.parentNode.parentNode.parentNode.parentNode.children[2].children[0].children[0];
-            let value = parseInt(target.value.replace(',', '')) - 1000;
-            target.value = value.toLocaleString();
+            // let target = r.parentNode.parentNode.parentNode.parentNode.children[2].children[0].children[0];
+            // let value = parseInt(target.value.replace(',', '')) - 1000;
+            // target.value = value.toLocaleString();
         }
     }
     let tenpaiCount = 0;
@@ -1529,13 +1542,13 @@ $(document).ready(function () {
     });
     $('.lowerContainer input[type=checkbox].riichi').on('change', function () {
         if (this.checked == true) {
-            // let target = document.getElementById($(this)[0].value);
-            // let value = parseInt(target.value.replace(',', ''));
+            let target = document.getElementById($(this)[0].value);
+            let value = parseInt(target.value.replace(',', ''));
             kyotaku.valueAsNumber++
-            // value -= 1000;
-            // target.value = value.toLocaleString();
+            value -= 1000;
+            target.value = value.toLocaleString();
             this.parentNode.parentNode.parentNode.parentNode.children[3].children[1].children[0].children[0].checked = true;
-            // updatePoints(points);
+            updatePoints(points);
         } else {
             this.parentNode.parentNode.parentNode.parentNode.children[3].children[1].children[0].children[0].checked = false;
         }
@@ -1579,6 +1592,7 @@ $(document).ready(function () {
             calcKoPoint();
         }
         showPointMove();
+        winHan.value = han.value;
     });
     $('#fu').on('change', function () {
         if (oyaChecker()) {
@@ -1587,7 +1601,7 @@ $(document).ready(function () {
             calcKoPoint();
         }
         showPointMove();
-
+        winFu.value = fu.value;
     });
     $('#agari').on('change', function () {
         if (oyaChecker()) {
@@ -1603,6 +1617,11 @@ $(document).ready(function () {
             }
         }
         showPointMove();
+        for (let p of winningPlayerArr) {
+            if (p.value == agari.value) {
+                p.selected = true;
+            }
+        }
     });
     $('#houju').on('change', function () {
         if (oyaChecker()) {
@@ -1708,6 +1727,27 @@ let resetAll = () => {
 twentyFiveButton.addEventListener('click', setTwentyFive);
 thirtyButton.addEventListener('click', setThirty);
 resetAllButton.addEventListener('click', resetAll);
+
+
+let cover = document.querySelector('.cover')
+
+let showWinningHandPage = () => {
+    winningHandPage.classList.toggle('showPage')
+    winningHandButton.classList.toggle('showPage');
+    cover.classList.toggle('activateCover');
+    document.body.classList.toggle('moveMain');
+
+}
+
+let hideWinningHandPage = () => {
+    winningHandPage.classList.remove('showPage')
+    winningHandButton.classList.remove('showPage');
+    cover.classList.remove('activateCover');
+    document.body.classList.remove('moveMain');
+}
+
+winningHandButton.addEventListener('click', showWinningHandPage);
+cover.addEventListener('click', hideWinningHandPage);
 
 form.addEventListener('submit', () => {
     if (document.getElementById('updateApply').checked) {

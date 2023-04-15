@@ -134,18 +134,22 @@ socket.on('change', (data) => {
                     } else if (container.parentNode.children[3].className == 'pointsEarned') {
                         container.parentNode.children[3].innerHTML = '+' + plDifference;
                     }
-                    setTimeout(() => {
-                        container.parentNode.children[3].classList.add('showPL');
-                        container.parentNode.children[3].classList.add('moveRight');
-                    }, 100)
-                    setTimeout(() => {
-                        container.parentNode.children[3].classList.replace('moveRight', 'moveDown');
-                        container.parentNode.children[3].classList.remove('showPL');
+                    if (container.parentNode.children[0].children[1].children[0].children.length == 0) {
                         setTimeout(() => {
-                            container.parentNode.children[3].classList.remove('moveDown');
-                            numAnimation(container, currentValue, parseUpdatedValue, 1000);
-                        }, 200)
-                    }, 4000)
+                            container.parentNode.children[3].classList.add('showPL');
+                            container.parentNode.children[3].classList.add('moveRight');
+                        }, 100)
+                        setTimeout(() => {
+                            container.parentNode.children[3].classList.replace('moveRight', 'moveDown');
+                            container.parentNode.children[3].classList.remove('showPL');
+                            setTimeout(() => {
+                                container.parentNode.children[3].classList.remove('moveDown');
+                                numAnimation(container, currentValue, parseUpdatedValue, 1000);
+                            }, 200)
+                        }, 4000)
+                    } else {
+                        numAnimation(container, currentValue, parseUpdatedValue, 1000);
+                    }
                 } else if (plDifference < 0) {
                     plContainer.classList.add('pointsLost');
                     plContainer.innerHTML = plDifference;
@@ -157,18 +161,22 @@ socket.on('change', (data) => {
                     } else if (container.parentNode.children[3].className == 'pointsLost') {
                         container.parentNode.children[3].innerHTML = plDifference;
                     }
-                    setTimeout(() => {
-                        container.parentNode.children[3].classList.add('showPL');
-                        container.parentNode.children[3].classList.add('moveRight');
-                    }, 100)
-                    setTimeout(() => {
-                        container.parentNode.children[3].classList.replace('moveRight', 'moveDown');
-                        container.parentNode.children[3].classList.remove('showPL');
+                    if (container.parentNode.children[0].children[1].children[0].children.length == 0) {
                         setTimeout(() => {
-                            container.parentNode.children[3].classList.remove('moveDown');
-                            numAnimation(container, currentValue, parseUpdatedValue, 1000);
-                        }, 200)
-                    }, 4000)
+                            container.parentNode.children[3].classList.add('showPL');
+                            container.parentNode.children[3].classList.add('moveRight');
+                        }, 100)
+                        setTimeout(() => {
+                            container.parentNode.children[3].classList.replace('moveRight', 'moveDown');
+                            container.parentNode.children[3].classList.remove('showPL');
+                            setTimeout(() => {
+                                container.parentNode.children[3].classList.remove('moveDown');
+                                numAnimation(container, currentValue, parseUpdatedValue, 1000);
+                            }, 200)
+                        }, 4000)
+                    } else {
+                        numAnimation(container, currentValue, parseUpdatedValue, 1000);
+                    }
                 }
             } else if (keys[i].includes('honba')) {
                 let container = document.getElementById(keys[i]);

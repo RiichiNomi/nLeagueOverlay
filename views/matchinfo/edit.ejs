@@ -559,6 +559,280 @@
             </div>
             <div>*Click anywhere on the overlay to enable Riichi sound*</div>
         </div>
+        <div class="winningHandButton" id="winningHandButton">
+            Show Winning Hand
+        </div>
+        <div class="winningHandPage" id="winningHandPage">
+            <div class="sidePage">
+                <div class="sideTitle">Winning Hand</div>
+                <div class="winDetail">
+                    <select name="winningPlayer" id="winningPlayer">
+                        <option value="" selected disabled hidden>Select Name</option>
+                        <option value="<%= detail.nameE %>">
+                            <%= detail.nameE %>
+                        </option>
+                        <option value="<%= detail.nameS %>">
+                            <%= detail.nameS %>
+                        </option>
+                        <option value="<%= detail.nameW %>">
+                            <%= detail.nameW %>
+                        </option>
+                        <option value="<%= detail.nameN %>">
+                            <%= detail.nameN %>
+                        </option>
+                    </select>
+                    <div>
+                        Han:
+                        <select id="winHan" name="winHan">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                        </select>
+                    </div>
+                    <div>
+                        Fu:
+                        <select id="winFu" name="winFu">
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30" selected>30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="70">70</option>
+                            <option value="80">80</option>
+                            <option value="90">90</option>
+                            <option value="100">100</option>
+                            <option value="110">110</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="yaku">
+                    <div>1 Han</div>
+                    <ul class="oneHan">
+                        <li>
+                            <label for="riichi">Riichi</label>
+                            <input type="checkbox" id="riichi" name="riichi" value="riichi">
+                        </li>
+                        <li>
+                            <label for="ippatsu">Ippatsu</label>
+                            <input type="checkbox" id="ippatsu" name="ippatsu" value="ippatsu">
+                        </li>
+                        <li>
+                            <label for="tsumo">Tsumo</label>
+                            <input type="checkbox" id="tsumo" name="tsumo" value="tsumo">
+                        </li>
+                        <li>
+                            <label for="tanyao">Tanyao</label>
+                            <input type="checkbox" id="tanyao" name="tanyao" value="tanyao">
+                        </li>
+                        <li>
+                            <label for="pinfu">Pinfu</label>
+                            <input type="checkbox" id="pinfu" name="pinfu" value="pinfu">
+                        </li>
+                        <li>
+                            <label for="iipeiko">Iipeiko</label>
+                            <input type="checkbox" id="iipeiko" name="iipeiko" value="iipeiko">
+                        </li>
+                        <li>
+                            <label for="haku">Haku</label>
+                            <input type="checkbox" id="haku" name="haku" value="haku">
+                        </li>
+                        <li>
+                            <label for="hatsu">Hatsu</label>
+                            <input type="checkbox" id="hatsu" name="hatsu" value="hatsu">
+                        </li>
+                        <li>
+                            <label for="chun">Chun</label>
+                            <input type="checkbox" id="chun" name="chun" value="chun">
+                        </li>
+                        <li>
+                            <label for="ton">Ton</label>
+                            <input type="checkbox" id="ton" name="ton" value="ton">
+                        </li>
+                        <li>
+                            <label for="nan">Nan</label>
+                            <input type="checkbox" id="nan" name="nan" value="nan">
+                        </li>
+                        <li>
+                            <label for="sha">Sha</label>
+                            <input type="checkbox" id="sha" name="sha" value="sha">
+                        </li>
+                        <li>
+                            <label for="pei">Pei</label>
+                            <input type="checkbox" id="pei" name="pei" value="pei">
+                        </li>
+                        <li>
+                            <label for="chankan">Chankan</label>
+                            <input type="checkbox" id="chankan" name="chankan" value="chankan">
+                        </li>
+                        <li>
+                            <label for="rinshankaihou">Rinshankaihou</label>
+                            <input type="checkbox" id="rinshankaihou" name="rinshankaihou" value="rinshankaihou">
+                        </li>
+                        <li>
+                            <label for="haiteiraoyue">Haiteiraoyue</label>
+                            <input type="checkbox" id="houteiraoyue" name="houteiraoyue" value="houteiraoyue">
+                        </li>
+                        <li>
+                            <label for="houteiraoyui">Houteiraoyui</label>
+                            <input type="checkbox" id="houteiraoyui" name="houteiraoyui" value="houteiraoyui">
+                        </li>
+                    </ul>
+                    <div>2 Han</div>
+                    <ul class="twoHan">
+                        <li>
+                            <label for="doubleRiichi">Double Riichi</label>
+                            <input type="checkbox" id="doubleRiichi" name="doubleRiichi" value="doubleRiichi">
+                        </li>
+                        <li>
+                            <label for="chiitoitsu">Chiitoitsu</label>
+                            <input type="checkbox" id="chiitoitsu" name="chiitoitsu" value="chiitoitsu">
+                        </li>
+                        <li>
+                            <label for="doubleTon">Double Ton</label>
+                            <input type="checkbox" id="doubleTon" name="doubleTon" value="doubleTon">
+                        </li>
+                        <li>
+                            <label for="doubleNan">Double Nan</label>
+                            <input type="checkbox" id="doubleNan" name="doubleNan" value="doubleNan">
+                        </li>
+                        <li>
+                            <label for="toitoi">Toitoi</label>
+                            <input type="checkbox" id="toitoi" name="toitoi" value="toitoi">
+                        </li>
+                        <li>
+                            <label for="sanankou">Sanankou</label>
+                            <input type="checkbox" id="sanankou" name="sanankou" value="sanankou">
+                        </li>
+                        <li>
+                            <label for="sanshokuDoukou">Sanshoku Doukou</label>
+                            <input type="checkbox" id="sanshokuDoukou" name="sanshokuDoukou" value="sanshokuDoukou">
+                        </li>
+                        <li>
+                            <label for="sanshokuDoujun">Sanshoku Doujun</label>
+                            <input type="checkbox" id="sanshokuDoujun" name="sanshokuDoujun" value="sanshokuDoujun">
+                        </li>
+                        <li>
+                            <label for="honroutou">Honroutou</label>
+                            <input type="checkbox" id="honroutou" name="honroutou" value="honroutou">
+                        </li>
+                        <li>
+                            <label for="ikkitsuukan">Ikkitsuukan</label>
+                            <input type="checkbox" id="ikkitsuukan" name="ikkitsuukan" value="ikkitsuukan">
+                        </li>
+                        <li>
+                            <label for="chanta">Chanta</label>
+                            <input type="checkbox" id="chanta" name="chanta" value="chanta">
+                        </li>
+                        <li>
+                            <label for="shousangen">Shousangen</label>
+                            <input type="checkbox" id="shousangen" name="shousangen" value="shousangen">
+                        </li>
+                        <li>
+                            <label for="sankantsu">Sankantsu</label>
+                            <input type="checkbox" id="sankantsu" name="sankantsu" value="sankantsu">
+                        </li>
+                    </ul>
+                    <div class="threeFiveSix">
+                        <div>3 Han</div>
+                        <ul class="threeHan">
+                            <li>
+                                <label for="honiiso">Honiiso</label>
+                                <input type="checkbox" id="honiiso" name="honiiso" value="honiiso">
+                            </li>
+                            <li>
+                                <label for="junchan">Junchan</label>
+                                <input type="checkbox" id="junchan" name="junchan" value="junchan">
+                            </li>
+                            <li>
+                                <label for="ryanpeiko">Ryanpeiko</label>
+                                <input type="checkbox" id="ryanpeiko" name="ryanpeiko" value="ryanpeiko">
+                            </li>
+                        </ul>
+                        <div>5 Han</div>
+                        <ul class="fiveHan">
+                            <li>
+                                <label for="nagashiMangan">Nagashi Mangan</label>
+                                <input type="checkbox" id="nagashiMangan" name="nagashiMangan" value="nagashiMangan">
+                            </li>
+                        </ul>
+                        <div>6 Han</div>
+                        <ul class="sixHan">
+                            <li>
+                                <label for="chiniiso">Chiniiso</label>
+                                <input type="checkbox" id="chiniiso" name="chiniiso" value="chiniiso">
+                            </li>
+                        </ul>
+                    </div>
+                    <div>Yakuman</div>
+                    <ul class="yakuman">
+                        <li>
+                            <label for="tenho">Tenho</label>
+                            <input type="checkbox" id="tenho" name="tenho" value="tenho">
+                        </li>
+                        <li>
+                            <label for="chiiho">Chiiho</label>
+                            <input type="checkbox" id="chiiho" name="chiiho" value="chiiho">
+                        </li>
+                        <li>
+                            <label for="renho">Renho</label>
+                            <input type="checkbox" id="renho" name="renho" value="renho">
+                        </li>
+                        <li>
+                            <label for="ryuiiso">Ryuiiso</label>
+                            <input type="checkbox" id="ryuiiso" name="ryuiiso" value="ryuiiso">
+                        </li>
+                        <li>
+                            <label for="daisangen">Daisangen</label>
+                            <input type="checkbox" id="daisangen" name="daisangen" value="daisangen">
+                        </li>
+                        <li>
+                            <label for="shousuushii">Shousuushii</label>
+                            <input type="checkbox" id="shousuushii" name="shousuushii" value="shousuushii">
+                        </li>
+                        <li>
+                            <label for="daisuushii">Daisuushii</label>
+                            <input type="checkbox" id="daisuushii" name="daisuushii" value="daisuushii">
+                        </li>
+                        <li>
+                            <label for="tsuuiisou">Tsuuiisou</label>
+                            <input type="checkbox" id="tsuuiisou" name="tsuuiisou" value="tsuuiisou">
+                        </li>
+                        <li>
+                            <label for="kokushimusou">Kokushimusou</label>
+                            <input type="checkbox" id="kokushimusou" name="kokushimusou" value="kokushimusou">
+                        </li>
+                        <li>
+                            <label for="chuurenpotou">Chuurenpotou</label>
+                            <input type="checkbox" id="chuurenpotou" name="chuurenpotou" value="chuurenpotou">
+                        </li>
+                        <li>
+                            <label for="suuankou">Suuankou</label>
+                            <input type="checkbox" id="suuankou" name="suuankou" value="suuankou">
+                        </li>
+                        <li>
+                            <label for="chinroutou">Chinroutou</label>
+                            <input type="checkbox" id="chinroutou" name="chinroutou" value="chinroutou">
+                        </li>
+                        <li>
+                            <label for="suukantsu">Suukantsu</label>
+                            <input type="checkbox" id="suukantsu" name="suukantsu" value="suukantsu">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cover"></div>
     </form>
 </body>
 <script src="../../public/resources/js/edit.js"></script>
