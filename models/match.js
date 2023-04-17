@@ -63,7 +63,12 @@ const matchSchema = new mongoose.Schema({
     mute: {
         type: [String],
         default: 'on'
-    }
+    },
+    winningPlayer: String,
+    winHan: Number,
+    winFu: Number,
+    winPoint: String,
+    yaku: [String]
 });
 
 const Match = mongoose.model('Match', matchSchema);

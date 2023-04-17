@@ -564,183 +564,198 @@
         </div>
         <div class="winningHandPage" id="winningHandPage">
             <div class="sidePage">
-                <div class="sideTitle">Winning Hand</div>
+                <div class="sideTitle">Winning Hand (under construction)</div>
                 <div class="winDetail">
                     <select name="winningPlayer" id="winningPlayer">
-                        <option value="" selected disabled hidden>Select Name</option>
-                        <option value="<%= detail.nameE %>">
+                        <option value="" disabled hidden>Select Name</option>
+                        <option value="<%= detail.nameE %>" <% if(detail.winningPlayer == detail.nameE) { %> selected
+                            <% }%>>
                             <%= detail.nameE %>
                         </option>
-                        <option value="<%= detail.nameS %>">
+                        <option value="<%= detail.nameS %>" <% if(detail.winningPlayer == detail.nameS) { %> selected
+                            <% }%>>
                             <%= detail.nameS %>
                         </option>
-                        <option value="<%= detail.nameW %>">
+                        <option value="<%= detail.nameW %>" <% if(detail.winningPlayer == detail.nameW) { %> selected
+                            <% }%>>
                             <%= detail.nameW %>
                         </option>
-                        <option value="<%= detail.nameN %>">
+                        <option value="<%= detail.nameN %>" <% if(detail.winningPlayer == detail.nameN) { %> selected
+                            <% }%>>
                             <%= detail.nameN %>
                         </option>
                     </select>
                     <div>
                         Han:
                         <select id="winHan" name="winHan">
-                            <option value="1">1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
+                            <option value="1" <% if(detail.winHan == 1) { %> selected <% }%>>1</option>
+                            <option value="2" <% if(detail.winHan == 2) { %> selected <% }%>>2</option>
+                            <option value="3" <% if(detail.winHan == 3) { %> selected <% }%>>3</option>
+                            <option value="4" <% if(detail.winHan == 4) { %> selected <% }%>>4</option>
+                            <option value="5" <% if(detail.winHan == 5) { %> selected <% }%>>5</option>
+                            <option value="6" <% if(detail.winHan == 6) { %> selected <% }%>>6</option>
+                            <option value="7" <% if(detail.winHan == 7) { %> selected <% }%>>7</option>
+                            <option value="8" <% if(detail.winHan == 8) { %> selected <% }%>>8</option>
+                            <option value="9" <% if(detail.winHan == 9) { %> selected <% }%>>9</option>
+                            <option value="10" <% if(detail.winHan == 10) { %> selected <% }%>>10</option>
+                            <option value="11" <% if(detail.winHan == 11) { %> selected <% }%>>11</option>
+                            <option value="12" <% if(detail.winHan == 12) { %> selected <% }%>>12</option>
+                            <option value="13" <% if(detail.winHan == 13) { %> selected <% }%>>13</option>
                         </select>
                     </div>
                     <div>
                         Fu:
                         <select id="winFu" name="winFu">
-                            <option value="20">20</option>
-                            <option value="25">25</option>
-                            <option value="30" selected>30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                            <option value="60">60</option>
-                            <option value="70">70</option>
-                            <option value="80">80</option>
-                            <option value="90">90</option>
-                            <option value="100">100</option>
-                            <option value="110">110</option>
+                            <option value="20" <% if(detail.winFu == 20) { %> selected <% }%>>20</option>
+                            <option value="25" <% if(detail.winFu == 25) { %> selected <% }%>>25</option>
+                            <option value="30" <% if(detail.winFu == 30) { %> selected <% }%>>30</option>
+                            <option value="40" <% if(detail.winFu == 40) { %> selected <% }%>>40</option>
+                            <option value="50" <% if(detail.winFu == 50) { %> selected <% }%>>50</option>
+                            <option value="60" <% if(detail.winFu == 60) { %> selected <% }%>>60</option>
+                            <option value="70" <% if(detail.winFu == 70) { %> selected <% }%>>70</option>
+                            <option value="80" <% if(detail.winFu == 80) { %> selected <% }%>>80</option>
+                            <option value="90" <% if(detail.winFu == 90) { %> selected <% }%>>90</option>
+                            <option value="100" <% if(detail.winFu == 100) { %> selected <% }%>>100</option>
+                            <option value="110" <% if(detail.winFu == 110) { %> selected <% }%>>110</option>
                         </select>
                     </div>
+                    <label for="winOya">
+                        Oya:
+                        <input id="winOya" type="checkbox">
+                    </label>
+                    <label for="winTsumo">
+                        Tsumo:
+                        <input id="winTsumo" type="checkbox" value="Tsumo">
+                    </label>
+                    <div id="winCalc" class="winCalc"></div>
+                    <input type="hidden" id="winPoint" name="winPoint" value="">
+                    <button type="button" id="showHand">Show Winning Hand</button>
                 </div>
                 <div class="yaku">
                     <div>1 Han</div>
                     <ul class="oneHan">
                         <li>
                             <label for="riichi">Riichi</label>
-                            <input type="checkbox" id="riichi" name="riichi" value="riichi">
+                            <input type="checkbox" id="riichi" name="yaku" value="Riichi">
                         </li>
                         <li>
                             <label for="ippatsu">Ippatsu</label>
-                            <input type="checkbox" id="ippatsu" name="ippatsu" value="ippatsu">
+                            <input type="checkbox" id="ippatsu" name="yaku" value="Ippatsu">
                         </li>
                         <li>
                             <label for="tsumo">Tsumo</label>
-                            <input type="checkbox" id="tsumo" name="tsumo" value="tsumo">
+                            <input type="checkbox" id="tsumo" name="yaku" value="Tsumo">
                         </li>
                         <li>
                             <label for="tanyao">Tanyao</label>
-                            <input type="checkbox" id="tanyao" name="tanyao" value="tanyao">
+                            <input type="checkbox" id="tanyao" name="yaku" value="Tanyao">
                         </li>
                         <li>
                             <label for="pinfu">Pinfu</label>
-                            <input type="checkbox" id="pinfu" name="pinfu" value="pinfu">
+                            <input type="checkbox" id="pinfu" name="yaku" value="Pinfu">
                         </li>
                         <li>
                             <label for="iipeiko">Iipeiko</label>
-                            <input type="checkbox" id="iipeiko" name="iipeiko" value="iipeiko">
+                            <input type="checkbox" id="iipeiko" name="yaku" value="Iipeiko">
                         </li>
                         <li>
                             <label for="haku">Haku</label>
-                            <input type="checkbox" id="haku" name="haku" value="haku">
+                            <input type="checkbox" id="haku" name="yaku" value="Haku">
                         </li>
                         <li>
                             <label for="hatsu">Hatsu</label>
-                            <input type="checkbox" id="hatsu" name="hatsu" value="hatsu">
+                            <input type="checkbox" id="hatsu" name="yaku" value="Hatsu">
                         </li>
                         <li>
                             <label for="chun">Chun</label>
-                            <input type="checkbox" id="chun" name="chun" value="chun">
+                            <input type="checkbox" id="chun" name="yaku" value="Chun">
                         </li>
                         <li>
                             <label for="ton">Ton</label>
-                            <input type="checkbox" id="ton" name="ton" value="ton">
+                            <input type="checkbox" id="ton" name="yaku" value="Ton">
                         </li>
                         <li>
                             <label for="nan">Nan</label>
-                            <input type="checkbox" id="nan" name="nan" value="nan">
+                            <input type="checkbox" id="nan" name="yaku" value="Nan">
                         </li>
                         <li>
                             <label for="sha">Sha</label>
-                            <input type="checkbox" id="sha" name="sha" value="sha">
+                            <input type="checkbox" id="sha" name="yaku" value="Sha">
                         </li>
                         <li>
                             <label for="pei">Pei</label>
-                            <input type="checkbox" id="pei" name="pei" value="pei">
+                            <input type="checkbox" id="pei" name="yaku" value="Pei">
                         </li>
                         <li>
                             <label for="chankan">Chankan</label>
-                            <input type="checkbox" id="chankan" name="chankan" value="chankan">
+                            <input type="checkbox" id="chankan" name="yaku" value="Chankan">
                         </li>
                         <li>
                             <label for="rinshankaihou">Rinshankaihou</label>
-                            <input type="checkbox" id="rinshankaihou" name="rinshankaihou" value="rinshankaihou">
+                            <input type="checkbox" id="rinshankaihou" name="yaku" value="Rinshankaihou">
                         </li>
                         <li>
                             <label for="haiteiraoyue">Haiteiraoyue</label>
-                            <input type="checkbox" id="houteiraoyue" name="houteiraoyue" value="houteiraoyue">
+                            <input type="checkbox" id="houteiraoyue" name="yaku" value="Houteiraoyue">
                         </li>
                         <li>
                             <label for="houteiraoyui">Houteiraoyui</label>
-                            <input type="checkbox" id="houteiraoyui" name="houteiraoyui" value="houteiraoyui">
+                            <input type="checkbox" id="houteiraoyui" name="yaku" value="Houteiraoyui">
                         </li>
                     </ul>
                     <div>2 Han</div>
                     <ul class="twoHan">
                         <li>
                             <label for="doubleRiichi">Double Riichi</label>
-                            <input type="checkbox" id="doubleRiichi" name="doubleRiichi" value="doubleRiichi">
+                            <input type="checkbox" id="doubleRiichi" name="yaku" value="Double Riichi">
                         </li>
                         <li>
                             <label for="chiitoitsu">Chiitoitsu</label>
-                            <input type="checkbox" id="chiitoitsu" name="chiitoitsu" value="chiitoitsu">
+                            <input type="checkbox" id="chiitoitsu" name="yaku" value="Chiitoitsu">
                         </li>
                         <li>
                             <label for="doubleTon">Double Ton</label>
-                            <input type="checkbox" id="doubleTon" name="doubleTon" value="doubleTon">
+                            <input type="checkbox" id="doubleTon" name="yaku" value="Double Ton">
                         </li>
                         <li>
                             <label for="doubleNan">Double Nan</label>
-                            <input type="checkbox" id="doubleNan" name="doubleNan" value="doubleNan">
+                            <input type="checkbox" id="doubleNan" name="yaku" value="Double Nan">
                         </li>
                         <li>
                             <label for="toitoi">Toitoi</label>
-                            <input type="checkbox" id="toitoi" name="toitoi" value="toitoi">
+                            <input type="checkbox" id="toitoi" name="yaku" value="Toitoi">
                         </li>
                         <li>
                             <label for="sanankou">Sanankou</label>
-                            <input type="checkbox" id="sanankou" name="sanankou" value="sanankou">
+                            <input type="checkbox" id="sanankou" name="yaku" value="Sanankou">
                         </li>
                         <li>
                             <label for="sanshokuDoukou">Sanshoku Doukou</label>
-                            <input type="checkbox" id="sanshokuDoukou" name="sanshokuDoukou" value="sanshokuDoukou">
+                            <input type="checkbox" id="sanshokuDoukou" name="yaku" value="Sanshoku Doukou">
                         </li>
                         <li>
                             <label for="sanshokuDoujun">Sanshoku Doujun</label>
-                            <input type="checkbox" id="sanshokuDoujun" name="sanshokuDoujun" value="sanshokuDoujun">
+                            <input type="checkbox" id="sanshokuDoujun" name="yaku" value="Sanshoku Doujun">
                         </li>
                         <li>
                             <label for="honroutou">Honroutou</label>
-                            <input type="checkbox" id="honroutou" name="honroutou" value="honroutou">
+                            <input type="checkbox" id="honroutou" name="yaku" value="Honroutou">
                         </li>
                         <li>
                             <label for="ikkitsuukan">Ikkitsuukan</label>
-                            <input type="checkbox" id="ikkitsuukan" name="ikkitsuukan" value="ikkitsuukan">
+                            <input type="checkbox" id="ikkitsuukan" name="yaku" value="Ikkitsuukan">
                         </li>
                         <li>
                             <label for="chanta">Chanta</label>
-                            <input type="checkbox" id="chanta" name="chanta" value="chanta">
+                            <input type="checkbox" id="chanta" name="yaku" value="Chanta">
                         </li>
                         <li>
                             <label for="shousangen">Shousangen</label>
-                            <input type="checkbox" id="shousangen" name="shousangen" value="shousangen">
+                            <input type="checkbox" id="shousangen" name="yaku" value="Shousangen">
                         </li>
                         <li>
                             <label for="sankantsu">Sankantsu</label>
-                            <input type="checkbox" id="sankantsu" name="sankantsu" value="sankantsu">
+                            <input type="checkbox" id="sankantsu" name="yaku" value="Sankantsu">
                         </li>
                     </ul>
                     <div class="threeFiveSix">
@@ -748,29 +763,29 @@
                         <ul class="threeHan">
                             <li>
                                 <label for="honiiso">Honiiso</label>
-                                <input type="checkbox" id="honiiso" name="honiiso" value="honiiso">
+                                <input type="checkbox" id="honiiso" name="yaku" value="Honiiso">
                             </li>
                             <li>
                                 <label for="junchan">Junchan</label>
-                                <input type="checkbox" id="junchan" name="junchan" value="junchan">
+                                <input type="checkbox" id="junchan" name="yaku" value="Junchan">
                             </li>
                             <li>
                                 <label for="ryanpeiko">Ryanpeiko</label>
-                                <input type="checkbox" id="ryanpeiko" name="ryanpeiko" value="ryanpeiko">
+                                <input type="checkbox" id="ryanpeiko" name="yaku" value="Ryanpeiko">
                             </li>
                         </ul>
                         <div>5 Han</div>
                         <ul class="fiveHan">
                             <li>
                                 <label for="nagashiMangan">Nagashi Mangan</label>
-                                <input type="checkbox" id="nagashiMangan" name="nagashiMangan" value="nagashiMangan">
+                                <input type="checkbox" id="nagashiMangan" name="yaku" value="Nagashi Mangan">
                             </li>
                         </ul>
                         <div>6 Han</div>
                         <ul class="sixHan">
                             <li>
                                 <label for="chiniiso">Chiniiso</label>
-                                <input type="checkbox" id="chiniiso" name="chiniiso" value="chiniiso">
+                                <input type="checkbox" id="chiniiso" name="yaku" value="Chiniiso">
                             </li>
                         </ul>
                     </div>
@@ -778,55 +793,55 @@
                     <ul class="yakuman">
                         <li>
                             <label for="tenho">Tenho</label>
-                            <input type="checkbox" id="tenho" name="tenho" value="tenho">
+                            <input type="checkbox" id="tenho" name="yaku" value="Tenho">
                         </li>
                         <li>
                             <label for="chiiho">Chiiho</label>
-                            <input type="checkbox" id="chiiho" name="chiiho" value="chiiho">
+                            <input type="checkbox" id="chiiho" name="yaku" value="Chiiho">
                         </li>
                         <li>
                             <label for="renho">Renho</label>
-                            <input type="checkbox" id="renho" name="renho" value="renho">
+                            <input type="checkbox" id="renho" name="yaku" value="Renho">
                         </li>
                         <li>
                             <label for="ryuiiso">Ryuiiso</label>
-                            <input type="checkbox" id="ryuiiso" name="ryuiiso" value="ryuiiso">
+                            <input type="checkbox" id="ryuiiso" name="yaku" value="Ryuiiso">
                         </li>
                         <li>
                             <label for="daisangen">Daisangen</label>
-                            <input type="checkbox" id="daisangen" name="daisangen" value="daisangen">
+                            <input type="checkbox" id="daisangen" name="yaku" value="Daisangen">
                         </li>
                         <li>
                             <label for="shousuushii">Shousuushii</label>
-                            <input type="checkbox" id="shousuushii" name="shousuushii" value="shousuushii">
+                            <input type="checkbox" id="shousuushii" name="yaku" value="Shousuushii">
                         </li>
                         <li>
                             <label for="daisuushii">Daisuushii</label>
-                            <input type="checkbox" id="daisuushii" name="daisuushii" value="daisuushii">
+                            <input type="checkbox" id="daisuushii" name="yaku" value="Daisuushii">
                         </li>
                         <li>
                             <label for="tsuuiisou">Tsuuiisou</label>
-                            <input type="checkbox" id="tsuuiisou" name="tsuuiisou" value="tsuuiisou">
+                            <input type="checkbox" id="tsuuiisou" name="yaku" value="Tsuuiisou">
                         </li>
                         <li>
                             <label for="kokushimusou">Kokushimusou</label>
-                            <input type="checkbox" id="kokushimusou" name="kokushimusou" value="kokushimusou">
+                            <input type="checkbox" id="kokushimusou" name="yaku" value="Kokushimusou">
                         </li>
                         <li>
                             <label for="chuurenpotou">Chuurenpotou</label>
-                            <input type="checkbox" id="chuurenpotou" name="chuurenpotou" value="chuurenpotou">
+                            <input type="checkbox" id="chuurenpotou" name="yaku" value="Chuurenpotou">
                         </li>
                         <li>
                             <label for="suuankou">Suuankou</label>
-                            <input type="checkbox" id="suuankou" name="suuankou" value="suuankou">
+                            <input type="checkbox" id="suuankou" name="yaku" value="Suuankou">
                         </li>
                         <li>
                             <label for="chinroutou">Chinroutou</label>
-                            <input type="checkbox" id="chinroutou" name="chinroutou" value="chinroutou">
+                            <input type="checkbox" id="chinroutou" name="yaku" value="Chinroutou">
                         </li>
                         <li>
                             <label for="suukantsu">Suukantsu</label>
-                            <input type="checkbox" id="suukantsu" name="suukantsu" value="suukantsu">
+                            <input type="checkbox" id="suukantsu" name="yaku" value="Suukantsu">
                         </li>
                     </ul>
                 </div>

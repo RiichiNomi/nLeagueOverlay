@@ -302,9 +302,9 @@ body {
 .pointsEarned,
 .pointsLost {
     opacity: 0;
-    width: 7rem;
+    width: 7.5rem;
     position: absolute;
-    bottom: 5rem;
+    bottom: 5.3rem;
     font-size: 1.7rem;
     text-align: end;
     transform: translate(-3rem, 0);

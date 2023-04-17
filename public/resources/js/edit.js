@@ -26,7 +26,9 @@ let shortcut = document.querySelector('#shortcut');
 
 let winningHandButton = document.querySelector('#winningHandButton');
 let winningHandPage = document.querySelector('#winningHandPage');
+let winningPlayer = document.querySelector('#winningPlayer');
 let winningPlayerArr = Array.from(winningPlayer.options);
+let winCalc = document.querySelector('#winCalc');
 
 let teamE = document.querySelector('#teamE');
 let teamS = document.querySelector('#teamS');
@@ -78,7 +80,7 @@ $(teamN).on('change', function () {
     }
 })
 
-let calcOyaPoint = () => {
+let calcOyaPoint = (calc, han, fu, houju) => {
     if (houju.value == "Tsumo") {
         if (han.value == 1) {
             switch (parseInt(fu.value)) {
@@ -170,7 +172,7 @@ let calcOyaPoint = () => {
                     calc.innerHTML = '3200 all';
                     return 9600;
                 case 60:
-                    if (kiriage == 'true') {
+                    if (kiriage.value == 'true') {
                         calc.innerHTML = 'Mangan 4000 all';
                         return 12000;
                     } else {
@@ -202,7 +204,7 @@ let calcOyaPoint = () => {
                     calc.innerHTML = '3200 all';
                     return 9600;
                 case 30:
-                    if (kiriage == 'true') {
+                    if (kiriage.value == 'true') {
                         calc.innerHTML = 'Mangan 4000 all';
                         return 12000;
                     } else {
@@ -449,7 +451,7 @@ let calcOyaPoint = () => {
 }
 
 
-let calcKoPoint = () => {
+let calcKoPoint = (calc, han, fu, houju) => {
     if (houju.value == "Tsumo") {
         if (han.value == 1) {
             switch (parseInt(fu.value)) {
@@ -881,19 +883,19 @@ let applyPoints = () => {
     } else {
         for (let n of playerName) {
             let target = n.parentElement.parentElement.nextElementSibling.childNodes[1].childNodes[1];
-            let riichiCheck = n.parentElement.parentElement.parentElement.children[4].children[1].children[0].children[0].checked;
+            // let riichiCheck = n.parentElement.parentElement.parentElement.children[4].children[1].children[0].children[0].checked;
             if (houju.value == "Tsumo") {
                 if (oyaChecker()) {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcOyaPoint(calc, han, fu, houju) / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
                         target.value = value.toLocaleString();
                     } else {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint() / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcOyaPoint(calc, han, fu, houju) / 3 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
@@ -903,19 +905,19 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        let value = parseInt(target.value.replace(',', '')) + Math.ceil(calcKoPoint(calc, han, fu, houju) / 2 / 100) * 100 + Math.ceil(calcKoPoint(calc, han, fu, houju) / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
                         target.value = value.toLocaleString();
                     } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint(calc, han, fu, houju) / 2 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
                         target.value = value.toLocaleString();
                     } else {
-                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint() / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                        let value = parseInt(target.value.replace(',', '')) - Math.ceil(calcKoPoint(calc, han, fu, houju) / 4 / 100) * 100 - honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
@@ -927,13 +929,13 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        let value = parseInt(target.value.replace(',', '')) + calcOyaPoint(calc, han, fu, houju) + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) - calcOyaPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) - calcOyaPoint(calc, han, fu, houju) - honba.valueAsNumber * parseInt(honbaPoints.value);
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
@@ -949,13 +951,13 @@ let applyPoints = () => {
                     if (agari.value == '') {
                         break;
                     } else if (agari.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) + calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
+                        let value = parseInt(target.value.replace(',', '')) + calcKoPoint(calc, han, fu, houju) + honba.valueAsNumber * parseInt(honbaPoints.value) + kyotaku.valueAsNumber * 1000;
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
                         target.value = value.toLocaleString();
                     } else if (houju.value == n.value) {
-                        let value = parseInt(target.value.replace(',', '')) - calcKoPoint() - honba.valueAsNumber * parseInt(honbaPoints.value);
+                        let value = parseInt(target.value.replace(',', '')) - calcKoPoint(calc, han, fu, houju) - honba.valueAsNumber * parseInt(honbaPoints.value);
                         // if (riichiCheck) {
                         //     value -= 1000;
                         // }
@@ -1047,7 +1049,7 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = Math.ceil(calcOyaPoint() / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let value = Math.ceil(calcOyaPoint(calc, han, fu, houju) / 3 / 100) * 300 + honba.valueAsNumber * parseInt(honbaPoints.value);
                     let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
@@ -1072,7 +1074,7 @@ let showPointMove = () => {
                         }
                     }
                 } else {
-                    let value = Math.ceil(calcOyaPoint() / 3 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    let value = Math.ceil(calcOyaPoint(calc, han, fu, houju) / 3 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                     let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
@@ -1098,7 +1100,7 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + Math.ceil(calcKoPoint() / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let value = Math.ceil(calcKoPoint(calc, han, fu, houju) / 2 / 100) * 100 + Math.ceil(calcKoPoint(calc, han, fu, houju) / 4 / 100) * 100 * 2 + honba.valueAsNumber * parseInt(honbaPoints.value);
                     let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
@@ -1123,7 +1125,7 @@ let showPointMove = () => {
                         }
                     }
                 } else if (n.parentElement.parentElement.parentElement.children[4].children[0].children[0].children[0].checked) {
-                    let value = Math.ceil(calcKoPoint() / 2 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    let value = Math.ceil(calcKoPoint(calc, han, fu, houju) / 2 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                     let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
@@ -1145,7 +1147,7 @@ let showPointMove = () => {
                         target.nextSibling.innerHTML = '-' + value.toLocaleString();
                     }
                 } else {
-                    let value = Math.ceil(calcKoPoint() / 4 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
+                    let value = Math.ceil(calcKoPoint(calc, han, fu, houju) / 4 / 100) * 100 + honba.valueAsNumber * parseInt(honbaPoints.value) / 3;
                     let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
@@ -1175,7 +1177,7 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let value = calcOyaPoint(calc, han, fu, houju) + honba.valueAsNumber * parseInt(honbaPoints.value);
                     let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
@@ -1200,7 +1202,7 @@ let showPointMove = () => {
                         }
                     }
                 } else if (houju.value == n.value) {
-                    let value = calcOyaPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let value = calcOyaPoint(calc, han, fu, houju) + honba.valueAsNumber * parseInt(honbaPoints.value);
                     let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
@@ -1247,7 +1249,7 @@ let showPointMove = () => {
                 if (agari.value == '') {
                     break;
                 } else if (agari.value == n.value) {
-                    let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value)
+                    let value = calcKoPoint(calc, han, fu, houju) + honba.valueAsNumber * parseInt(honbaPoints.value)
                     let bonus = kyotaku.valueAsNumber * 1000;
                     if (target.nextSibling.className !== 'pointsEarned') {
                         if (target.nextSibling.className == 'pointsLost') {
@@ -1272,7 +1274,7 @@ let showPointMove = () => {
                         }
                     }
                 } else if (houju.value == n.value) {
-                    let value = calcKoPoint() + honba.valueAsNumber * parseInt(honbaPoints.value);
+                    let value = calcKoPoint(calc, han, fu, houju) + honba.valueAsNumber * parseInt(honbaPoints.value);
                     let riichiStick = 1000;
                     if (target.nextSibling.className !== 'pointsLost') {
                         if (target.nextSibling.className == 'pointsEarned') {
@@ -1579,35 +1581,35 @@ $(document).ready(function () {
     });
     $('#kiriage').on('change', function () {
         if (oyaChecker()) {
-            calcOyaPoint();
+            calcOyaPoint(calc, han, fu, houju);
         } else {
-            calcKoPoint();
+            calcKoPoint(calc, han, fu, houju);
         }
         showPointMove();
     });
     $('#han').on('change', function () {
         if (oyaChecker()) {
-            calcOyaPoint();
+            calcOyaPoint(calc, han, fu, houju);
         } else {
-            calcKoPoint();
+            calcKoPoint(calc, han, fu, houju);
         }
         showPointMove();
         winHan.value = han.value;
     });
     $('#fu').on('change', function () {
         if (oyaChecker()) {
-            calcOyaPoint();
+            calcOyaPoint(calc, han, fu, houju);
         } else {
-            calcKoPoint();
+            calcKoPoint(calc, han, fu, houju);
         }
         showPointMove();
         winFu.value = fu.value;
     });
     $('#agari').on('change', function () {
         if (oyaChecker()) {
-            calcOyaPoint();
+            calcOyaPoint(calc, han, fu, houju);
         } else {
-            calcKoPoint();
+            calcKoPoint(calc, han, fu, houju);
         }
         for (let i = 0; i < houju.options.length; i++) {
             if (agari.value == houju.options[i].value) {
@@ -1625,9 +1627,9 @@ $(document).ready(function () {
     });
     $('#houju').on('change', function () {
         if (oyaChecker()) {
-            calcOyaPoint();
+            calcOyaPoint(calc, han, fu, houju);
         } else {
-            calcKoPoint();
+            calcKoPoint(calc, han, fu, houju);
         }
         for (let i = 1; i < agari.options.length; i++) {
             if (houju.value == agari.options[i].value) {
@@ -1640,13 +1642,38 @@ $(document).ready(function () {
     });
     $(oyaMarker).on('change', function () {
         if (oyaChecker()) {
-            calcOyaPoint();
+            calcOyaPoint(calc, han, fu, houju);
         } else {
-            calcKoPoint();
+            calcKoPoint(calc, han, fu, houju);
         }
         showPointMove();
     });
+    $('#winHan, #winFu, #winOya, #winTsumo').on('change', function () {
+        if (winOya.checked) {
+            if (winTsumo.checked) {
+                winTsumo.value = "Tsumo";
+                tsumo.checked = true;
+                calcOyaPoint(winCalc, winHan, winFu, winTsumo);
+            } else {
+                winTsumo.value = "Ron";
+                tsumo.checked = false;
+                calcOyaPoint(winCalc, winHan, winFu, winTsumo);
+            }
+        } else {
+            if (winTsumo.checked) {
+                winTsumo.value = "Tsumo";
+                tsumo.checked = true;
+                calcKoPoint(winCalc, winHan, winFu, winTsumo);
+            } else {
+                winTsumo.value = "Ron";
+                tsumo.checked = false;
+                calcKoPoint(winCalc, winHan, winFu, winTsumo);
+            }
+        }
+        winPoint.value = winCalc.innerHTML;
+    })
 });
+
 
 let hiddenButtonDeactivatedSubmit = () => {
     if (document.getElementById('updateApply').checked) {
@@ -1736,7 +1763,6 @@ let showWinningHandPage = () => {
     winningHandButton.classList.toggle('showPage');
     cover.classList.toggle('activateCover');
     document.body.classList.toggle('moveMain');
-
 }
 
 let hideWinningHandPage = () => {
@@ -1747,6 +1773,7 @@ let hideWinningHandPage = () => {
 }
 
 winningHandButton.addEventListener('click', showWinningHandPage);
+showHand.addEventListener('click', hiddenButtonDeactivatedSubmit);
 cover.addEventListener('click', hideWinningHandPage);
 
 form.addEventListener('submit', () => {
