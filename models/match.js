@@ -62,7 +62,7 @@ const matchSchema = new mongoose.Schema({
     matchInfoHidden: [String],
     mute: {
         type: [String],
-        default: 'on'
+        default: 'off'
     },
     winningPlayer: String,
     winHan: Number,
